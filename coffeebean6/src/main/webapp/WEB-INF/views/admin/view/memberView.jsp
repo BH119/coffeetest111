@@ -57,34 +57,21 @@
 
 
     <!-- 사이드메뉴 -->
-    <div class="adminTitle">
-      <div class="adminTitleS">
-        <ul>
-          <li>
-            <a href="/NAV_admin_notice">공지사항</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_member">회원관리</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_puroductManagement">상품관리</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_one2one">1:1문의</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_review">리뷰관리</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_orderManagement">주문관리</a>
-          </li>
-          <li>
-            <a href="/NAV_admin_productAsk">상품문의</a>
-          </li>
-        </ul>
-      </div><br>
-    </div>
-      <!-- 메인 -->
+		<div class="adminTitle">
+			<div class="adminTitleS">
+				<ul>
+					<li><a href="/NAV_admin_notice">공지사항</a></li>
+					<li><a href="/NAV_admin_member">회원관리</a></li>
+					<li><a href="/NAV_admin_puroductManagement">상품관리</a></li>
+					<li><a href="/NAV_admin_one2one">1:1문의</a></li>
+					<li><a href="/NAV_admin_review">리뷰관리</a></li>
+					<li><a href="/NAV_admin_orderManagement">주문관리</a></li>
+					<li><a href="/NAV_admin_productAsk">상품문의</a></li>
+				</ul>
+			</div>
+			<br>
+		</div>
+		<!-- 메인 -->
       <div id="adminMain">
         <div id="adminSection">
           <div class="adminDiv">

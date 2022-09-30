@@ -23,4 +23,19 @@ public interface noticeDao {
 	
 	//공지사항 삭제
 	public int noticeDeleteAction (int N_IDX);
+	
+	//글 갯수 출력
+	public int noticeCount();
+	
+	//페이징당 게시글 출력
+	public List<noticeDto> betweenList(int startList, int endList);
+
+	//제목검색 액션
+	public List<noticeDto> betweenListTitle(int startList, int endList, String keyword);
+	public int titleCount(String keyword);
+	
+	//글쓴이검색
+	public List<noticeDto> betweenListWrite(int startList, int endList, String keyword);
+	public int writeCount(String keyword);
+	
 }
