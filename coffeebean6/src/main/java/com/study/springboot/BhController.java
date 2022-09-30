@@ -143,7 +143,6 @@ public class BhController {
 			@RequestParam("N_IDX") int N_IDX,
 			Model model) {
 		
-		
 		model.addAttribute( "dto" , iNoticeDao.noticeModifyView(N_IDX));
 		model.addAttribute("mainPage" , "admin/view/noticeModify.jsp");
 		return "index"; 
@@ -161,7 +160,7 @@ public class BhController {
 			Model model) {
 		iNoticeDao.noticeUpdateAction(N_TITLE, N_CONTENT, N_WRITER, N_IDX);
 		
-		return "redirect:noticeModify"; 
+		return "redirect:admin_notice"; 
 	}
 	
 	@RequestMapping("noticeDeleteAction")

@@ -108,8 +108,8 @@
             style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 70px;  margin-right: 5px; ">
             <option selected>전체</option>
             <option >번호</option>
-            <option >제목</option>
-            <option >내용</option>
+            <option >제목111111</option>
+            <option >내용111111</option>
           </select>
           <input class="form-control" style="width:200px; height: 30px;   border: 1px solid rgba(0, 0, 0, 0.356);"
             type="text">
