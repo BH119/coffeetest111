@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'com.study'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+//devtools : 소스 수정시 자동 Restart
+//log4jdbc : SQL 문장을 콘솔로 출력해줌.
+
+//Gradle파일을 수정하면, 반드시! 저장후 Refresh Gradle Project로 반영해야 됨.
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.1'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+	implementation 'javax.servlet:jstl'
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+}
+
+test {
+	useJUnitPlatform()
+}

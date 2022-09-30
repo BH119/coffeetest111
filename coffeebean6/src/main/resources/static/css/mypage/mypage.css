@@ -1,0 +1,85 @@
+*{
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'OTWelcomeRA';
+}
+.mybody{
+    width: 60%;
+min-width: 1000px;
+}
+.mypage {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.myli {
+    list-style: none;
+    padding-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+.userList ul{
+    width: 100%;
+}
+.userList a {
+    color: #7F552E;
+    text-decoration: none;
+    height: 100%;
+}
+.userList a:visited{
+    color: #7F552E;
+    text-decoration: none;
+}
+.userList a:hover{
+    color: #7F552E;
+    text-decoration:none;
+    font-weight: bold;
+}
+.userInfo {
+    text-align: center;
+    padding-right: 50px;
+}
+.userImg img{
+    width: 200px;
+    height: 200px;
+    margin-top: 10%;
+    border-radius: 70%;
+    overflow: hidden;
+    object-fit: cover;
+}
+.userName {
+    font-size: 22px;
+}
+.orderList table {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+.orderList tr{
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+.mem_btn{
+    margin-top: 30px;
+}
+.mem_btn input{
+    margin: 0 30px;
+}
+.myrow{
+    margin-bottom: 100px;
+}
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.bt{
+    border:solid 0.3px;
+    border-color: #7F552E;
+    background-color: white;
+    color: #7F552E;
+    padding: 0 10px;
+    padding-top: 6px;
+    height: 30px;
+}

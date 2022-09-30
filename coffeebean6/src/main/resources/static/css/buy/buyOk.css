@@ -1,0 +1,79 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.buyOk{
+    font-family: 'OTWelcomeRA';
+    margin-top: 50px;
+    min-width: 1102px;
+    width: 60%;
+}
+.buyOktitle{
+    text-align: center;
+}
+.buyOkItem table{
+    width: 100%;
+    height: 200px;
+    border: 1px solid rgb(187, 187, 187);
+    text-align: center;
+}
+.buyOkItem td:nth-child(1){
+    width: 20%;
+}
+.buyOkItem td:nth-child(2){
+    width: 80%;
+    text-align: left;
+}
+.buyOkItem img{
+    width: 100px;
+    height: 100px;
+}
+.buyOkItem li {
+    list-style: none;
+}
+.buyOkItem{
+    font-size: 20px;
+}
+#buyItemPrice {
+    font-weight: bold;
+}
+.buyOkInfo table {
+    width: 100%;
+    height: 300px;
+    border: 1px solid rgb(187, 187, 187);
+    text-align: center;
+}
+.buyOkInfo th {
+    width: 20%;
+    background-color: #F0EBE0;
+}
+.buyOkInfo td {
+    width: 80%;
+    text-align: left;
+}
+.buyOkInfo span {
+    margin-left: 10px;
+}
+.buyOkBtn{
+    text-align: center;
+}
+.buyOkBtn input:nth-child(1){
+    background-color: #9A6C45;
+    border: 0;
+    color: white;
+    padding: 13px 20px 5px 20px;
+    margin-right: 10px;
+}
+.buyOkBtn input:nth-child(2){
+    background-color: cornflowerblue;
+    border: 0;
+    color: white;
+    padding: 13px 20px 5px 20px;
+    margin-right: 10px;
+}

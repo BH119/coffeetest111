@@ -1,0 +1,105 @@
+  @font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.header{
+    width: 60%;
+    min-width: 1102px;
+    background-color: white;
+    font-family:  'OTWelcomeRA', sans-serif;
+}
+.container{
+    width: 100%;
+}
+.headerTop {
+    text-align: right;
+    color: gray;
+    font-size: 13px;
+    padding-top: 10px;
+}
+.headerTop a{
+    text-decoration: none;
+    color: #a1a1a1;
+}
+
+.headerTop a:hover{
+    text-decoration: none;
+    color:#101010;
+    font-weight: bold;
+}
+.headerTop a {
+    margin: 8px;
+}
+.headerTop img{
+    width: 15px;
+    height: 15px;
+}
+
+.headerTopLogo{
+    width: 200px;
+    margin: 15px auto;
+    margin-bottom: 20px;
+}
+
+.headerTopLogo img{
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+}
+.nav {
+    padding: 0;
+}
+.navbar {
+    height: 100%;
+    width: 100%;   
+    padding: 0; 
+    
+}
+.collapse{
+    height: 100%;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 2px;
+}
+.dropdown-menu {
+    width: 100%;
+}
+.dropdown-menu a{
+    text-align: center;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.headerNav li, .headerNav ul{
+    width: 100%;
+    text-align: center;
+}
+
+.headerNav{
+    width: 100%;
+    min-width: 1000px;
+    height: 35px;
+    line-height: 30px;
+    vertical-align: middle;
+    background-color: #F0EBE0;
+}
+.nav-item{
+    height: 40px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+.nav-item a:hover{
+    color: #7F552E;
+    font-weight: bold;
+}
+.dropdown-menu a:hover{
+    background-color: #F0EBE0;
+}
+.search{
+	
+}
+.search2{
+	visibility: hidden;
+}

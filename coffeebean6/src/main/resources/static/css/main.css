@@ -1,0 +1,179 @@
+  @font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+.main{
+    width: 60%;
+    min-width: 1102px;
+    height: auto;
+    font-family:'OTWelcomeRA', sans-serif;
+    color: #101010;
+}
+.mainBanner .carousel-item img {
+    width: 100%;
+}
+.c_item img{
+    width: 100%;
+    height: 500px;
+    object-fit:cover;
+}
+.mainBest, .mainNew, .mainAd{
+    margin-top: 100px;
+}
+.mainBestItem{
+    padding: 10px;
+}
+.mainBestItem1 a {
+    width: 100%;
+    height: 100%;
+}
+.mainBestItem1:hover .overlay{
+    opacity: 0.8;
+    background-color:rgb(150, 150, 150);
+}
+.mainNewItem1:hover .overlay{
+    opacity: 0.8;
+    background-color:rgb(150, 150, 150);
+}
+.mainBestTitle, .mainNewTitle {
+    text-align: center;
+}
+
+
+.bestnew1{
+    margin-top: 15px;
+    font-size: 16px;
+}
+.bestnew2{
+    font-size: 18px;
+}
+.bestnew1 a, .bestnew2 a{
+    text-decoration: none;
+    color: #101010;
+}
+.bestnew1 a:hover, .bestnew2 a:hover{
+    text-decoration: none;
+    color: #101010;
+}
+.mainBestItem img {
+    width: 150px;
+    height: 150px;   
+}
+.mainNewItem img {
+    width: 150px;
+    height: 150px;
+}
+.mainBestItem, .mainNewItem {
+    text-align: center;
+    margin-top: 30px;
+}
+.newbestimg a:hover, .bestnewimg a:hover{
+    opacity: 0.7;
+}
+.BestPlus, .NewPlus{
+    text-align: center;
+    width: 90px; height: 30px;
+    line-height: 35px;
+    vertical-align: middle;
+    border: 1px solid #a1a1a1;
+    margin-top: 25px;
+}
+.BestPlus a, .NewPlus a{
+    color: #686868;
+}
+
+.BestPlus a:hover, .NewPlus a:hover{
+    text-decoration: none;
+}
+.carousel-control-prev, .carousel-control-next {
+    background: none;
+    border: 0;
+}
+.mainAd{
+    width: 100%;
+    height: 300px;
+}
+.c_item2 img{
+    width: auto;
+    height: 300px;
+    object-fit:cover;
+}
+
+.mainInfo {
+    border: 1px solid #F0EBE0;
+    padding: 10px 20px;
+}
+.mainInfo1 {
+    border-right: 1px dashed #9A6C45;
+}
+.mainInfo1 ul{
+    margin: 15px 0;
+}
+
+.mainInfo2 ul{
+    margin: 15px 0;
+}
+.mainInfo1 ul li{
+    text-align: left;
+    font-size: 16px;
+
+}
+.mainInfo1 ul li:first-child{
+    font-weight: bold;
+    font-size: 22px;
+    border-bottom: 1px solid #9A6C45;
+    margin-bottom: 5px;
+}
+.mainInfo1 ul li:nth-child(2){
+    font-size: 24px;
+    color: #7F552E;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.mainInfo1 ul li:nth-child(4), .mainInfo1 ul li:nth-child(5){
+    font-size: 14px;
+    color: #a1a1a1;
+}
+.mainInfo1 ul li:last-child{
+    text-align: right;
+}
+.mainInfo1 ul li a{
+    text-decoration: none;
+    color: #101010;
+}
+.mainInfo1 ul li a:hover{
+    font-weight: bold;
+}
+.mainInfo2 ul li{
+    text-align: left;
+    font-size: 16px;
+
+}
+.mainInfo2 ul li:first-child{
+    font-weight: bold;
+    font-size:22px;
+    border-bottom: 1px solid #9A6C45;
+    margin-bottom: 5px;
+}
+.mainInfo2 ul li:last-child{
+    text-align: right;
+    margin-top: 30px;
+}
+.mainInfo2 a{
+    text-decoration: none;
+    color: #101010;
+}
+.mainInfo2 a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
+.blank{
+    width: 80px;
+    height: 30px;
+}

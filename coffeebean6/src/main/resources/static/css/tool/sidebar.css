@@ -1,0 +1,27 @@
+*{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: #101010;
+}
+
+.quick-side-bar{
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 1%;
+    right: 2%;
+    z-index: 7;
+}
+
+#sidebar ul li{
+    height: 40px;
+    /* border: 1px solid darkblue; */
+}
+
+.quickButton img{
+    width: 30px;
+}
+

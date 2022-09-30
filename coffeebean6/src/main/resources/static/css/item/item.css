@@ -1,0 +1,200 @@
+*{
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 0;
+}
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.item{
+    font-family:'OTWelcomeRA', sans-serif;
+    width: 60%;
+    min-width: 1102px;
+    margin-top: 50px;
+}
+.itemTop{
+    font-size: 14px;
+    text-align: right;
+}
+.itemTop a{
+    text-decoration: none;
+    color: black;
+}
+.itemTop a:hover{
+    text-decoration: none;
+    color: black;
+}
+.itemTop a:visited{
+    text-decoration: none;
+    color: black;
+}
+.itemMenuUl{
+    width: 100%;
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    text-align: right;
+}
+.itemMenuUl a{
+    padding: 10px;
+}
+.itemMenuUl li{
+    display: inline-block;
+    font-size: 14px;
+    text-align: center;
+    margin: 0 15px;
+}
+.itemMenuUl li:hover{
+    font-weight: bolder;
+}
+.itemTitle {
+    text-align: center;
+}
+.itemSearch {
+    width: 25%;
+    text-align: right;
+    margin-right: 20px;
+    border: 1px solid black;
+}
+.itemSearch input {
+    width: 80%;
+    height: 25px;
+    border: 0;
+}
+.itemSearch input:focus{
+    outline: 0;
+}
+.itemSearch img {
+    margin: 5px;
+    width: 25px;
+    height: 25px;
+}
+.totalItems{
+    font-size: 16px;
+}
+.itemList{
+    text-align: center;
+}
+.itemList img {
+    width: 80px;
+    height: 80px;
+}
+.itemListUl {
+    width: 100%;
+    font-size: 0;
+}
+.itemList ul, .itemList li{
+    list-style: none;
+    display: inline-block;
+    margin: 0;
+}
+.itemListUl li{
+    margin-top: 50px;
+    padding: 10px;
+}
+.itemImg{
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    position: relative;
+}
+.itemImgBox {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    top: 500px;
+}
+.itemImgBox{
+    line-height: 130px;
+}
+.itemImgBox img {
+    width: 150px;
+    height: 150px;
+}
+.itemImgBox:hover{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+.itemName{
+    /* border-bottom: 1px solid #7F552E; */
+    width: 100%;
+    color: black;
+    font-size: 16px;
+    padding: 5px;
+}
+.itemPrice{
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+}
+.itemList li a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+.itemList li a:hover{
+    text-decoration: none;
+    color: black;
+}
+.itemList li a:visited{
+    text-decoration: none;
+    color: black;
+}
+.overlay{
+    position: absolute;
+    top: 0; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    width: 150px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #9A6C45;
+}
+.overlay a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+.overlay p {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #F0EBE0;
+    text-align: center;
+    padding-top: 15px;
+}
+.itemImg:hover .overlay{
+    opacity: 0.8;
+    background-color: #9A6C45;
+}
+.itemPage {
+    text-align: center;
+}
+.pagination {
+    width: 300px;
+    margin-top: 50px;
+}
+.pagination a {
+    color: black;
+    border: 0;
+}
+.my.pagination > .active > a, 
+.my.pagination > .active > a:hover, 
+.my.pagination > .active > a:focus{
+  background: #9A6C45;
+  border-color: #9A6C45;
+}

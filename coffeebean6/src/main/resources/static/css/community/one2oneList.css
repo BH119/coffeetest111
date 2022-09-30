@@ -1,0 +1,62 @@
+*{
+    font-family: 'OTWelcomeRA';
+}
+.all{
+    width: 1102px;
+    padding-top: 50px;
+}
+.all a {
+    color: black;
+}
+.all a:hover {
+    color: #7F552E;
+    text-decoration: none;
+}
+th {
+    padding: 7px;
+    padding-top: 13px;
+    color: #7F552E;
+    text-align: center;
+}
+td {
+    padding-top: 13px;
+    color: black;
+}
+thead {
+    border-top: 1px solid #7f552e;
+    border-bottom: 1px solid #7f552e;
+    text-align: center;
+}
+.one2onetable {
+    width: 100%;
+}
+
+/* 글쓰기 버튼 CSS */
+.formBtn{
+    font-weight: bold;
+    width: 120px;
+    height: 50px;
+    position: relative;
+    left: 1030px;
+}
+.formBtn:hover {
+    color: white;
+}
+
+/* 페이지네이션 CSS */
+.pagination {
+    width: 400px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+.pagination a.active {
+    background-color: #9a6c45;
+    color: white;
+}

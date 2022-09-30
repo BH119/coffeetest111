@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'OTWelcomeRA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+#container {
+  width: 1000px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+  font-family: 'OTWelcomeRA';
+}
+.answer {
+    display: none;
+    padding-bottom: 20px;
+    font-size: 17px;
+}
+#faq-title {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+.faq-content {
+  border-bottom: 1px solid #F0EBE0;
+}
+.question {
+  font-size: 17px;
+  padding: 17px 0;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+.question:hover {
+  color: #9a6c45;
+  font-weight: 500;
+}
+[id$="-toggle"] {
+  margin-right: 15px;
+}

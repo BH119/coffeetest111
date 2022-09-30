@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'OTWelcomeRA';
+}
+td{
+    border-bottom: 1px solid #F0EBE0;
+    color: #9a6c45;
+    text-align: center;
+    font-weight: 300;
+}
+input{
+    border: none;
+}
+textarea{
+    border: 1px solid #F0EBE0;
+}
+select {
+    border: 1px solid #f0ebe0;
+    height: 0 auto;
+    text-align: left;
+    font-size: 10px;
+    padding: 13px;
+}
+#one2oneTable {
+    width: 1102px;
+}
+.one2one_title {
+    text-align: center;
+    margin: 30px;
+}
+.btn{
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
+td{
+    padding: 7px;
+}
+.one2one{
+    width: 250px;
+    height: 35px;
+}
+.phonenumber{
+    width: 100%;
+}
+.email{
+    width: 100%;
+}
+.title{
+    width: 100%;
+}
+.content{
+    width: 100%;
+    height: 300px;
+}
+.choice{
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+option {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+.submit_button{
+    margin-right: 10px;
+    padding: 7px;
+    padding-top: 13px;
+    border: 0px;
+    width: 150px;
+    height: 43px;
+    background-color: #9a6c45;
+    color: #F0EBE0;
+}
+.btn{
+    width: 100%;
+    margin: 0 auto;
+}

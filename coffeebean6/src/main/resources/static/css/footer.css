@@ -1,0 +1,57 @@
+*{
+    list-style: none;
+}
+  @font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.footer{
+  width: 60%;
+  min-width: 1101px;
+  font-family: 'OTWelcomeRA', sans-serif;
+}
+.ibox1{
+  width: 110px;
+  float: left;
+}
+.ibox1 img{
+  width: 110px;
+  margin: 20px auto;
+}
+.abox{
+  width: 100%;
+  float: left;
+  height: 40px;
+  font-size: 14px;
+}
+.a1, .a2{
+  padding: 0 15px;
+}
+.abox p{
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle;
+  float: left;
+  
+}
+.abox p:nth-child(1){
+  margin-right: 20px;
+}
+
+.a1::after, .a2::after {
+  content: "|";
+  float: right;
+  color: #dddddd;
+  margin-right: -17px;
+}
+
+.a1:last-child::after, .a2:last-child::after {
+  content: "";
+}
+
+.a1 a:hover{
+  text-decoration: none;
+  color: black;
+}

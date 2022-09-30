@@ -1,0 +1,33 @@
+thead {
+    text-align: center;
+}
+.th-no {
+    width: 10%;
+}
+.th-title {
+    width: 65%;
+}
+.th-date {
+    width: 20%;
+}
+.th-hit {
+    width: 20%;
+}
+.all {
+    text-align: center;
+}
+.notice_table {
+    width: 800px;
+    margin-bottom: 50px;
+}
+h2 {
+    text-align: center;
+}
+textarea {
+    width: 100%;
+    height: 500px;
+    border: none;
+}
+td {
+    color: #9a6c45;
+}

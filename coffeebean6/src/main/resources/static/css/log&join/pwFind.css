@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+*{
+    font-family: 'OTWelcomeRA';
+}
+.main{
+    text-align: center;
+    display : block;
+    justify-content : center;
+    padding: 50px;
+    /* font-family: 'Times New Roman', Times, serif; */
+}
+.id_box{
+    border: 1px solid #A1A1A1;
+    margin: 2px;
+    padding: 10px;
+    width: 300px;
+    height: 42px;
+}
+p{
+    font-size: smaller;
+}
+.button_box{
+    border: 0px;
+    width: 300px;
+    height: 43px;
+    background-color: #f0ebe0;
+}
+.close_box{
+    border: 0px;
+    background-color: white;
+}

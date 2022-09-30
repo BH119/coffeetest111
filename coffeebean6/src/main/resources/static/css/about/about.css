@@ -1,0 +1,29 @@
+*{
+    margin: 0 auto;
+}
+.commpanystory{
+    width: 60%;
+    min-width: 1102px;
+    font-family:  'OTWelcomeRA', sans-serif;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.commpanystory img{
+    width:80%;
+}
+
+.commpanystory2{
+    padding-top: 50px;
+}
+
+.commpanystory2 h4, .commpanystory2 h6{
+    margin-bottom: 15px;
+}
+
+    @font-face {
+      font-family: 'OTWelcomeRA';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+      font-weight: normal;
+      font-style: normal;
+  }

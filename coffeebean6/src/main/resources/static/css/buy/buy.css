@@ -1,0 +1,138 @@
+
+*{
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 0;
+}
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.buy {
+    margin-top: 50px;
+    font-family:'OTWelcomeRA', sans-serif;
+    min-width: 1102px;
+    width: 60%;
+}
+.buyItemInfo{
+    width: 100%;
+    height: 200px;
+    font-size: 20px;
+}
+.buyItemInfo table{
+    width: 100%;
+    height: 100%;   
+    border: 1px solid rgb(187, 187, 187);  
+}
+.buyItemInfo td:nth-child(1){
+    width: 20%;
+    text-align: center;
+}
+.buyItemInfo td:nth-child(2){
+    width: 80%;
+    text-align: left;
+}
+.buyItemInfo img{
+    width: 100px;
+    height: 100px;
+}
+.UserInfoTable {
+    width: 100%;
+    height: 250px;
+    border: 1px solid rgb(187, 187, 187);
+    text-align: center;
+}
+.UserInfoTable th{
+    width: 20%;
+    background-color: #F0EBE0;
+    padding-top: 5px;
+}
+.UserInfoTable td{
+    text-align: left;
+}
+.UserInfoTable input{
+    width: 80%;
+    margin: 10px 10px 10px 10px;
+    padding-top: 5px;
+}
+#payment1{
+    width: 3%;
+    margin: 10px 0 10px 0;
+    top: 10px;
+}
+#payment2{
+    width: 3%;
+    margin: 10px 0 10px 0;
+}
+.UserAddress{
+    line-height: 25px;
+}
+#sample6_postcode {
+    width: 30%;
+}
+#sample6_btn{
+    width: 15%;
+    font-size: 14px;
+    color: black;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#fff),to(#f2f2f2));
+}
+#sample6_detailAddress{
+    width: 40%;
+}
+#sample6_extraAddress{
+    width: 37.5%;
+}
+.UserAddress input {
+    margin-top: 10px;
+}
+
+#buyItemPrice {
+    font-weight: bold;
+}
+.buyPrice table {
+    width: 100%;
+    height: 150px;
+    border: 1px solid rgb(187, 187, 187);
+    text-align: center;
+}
+.buyPrice th{
+    width: 20%;
+    background-color: #F0EBE0;
+    padding-top: 5px;
+}
+.buyPrice td {
+    width: 80%;
+    text-align: left;
+    padding-top: 5px;
+}
+.buyPrice span {
+    margin-left: 10px;
+}
+.buyPrice tr:nth-child(3){
+    background-color: #F0EBE0;
+    font-size: 20px;
+    font-weight: bold;
+}
+.buyOrNot{
+    text-align: center;
+}
+.buyOrNot input{
+    width: 100px;
+    height: 40px;
+    padding-top: 5px;
+}
+.buybuy{
+    background-color: #9A6C45;
+    border: 0;
+    color: white;
+    margin-right: 10px;
+}
+.buynot{
+    background-color: rgb(255, 255, 255);
+    margin-left: 10px;
+    border: 1px solid gray;
+}

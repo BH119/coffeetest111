@@ -1,0 +1,91 @@
+*{
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    padding: 0;
+}
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+.writeQnA{
+    margin-top: 50px;
+    font-family: 'OTWelcomeRA';
+    min-width: 1102px;
+    width: 60%;
+}
+.writeQnATitle {
+    text-align: center;
+}
+.writeQnAItem{
+    display:flex;
+    padding: 5px;
+}
+.writeQnAItemImg{
+    width: 30%;
+    text-align: center;
+}
+.writeQnAItemImg img{
+    width: 150px;
+    height: 150px;
+}
+.writeQnAItemInfo{
+    width: 70%;
+    margin-top: 40px;
+}
+.writeQnAItemInfo a {
+    color: gray;
+}
+.writeQnAItemInfo a:hover{
+    color: gray;
+    text-decoration: none;
+}
+
+
+.writeQnATable table{
+    width: 100%;
+}
+.writeQnATable tr{
+    border-bottom: 1px solid #F0EBE0;
+}
+.writeQnATable td:nth-child(1) {
+    width: 30%;
+    text-align: center;
+    padding: 5px;
+    padding-top: 13px;
+    color: #9A6C45;
+}
+.writeQnATable td:nth-child(2) {
+    width: 70%;
+    padding: 5px;
+    padding-top: 7px;
+}
+.writeQnATable select{
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.writeQnATable input{
+    width: 70%;
+}
+.writeQnABtn {
+    text-align: center;
+}
+.writeQnABtn input{
+    width: 100px;
+    height: 40px;
+    padding-top: 5px;
+}
+.writeQnABtn input:nth-child(1) {
+    background-color: #9A6C45;
+    color: white;
+    margin-right: 5px;
+    border: 0;
+}
+.writeQnABtn input:nth-child(2) {
+    background-color: white;
+    margin-left: 5px;
+    border: 1px solid gray;
+}

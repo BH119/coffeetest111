@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'OTWelcomeRA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/OTWelcomeRA.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+  }
+#join2 {
+    text-align: center;
+    color: #9a6c45;
+
+}
+#join2 a {
+    color: #9a6c45;
+}
+h2 {
+    padding-top: 50px;
+    text-align: center;
+    font-family: 'OTWelcomeRA';
+}
+#joinForm {
+    margin-top: 50px;
+    height: 0 auto;
+    text-align: left;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#jointxt {
+    width: 1000px;
+    height: 0 auto;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    padding-left: 100px;
+    font-family: 'OTWelcomeRA';
+}
+.jointxt {
+    padding-bottom: 20px;
+}
+textarea {
+    width: 800px;
+    height: 100px;
+    border-color: #f0ebe0;
+}
+td {
+    margin: 0;
+    outline: 0;
+    font-family: 'Nanum Gothic',sans-serif;
+    line-height: normal;
+    display: table-cell;
+}
+.ec-base-table table tbody td input {
+    height: 30px;
+    border: 1px solid #f0ebe0;
+}
+input[type="text"] {
+    padding: 4px 10px;
+    background-color: #fff;
+    color: #666;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+input {
+    margin: 0;
+    vertical-align: middle;
+}
+.ec-base-table .typeWrite td {
+    padding: 8px 10px 7px;
+}
+#wrapper {
+    text-align: left;
+}
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    border-color: #fff;
+    border-bottom: #f0ebe0;
+}
+td {
+    padding: 15px;
+}
+#joinbtn {
+    text-align: center;
+    padding-bottom: 50px;
+}
+.addr {
+    width: 400px;
+    margin: 5px 0 0;
+}
+.required {
+    text-align: right;
+    font-size: 12px;
+
+}
+.joinbtn {
+    padding: 7px;
+    padding-top: 13px;
+    border: 0px;
+    width: 150px;
+    height: 43px;
+    background-color: #9a6c45;
+    color: #F0EBE0;
+    font-family: 'OTWelcomeRA';
+}
+select {
+    border: 1px solid #f0ebe0;
+    height: 0 auto;
+    text-align: left;
+    font-size: 13px;
+    padding: 7px;
+}
+#mobile2 {
+    width: 60px;
+    height: 35px;
+}
+th{
+    font-family: 'OTWelcomeRA';
+}
+.idMsg {
+    font-size: 12px;
+}
+.displaynone {
+    font-size: 12px;
+}
+input::placeholder {
+    font-size: 12px;
+}
+/* 성별체크란 CSS */
+.select input[type=radio]{
+    display: none;
+}
+.select input[type=radio]+label{
+    margin: 0;
+    display: inline-block;
+    cursor: pointer;
+    height: 30px;
+    width: 90px;
+    border: 1px solid #f0ebe0;
+    line-height: 28px;
+    text-align: center;
+    font-size:13px;
+}
+.select input[type=radio]+label{
+    background-color: #fff;
+    color: black;
+}
+.select input[type=radio]:checked+label{
+    background-color: #9a6c45;
+    color: #fff;
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 파일 : XML태그 및 속성을 정의하는 파일 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- SQL문 끝에 세미콜론은 붙이지 않는다! 오류!! -->
+<mapper namespace="com.study.springboot.dao.BH.noticeDao">
+
+	<select id="noticeList" resultType="com.study.springboot.dto.noticeDto">
+		select * from NOTICE order by N_IDX desc
+	</select>
+
+	<!-- 저장하기 -->
+	<insert id="noticeWriteAction">
+	insert into notice 
+		values ( N_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate)
+	</insert>
+	
+	<!-- 행 수정 -->
+	<update id="noticeUpdateAction"  >
+	update notice set N_TITLE=#{param1} , N_CONTENT=#{param2} , N_WRITER=#{param3}
+	where N_IDX = #{param4}
+	</update>	
+	
+	<!-- 단건 조회 - 한 행만 -->
+	<select id="noticeModifyView" resultType="com.study.springboot.dto.noticeDto">
+	select * from notice where N_IDX = #{param1}
+	</select>
+	
+	
+	<!-- 행 삭제 -->
+	<delete id="noticeDeleteAction">
+		delete FROM notice
+		WHERE N_IDX=#{param1}
+	</delete>
+	
+</mapper>    
+
