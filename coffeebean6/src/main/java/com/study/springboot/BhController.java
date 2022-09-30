@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.study.springboot.dao.BH.noticeDao;
+import com.study.springboot.dao.noticeDao;
 import com.study.springboot.service.pageService;
 import com.study.springboot.service.searchService;
 
@@ -97,7 +97,6 @@ public class BhController {
 			iSearchService.betweenList
 			(type,keyword,selectList,page,model);
 			
-			
 		}else if(selectList.equals("write")) {
 			int type = 2;
 			//글쓴이 게시물 및 개수
@@ -143,7 +142,7 @@ public class BhController {
 	public String noticeModify(
 			@RequestParam("N_IDX") int N_IDX,
 			Model model) {
-		
+		iNoticeDao.noticeModifyView(N_IDX);
 		model.addAttribute("mainPage" , "admin/view/noticeModify.jsp");
 		return "index"; 
 	}

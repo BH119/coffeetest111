@@ -1,4 +1,4 @@
-package com.study.springboot.dao.BH;
+package com.study.springboot.dao;
 
 import java.util.List;
 

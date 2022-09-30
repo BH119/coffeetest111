@@ -7,7 +7,7 @@
 
 
 <!-- SQL문 끝에 세미콜론은 붙이지 않는다! 오류!! -->
-<mapper namespace="com.study.springboot.dao.BH.reviewDao">
+<mapper namespace="com.study.springboot.dao.reviewDao">
 
 <select id="reviewList" resultType="com.study.springboot.dto.reviewDto">
 	select * from REVIEW order by R_IDX desc

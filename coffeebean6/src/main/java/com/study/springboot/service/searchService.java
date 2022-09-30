@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import com.study.springboot.dao.BH.noticeDao;
+import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dto.noticeDto;
 
 @Component
