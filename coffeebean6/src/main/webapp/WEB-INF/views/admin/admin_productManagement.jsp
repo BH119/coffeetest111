@@ -74,13 +74,13 @@ button {
 		<div class="adminTitle">
 			<div class="adminTitleS">
 				<ul>
-					<li><a href="/NAV_admin_notice">공지사항</a></li>
-					<li><a href="/NAV_admin_member">회원관리</a></li>
-					<li><a href="/NAV_admin_puroductManagement">상품관리</a></li>
-					<li><a href="/NAV_admin_one2one">1:1문의</a></li>
-					<li><a href="/NAV_admin_review">리뷰관리</a></li>
-					<li><a href="/NAV_admin_orderManagement">주문관리</a></li>
-					<li><a href="/NAV_admin_productAsk">상품문의</a></li>
+					<li><a href="/adminadmin_notice">공지사항</a></li>
+					<li><a href="/adminadmin_member">회원관리</a></li>
+					<li><a href="/adminadmin_productManagement">상품관리</a></li>
+					<li><a href="/adminadmin_one2one">1:1문의</a></li>
+					<li><a href="/adminadmin_review">리뷰관리</a></li>
+					<li><a href="/adminadmin_orderManagement">주문관리</a></li>
+					<li><a href="/adminadmin_productAsk">상품문의</a></li>
 				</ul>
 			</div>
 			<br>
@@ -93,20 +93,7 @@ button {
 		<div id="adminMain">
 			<div id="adminSection">
 				<h3>상품 관리</h3>
-				<div class="adminDiv" style="display: flex;">
-					<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
-					<select class="form-control form-control-sm"
-						style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 70px; margin-right: 5px;">
-						<option selected>전체</option>
-						<option>상품이름</option>
-						<option>등록일자</option>
-					</select> <input class="form-control"
-						style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
-						type="text"> <input id="searchIcon"
-						style="height: 22px; width: 22px; margin-left: 5px;" type="image"
-						src="/img/search.png">
-				</div>
-				<div class="adminDiv">
+				<div  class="adminDiv" style="display: flex;margin: 0;justify-content: space-between;">
 					<select style="font-family: 'Courier New', Courier, monospace;">
 						<option selected>전체</option>
 						<option>콜드브루</option>
@@ -114,9 +101,23 @@ button {
 						<option>스틱</option>
 						<option>분쇄</option>
 					</select>
+					<form style="display: flex; margin: 0;" action="admin_productManagement" method="get">
+					<div style="display: flex;">
+						<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
+						<select name="selectList" class="form-control form-control-sm"
+							style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 100px; margin-right: 5px;">
+							<option value="P_NAME">상품이름</option>
+						</select>
+						<input name="keyword" class="form-control"
+							style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
+							type="text"> <input id="searchIcon"
+							style="height: 22px; width: 22px; margin-left: 5px;" type="image"
+							src="/img/search.png">
+					</div>
+					</form>
 				</div>
 				<div class="adminDiv2" id="tableTitle">
-					<div style="margin: 0;">등록상품 ${ count }개</div>
+					<div style="margin: 0;">등록상품 ${ listCount }개</div>
 					<button style="background-color: #ffffff; border-color: #000000;"
 						type="button" onclick='location.href="/admin/write/productWrite"'
 						class="btn btn-warning">상품등록</button>
@@ -133,7 +134,7 @@ button {
 							<th>등록일</th>
 						</tr>
 					</thead>
-
+	
 					<tbody>
 						<c:forEach var="dto" items="${ list }">
 							<tr onclick="location.href='/admin/view/productView'">
@@ -155,11 +156,44 @@ button {
 				</table>
 				<br>
 				<div style="display: flex; justify-content: center;">
-					<div class="pagination">
-						<a href="#">이전</a> <a class="active" href="#">1</a> <a href="#">2</a>
-						<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">다음</a>
-					</div>
+				<div class="pagination">
+					<c:choose>
+						<c:when test="${page > 1}">
+							<a
+								onclick='location.href="admin_productManagement?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
+						</c:when>
+						<c:otherwise>
+						<style>
+							#disableLink{
+								pointer-events: none; 
+								cursor: default;
+							}
+						</style>
+							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"' >이전</a>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
+						<a
+							href="admin_productManagement?page=${i}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${page < totalPage}">
+							<a onclick='location.href="admin_productManagement?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+						</c:when>
+						<c:otherwise>
+						<style>
+							#disableLink{
+								pointer-events: none; 
+								cursor: default;
+							}
+						</style>
+							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
+			</div>
 			</div>
 		</div>
 	</div>

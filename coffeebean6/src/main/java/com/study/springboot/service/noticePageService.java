@@ -12,7 +12,7 @@ import com.study.springboot.dto.noticeDto;
 
 
 @Component
-public class pageService {
+public class noticePageService {
 	@Autowired
 	noticeDao iNoticeDao;
 	
@@ -42,7 +42,7 @@ public class pageService {
 		
 		List<noticeDto> list = iNoticeDao.betweenList(startList,endList);
 		model.addAttribute("list", list);
-		model.addAttribute("selectList", "title"); 
+		model.addAttribute("selectList", "N_TITLE"); 
 		return list;
 		
 	

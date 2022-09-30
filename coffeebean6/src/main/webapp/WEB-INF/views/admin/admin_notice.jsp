@@ -70,13 +70,13 @@ button {
 	<div class="adminTitle">
 		<div class="adminTitleS">
 			<ul>
-				<li><a href="/NAV_admin_notice">공지사항</a></li>
-				<li><a href="/NAV_admin_member">회원관리</a></li>
-				<li><a href="/NAV_admin_puroductManagement">상품관리</a></li>
-				<li><a href="/NAV_admin_one2one">1:1문의</a></li>
-				<li><a href="/NAV_admin_review">리뷰관리</a></li>
-				<li><a href="/NAV_admin_orderManagement">주문관리</a></li>
-				<li><a href="/NAV_admin_productAsk">상품문의</a></li>
+				<li><a href="/adminadmin_notice">공지사항</a></li>
+				<li><a href="/adminadmin_member">회원관리</a></li>
+				<li><a href="/adminadmin_productManagement">상품관리</a></li>
+				<li><a href="/adminadmin_one2one">1:1문의</a></li>
+				<li><a href="/adminadmin_review">리뷰관리</a></li>
+				<li><a href="/adminadmin_orderManagement">주문관리</a></li>
+				<li><a href="/adminadmin_productAsk">상품문의</a></li>
 			</ul>
 		</div>
 		<br>
@@ -94,8 +94,8 @@ button {
 					<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
 					<select name="selectList" class="form-control form-control-sm"
 						style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 70px; margin-right: 5px;">
-						<option value="title">제목</option>
-						<option value="write">글쓴이</option>
+						<option value="N_TITLE">제목</option>
+						<option value="N_WRITER">글쓴이</option>
 					</select> <input name="keyword" class="form-control"
 						style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
 						type="text"> <input id="searchIcon"

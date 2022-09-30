@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.study.springboot.dao.noticeDao;
-import com.study.springboot.service.pageService;
-import com.study.springboot.service.searchService;
+import com.study.springboot.dao.productDao;
+import com.study.springboot.service.noticePageService;
+import com.study.springboot.service.noticeSearchService;
+import com.study.springboot.service.productPageService;
+import com.study.springboot.service.productSearchService;
 
 @Controller
 public class BhController {
@@ -16,46 +19,50 @@ public class BhController {
 	@Autowired
 	noticeDao iNoticeDao;
 	@Autowired
-	pageService iPageService;
+	noticePageService iNoticePageService;
 	@Autowired
-	searchService iSearchService;
-
-	
+	noticeSearchService iNoticeSearchService;
+	@Autowired
+	productPageService iProductPageService;
+	@Autowired
+	productSearchService iProductSearchService;
+	@Autowired
+	productDao iProductDao;
 	
 	
 	//-------------네비바---------------
 	//공지사항 클릭
-		@RequestMapping("NAV_admin_notice")
+		@RequestMapping("/adminadmin_notice")
 		public String NAV_admin_notice( Model model) {
 			return "redirect:admin_notice"; 
 		}
 		//회원관리 클릭
-		@RequestMapping("NAV_admin_member")
+		@RequestMapping("/adminadmin_member")
 		public String NAV_admin_member( Model model) {
 			return "redirect:admin_member"; 
 		}
 		//상품관리 클릭
-		@RequestMapping("NAV_admin_puroductManagement")
+		@RequestMapping("/adminadmin_productManagement")
 		public String NAV_admin_puroductManagement( Model model) {
-			return "redirect:admin_puroductManagement"; 
+			return "redirect:admin_productManagement"; 
 		}
 		//1:1문의 클릭
-		@RequestMapping("NAV_admin_one2one")
+		@RequestMapping("/adminadmin_one2one")
 		public String NAV_admin_one2one( Model model) {
 			return "redirect:admin_one2one"; 
 		}
 		//리뷰관리 클릭
-		@RequestMapping("NAV_admin_review")
+		@RequestMapping("/adminadmin_review")
 		public String NAV_admin_review( Model model) {
 			return "redirect:admin_review"; 
 		}
 		//주문관리 클릭
-		@RequestMapping("/NAV_admin_orderManagement")
+		@RequestMapping("/adminadmin_orderManagement")
 		public String NAV_admin_orderManagement( Model model) {
 			return "redirect:admin_orderManagement"; 
 		}
 		//상품문의 클릭
-		@RequestMapping("/NAV_admin_productAsk")
+		@RequestMapping("/adminadmin_productAsk")
 		public String NAV_admin_productAsk( Model model) {
 			return "redirect:admin_productAsk"; 
 		}
@@ -85,24 +92,24 @@ public class BhController {
 			model.addAttribute("listCount" , listCount);
 			//페이징
 			System.out.println("ddddddddxxxx"+page);
-			iPageService.PagingList
+			iNoticePageService.PagingList
 			(page ,model);
 			System.out.println("ddddddddddddddddddddddddddddddddddddddd");
-		}else if(selectList.equals("title")) {	
+		}else if(selectList.equals("N_TITLE")) {	
 			int type = 1;
 			//제목 검색글 개수
 			int listCount = iNoticeDao.titleCount(keyword);
 			model.addAttribute("listCount" , listCount);
 			//제목 검색
-			iSearchService.betweenList
+			iNoticeSearchService.betweenList
 			(type,keyword,selectList,page,model);
 			
-		}else if(selectList.equals("write")) {
+		}else if(selectList.equals("N_WRITER")) {
 			int type = 2;
 			//글쓴이 게시물 및 개수
 			int listCount = iNoticeDao.writeCount(keyword);
 			model.addAttribute("listCount" , listCount);
-			iSearchService.betweenList
+			iNoticeSearchService.betweenList
 			(type,keyword,selectList,page,model);
 			
 		}
@@ -188,10 +195,37 @@ public class BhController {
 		return "index"; 
 	}
 	
+	
+	
+	
+	
 	//상품관리
-	@RequestMapping("admin_puroductManagement")
-	public String admin_puroductManagement( Model model) {
-		model.addAttribute("mainPage" , "admin/admin_puroductManagement.jsp");
+	@RequestMapping("admin_productManagement")
+	public String admin_puroductManagement(
+			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
+			@RequestParam(value="selectList",required=false) String selectList,
+			@RequestParam(value="keyword",required=false) String keyword,
+			Model model) {
+		System.out.println("ddddddddxxxx111"+selectList);
+		if(selectList == null) {
+			//글 개수
+			int listCount = iProductDao.productCount();
+			model.addAttribute("listCount" , listCount);
+			//페이징
+			iProductPageService.PagingList
+			(selectList,page ,model);
+		}else if(selectList.equals("P_NAME")) {	
+			int type = 1;
+			System.out.println("ddddddddxxxx"+selectList);
+			//상품이름 검색글 개수
+			int listCount = iProductDao.nameCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			//상품이름 검색
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,model);
+			
+		}
+		model.addAttribute("mainPage" , "admin/admin_productManagement.jsp");
 		
 		return "index"; 
 	}
@@ -207,6 +241,14 @@ public class BhController {
 		model.addAttribute("mainPage" , "admin/view/productView.jsp");	
 		return "index"; 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	//1:1문의
 	@RequestMapping("admin_one2one")
 	public String admin_one2one( Model model) {

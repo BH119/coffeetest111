@@ -10,7 +10,7 @@ import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dto.noticeDto;
 
 @Component
-public class searchService {
+public class noticeSearchService {
 	@Autowired
 	noticeDao iNoticeDao;
 	

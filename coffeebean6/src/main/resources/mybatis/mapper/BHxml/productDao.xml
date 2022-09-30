@@ -13,5 +13,69 @@
 	select * from PRODUCT order by P_IDX desc
 </select>
 	
+	
+	
+	
+	
+	
+	<!-- 저장하기 -->
+	<insert id="noticeWriteAction">
+	insert into PRODUCT 
+		values ( P_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate)
+	</insert>
+	
+	<!-- 행 수정 -->
+	<update id="noticeUpdateAction"  >
+	update notice set N_TITLE=#{param1} , N_CONTENT=#{param2} , N_WRITER=#{param3}
+	where N_IDX = #{param4}
+	</update>	
+	
+	<!-- 행 삭제 -->
+	<delete id="productDeleteAction">
+		delete FROM product
+		WHERE P_IDX=#{param1}
+	</delete>
+	
+	
+	
+	
+	<!-- 단건 조회 - 한 행만 -->
+	<select id="productModifyView" resultType="com.study.springboot.dto.productDto">
+	select * from product where P_IDX = #{param1}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	 <!-- 게시글 갯수 조회 -->
+	<select id="productCount" resultType="int">
+	select count(*) from product
+	</select>
+	
+	<!-- 게시물 1~5 , 6~10 조회하게하는 쿼리문 (페이징처리를 위한)-->
+	<select id="betweenList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		(select rownum R , product.* from product order by P_IDX desc) B
+		where R between #{param1} and #{param2}
+	</select>
+	
+	<!--이름 검색-->
+	<select id="betweenListName" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+			(select rownum R , product.* from product 
+			where P_NAME LIKE '%' ||  #{param3} || '%'
+	    	order by P_IDX desc) B
+		where R between #{param1} and #{param2}
+	</select>
+	
+	<!-- 이름 게시물 총 개수 -->
+	<select id="nameCount" resultType="int">
+		select count(*) from product where P_NAME LIKE '%' ||  #{param1} || '%'
+	</select>
+	
 </mapper>    
 
