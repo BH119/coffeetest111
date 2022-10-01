@@ -32,6 +32,17 @@ public interface productDao {
 		public List<productDto> betweenListName(int startList, int endList, String keyword);
 		public int nameCount(String keyword);
 		
+		//카테고리별 정렬(전체)
+		public List<productDto> betweenListCategory(int startList, int endList, String category);
+		//카테고리별 정렬(콜드브루)
+		public List<productDto> categoryType1Count(int startList, int endList, String category);
+		public int categoryType1Count(String category);
+		//카테고리별 정렬(원두)
+		public List<productDto> categoryType2Count(int startList, int endList, String category);
+		public int categoryType2Count(String category);
+		//카테고리별 정렬(스틱)
+		public List<productDto> categoryType3Count(int startList, int endList, String category);
+		public int categoryType3Count(String category);
 	
 	
 	

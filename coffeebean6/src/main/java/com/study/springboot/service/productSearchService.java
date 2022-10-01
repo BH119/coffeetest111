@@ -24,6 +24,7 @@ public class productSearchService {
 			String keyword, 
 			String selectList,
 			String page, 
+			String category,
 			Model model) {
 		
 		model.addAttribute("page",page); //현재페이지 반환 (초기값은 1페이지로 설정했음)
@@ -41,6 +42,17 @@ public class productSearchService {
 		if( type == 1 ) {
 			totalList = iProductDao.nameCount(keyword); //제목 게시글 개수
 		}
+		else if ( type == 2 ) {
+			totalList = iProductDao.categoryType1Count(category); //콜드브루 게시글 개수
+		}
+		else if( type == 3 ) {
+			totalList = iProductDao.categoryType2Count(category); //원두 게시글 개수
+		}
+		else if( type == 4 ) {
+			totalList = iProductDao.categoryType3Count(category); //스틱 게시글 개수
+		}
+		
+		
 		int totalPage = (int)Math.ceil((double)totalList/listSize); //전체페이지수
 		 if(endPage > totalPage){
 	            endPage = totalPage;
@@ -50,6 +62,7 @@ public class productSearchService {
 		model.addAttribute("startPage", startPage);
 		
 		
+		
 		List<productDto> list = null;
 		if( type == 1 ) {
 			list = iProductDao.betweenListName(startList, endList, keyword);
@@ -57,6 +70,24 @@ public class productSearchService {
 			model.addAttribute("list", list);
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("keyword", keyword);
+		}
+		else if( type == 2 ) {
+			list = iProductDao.betweenListCategory(startList, endList, category);
+
+			model.addAttribute("list", list);
+			model.addAttribute("category", category);
+		}
+		else if( type == 3 ) {
+			list = iProductDao.betweenListCategory(startList, endList, category);
+
+			model.addAttribute("list", list);
+			model.addAttribute("category", category);
+		}
+		else if( type == 4 ) {
+			list = iProductDao.betweenListCategory(startList, endList, category);
+
+			model.addAttribute("list", list);
+			model.addAttribute("category", category);
 		}
 		return list;
 	}

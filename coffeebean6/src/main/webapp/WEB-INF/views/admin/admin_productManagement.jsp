@@ -94,26 +94,27 @@ button {
 			<div id="adminSection">
 				<h3>상품 관리</h3>
 				<div  class="adminDiv" style="display: flex;margin: 0;justify-content: space-between;">
-					<select style="font-family: 'Courier New', Courier, monospace;">
-						<option selected>전체</option>
-						<option>콜드브루</option>
-						<option>원두</option>
-						<option>스틱</option>
-						<option>분쇄</option>
-					</select>
-					<form style="display: flex; margin: 0;" action="admin_productManagement" method="get">
-					<div style="display: flex;">
-						<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
-						<select name="selectList" class="form-control form-control-sm"
-							style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 100px; margin-right: 5px;">
-							<option value="P_NAME">상품이름</option>
+					<form style="margin: 0;" action="admin_productManagement" method="get">
+						<select onchange="this.form.submit()" name="category" style="font-family: 'Courier New', Courier, monospace;">
+							<option value="0"  >전체</option>
+							<option value="1" <c:if test="${category=='1'}">selected="selected"</c:if> >콜드브루</option>
+							<option value="2" <c:if test="${category=='2'}">selected="selected"</c:if>>원두</option>
+							<option value="3" <c:if test="${category=='3'}">selected="selected"</c:if>>스틱</option>
 						</select>
-						<input name="keyword" class="form-control"
-							style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
-							type="text"> <input id="searchIcon"
-							style="height: 22px; width: 22px; margin-left: 5px;" type="image"
-							src="/img/search.png">
-					</div>
+					</form>
+					<form style="display: flex; margin: 0;" action="admin_productManagement" method="get">
+						<div style="display: flex;">
+							<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
+							<select name="selectList" class="form-control form-control-sm"
+								style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 100px; margin-right: 5px;">
+								<option value="P_NAME">상품이름</option>
+							</select>
+							<input name="keyword" class="form-control"
+								style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
+								type="text"> <input id="searchIcon"
+								style="height: 22px; width: 22px; margin-left: 5px;" type="image"
+								src="/img/search.png">
+						</div>
 					</form>
 				</div>
 				<div class="adminDiv2" id="tableTitle">
@@ -160,7 +161,7 @@ button {
 					<c:choose>
 						<c:when test="${page > 1}">
 							<a
-								onclick='location.href="admin_productManagement?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
+								onclick='location.href="admin_productManagement?page=${page-1}&category=${category}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
 						</c:when>
 						<c:otherwise>
 						<style>
@@ -169,18 +170,18 @@ button {
 								cursor: default;
 							}
 						</style>
-							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"' >이전</a>
+							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page-1}&category=${category}&selectList=${ selectList}&keyword=${keyword}"' >이전</a>
 						</c:otherwise>
 					</c:choose>
 
 					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
 						<a
-							href="admin_productManagement?page=${i}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
+							href="admin_productManagement?page=${i}&category=${category}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
 					</c:forEach>
 
 					<c:choose>
 						<c:when test="${page < totalPage}">
-							<a onclick='location.href="admin_productManagement?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+							<a onclick='location.href="admin_productManagement?page=${page+1}&category=${category}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
 						</c:when>
 						<c:otherwise>
 						<style>
@@ -189,7 +190,7 @@ button {
 								cursor: default;
 							}
 						</style>
-							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+							<a id="disableLink" onclick='location.href="admin_productManagement?page=${page+1}&category=${category}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
 						</c:otherwise>
 					</c:choose>
 				</div>

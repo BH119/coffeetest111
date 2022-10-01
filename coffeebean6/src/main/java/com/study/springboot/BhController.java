@@ -205,9 +205,16 @@ public class BhController {
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
 			@RequestParam(value="selectList",required=false) String selectList,
 			@RequestParam(value="keyword",required=false) String keyword,
+			@RequestParam(value="category",required=false) String category,
 			Model model) {
-		System.out.println("ddddddddxxxx111"+selectList);
-		if(selectList == null) {
+		if(category == null) {
+			category = "0";
+		}
+		model.addAttribute("category", category);
+		
+		
+		System.out.println("category:"+category);
+		if(selectList == null || category.equals("0")) {
 			//글 개수
 			int listCount = iProductDao.productCount();
 			model.addAttribute("listCount" , listCount);
@@ -216,15 +223,39 @@ public class BhController {
 			(selectList,page ,model);
 		}else if(selectList.equals("P_NAME")) {	
 			int type = 1;
-			System.out.println("ddddddddxxxx"+selectList);
 			//상품이름 검색글 개수
 			int listCount = iProductDao.nameCount(keyword);
 			model.addAttribute("listCount" , listCount);
 			//상품이름 검색
 			iProductSearchService.betweenList
-			(type,keyword,selectList,page,model);
-			
+			(type,keyword,selectList,page,category,model);
 		}
+		
+		if(category.equals("1")) {	
+			int type = 2;
+			int listCount = iProductDao.categoryType1Count(category);
+			model.addAttribute("listCount" , listCount);
+			//카테고리 콜드브루 정렬
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,category,model);
+		}
+		else if(category.equals("2")) {	
+			int type = 3;
+			int listCount = iProductDao.categoryType1Count(category);
+			model.addAttribute("listCount" , listCount);
+			//카테고리 원두 정렬
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,category,model);
+		}
+		else if(category.equals("3")) {	
+			int type = 4;
+			int listCount = iProductDao.categoryType1Count(category);
+			model.addAttribute("listCount" , listCount);
+			//카테고리 원두 정렬
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,category,model);
+		}
+		
 		model.addAttribute("mainPage" , "admin/admin_productManagement.jsp");
 		
 		return "index"; 

@@ -77,5 +77,40 @@
 		select count(*) from product where P_NAME LIKE '%' ||  #{param1} || '%'
 	</select>
 	
+	<!-- 카테고리별 정렬 -->
+	<select id="betweenListCategory" resultType="com.study.springboot.dto.productDto">
+	select A.* from
+		(SELECT rownum R, product.* from product where P_CATEGORY = #{param3} order by P_IDX desc) A
+	where R between #{param1} and #{param2}
+	</select>
+	
+	<!-- 콜드브루 게시물 총 개수 -->
+	<select id="categoryType1Count" resultType="int">
+		select count(*) from product where P_CATEGORY = #{param1} 
+	</select>
+	<!-- 원두 게시물 총 개수 -->
+	<select id="categoryType2Count" resultType="int">
+		select count(*) from product where P_CATEGORY = #{param1} 
+	</select>
+	<!-- 스틱 게시물 총 개수 -->
+	<select id="categoryType3Count" resultType="int">
+		select count(*) from product where P_CATEGORY = #{param1} 
+	</select>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </mapper>    
 
