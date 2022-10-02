@@ -120,7 +120,7 @@ button {
 				<div class="adminDiv2" id="tableTitle">
 					<div style="margin: 0;">등록상품 ${ listCount }개</div>
 					<button style="background-color: #ffffff; border-color: #000000;"
-						type="button" onclick='location.href="/admin/write/productWrite"'
+						type="button" onclick='location.href="admin/write/productWrite"'
 						class="btn btn-warning">상품등록</button>
 				</div>
 				<table class="admintable">
@@ -138,26 +138,27 @@ button {
 	
 					<tbody>
 						<c:forEach var="dto" items="${ list }">
-							<tr onclick="location.href='/admin/view/productView'">
+							<tr onclick="location.href='/productView?P_IDX=${dto.p_IDX}'">
 								<td>${ dto.p_CODE }</td>
 								<td>${ dto.p_CATEGORY }</td>
 								<td>
-									<div class="imgbox">
-										<img src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+									<div  class="imgbox">
+										<img  src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
 									</div>
 								</td>
 								<td>${ dto.p_NAME }</td>
 								<td>${ dto.p_PRICE }</td>
 								<td>${ dto.p_STOCK }</td>
 								<td><fmt:formatDate value="${ dto.p_DATE }"
-										pattern="yyyy-MM-dd" />2222/11/33</td>
+										pattern="yyyy-MM-dd" /></td>
+										
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 				<br>
 				<div style="display: flex; justify-content: center;">
-				<div class="pagination">
+				<div  class="pagination">
 					<c:choose>
 						<c:when test="${page > 1}">
 							<a

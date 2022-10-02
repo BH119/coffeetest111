@@ -20,7 +20,7 @@ public class productDto {
    private int P_CATEGORY; // 상품 카테고리
    private int P_PRICE; // 상품 가격
    private int P_STOCK; //상품재고
-   @DateTimeFormat(pattern = "yyyy-MM-dd")
+//   @DateTimeFormat(pattern = "yyyy-MM-dd")
    private Date P_DATE; //상품등록일
    private int  P_HIT; //조회수
 }

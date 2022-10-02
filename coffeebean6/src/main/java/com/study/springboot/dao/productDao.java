@@ -10,20 +10,24 @@ import com.study.springboot.dto.productDto;
 @Mapper
 public interface productDao {
 	
-	//공지사항 전체출력
+	//전체출력
 		public List<productDto> productList();
-		
-		//공지사항 저장
-		public int productWriteAction(String P_NAME , String N_CONTENT , String N_WRITE );
+
+
+		//상품관리 저장
+		public int productWriteAction(String P_NAME , String P_CODE , String P_FILENAME1,
+				String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK );
 		
 		//공지사항 수정
-		public int productUpdateAction(String N_TITLE , String N_CONTENT , String N_WRITER, int N_IDX);
-		
-		//공지사항 단건조회
+		public int productUpdateAction(int P_IDX , String P_NAME , String P_CODE,
+				String P_FILENAME1,String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK );
+		//상품 단건조회
 		public productDto productModifyView(int P_IDX);
 		
-		//공지사항 삭제
+		//상품게시물 삭제
 		public int productDeleteAction (int P_IDX);
+		//이미지 경로 이름 삭제
+		public int imgDelNamePath(int P_IDX );
 		
 		//페이징당 게시글 출력
 		public List<productDto> betweenList(int startList, int endList);

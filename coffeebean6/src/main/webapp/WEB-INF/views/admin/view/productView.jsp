@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,34 +77,37 @@
             <h3 style="display: flex; justify-content: center;">상품보기</h3>
 
             <div class="" style="display: flex; justify-content: center;">
-              <form style="width: 600px;">
+              <form action="admin/view/productView"  enctype="multipart/form-data" method="post" style="width: 600px;">
                 카테고리</br>
-                <select style="font-family: 'Courier New', Courier, monospace">
-                  <option>11111</option>
-                  <option>22222</option>
-                  <option>33333</option>
-                  <option>44444</option>
+                <select name="category" style="font-family: 'Courier New', Courier, monospace">
+                  <option value="1" <c:if test="${category=='1'}">selected="selected"</c:if>>콜드브루</option>
+                  <option value="2" <c:if test="${category=='2'}">selected="selected"</c:if>>원두</option>
+                  <option value="3" <c:if test="${category=='3'}">selected="selected"</c:if>>스틱</option>
                 </select>
                 <br><br>상품이름<br>
-                <input type="text" class="form-control">
+                <input name="P_NAME" value="${dto.p_NAME }" type="text" class="form-control">
                 <br>상품코드<br>
-                <input type="text" class="form-control">
+                <input name="P_CODE" value="${dto.p_CODE }" type="text" class="form-control">
                 <br>가격<br>
-                <input type="text" class="form-control">
+                <input name="P_PRICE" value="${dto.p_PRICE }" type="text" class="form-control">
                 <br>재고수량<br>
-                <input type="text" class="form-control">
+                <input name="P_STOCK" value="${dto.p_STOCK }" type="text" class="form-control">
                 <br>상품사진<br>
-                캐러셀사진:<input type="file" multiple><br><br>
-                상세설명사진:<input type="file" multiple><br><br>
-                제품 설명:<textarea></textarea>
+                <div class="imgbox">
+					<img style="height: 200px;" src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+				</div>
+                <input type="file" multiple="multiple"><br><br>
+                <button style="background-color: #ffffff; border-color: #000000;" type="button" 
+                  onclick='location.href="imgDelNamePath?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}"' class="btn btn-warning">이미지 삭제하기</button>
                 <br><br>등록일 <br>
-                <input type="date" class="">
+                <fmt:formatDate value="${ dto.p_DATE }"
+							pattern="yyyy-MM-dd" /> 
                 <br> <br>
 
+                <button style="background-color: #ffffff; border-color: #000000;" type="submit"
+                  class="btn btn-warning">수정하기</button>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"
-                  onclick='location.href="#"' class="btn btn-warning">수정하기</button>
-                <button style="background-color: #ffffff; border-color: #000000;" type="button"
-                  onclick='location.href="#"' class="btn btn-warning">삭제하기</button>
+                  onclick='location.href="productDeleteAction?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}"' class="btn btn-warning">삭제하기</button>
               </form>
             </div>
           </div>

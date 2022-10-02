@@ -1,17 +1,26 @@
 package com.study.springboot;
 
+import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dao.productDao;
+import com.study.springboot.dto.noticeDto;
+import com.study.springboot.dto.productDto;
+import com.study.springboot.service.fileDeleteService;
+import com.study.springboot.service.modifyService;
 import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
 import com.study.springboot.service.productPageService;
 import com.study.springboot.service.productSearchService;
+import com.study.springboot.service.writeService;
 
 @Controller
 public class BhController {
@@ -28,6 +37,12 @@ public class BhController {
 	productSearchService iProductSearchService;
 	@Autowired
 	productDao iProductDao;
+	@Autowired
+	writeService iWriteService;
+	@Autowired
+	modifyService iModifyService;
+	@Autowired
+	fileDeleteService iFileDeleteService;
 	
 	
 	//-------------네비바---------------
@@ -91,10 +106,8 @@ public class BhController {
 			int listCount = iNoticeDao.noticeCount();
 			model.addAttribute("listCount" , listCount);
 			//페이징
-			System.out.println("ddddddddxxxx"+page);
 			iNoticePageService.PagingList
 			(page ,model);
-			System.out.println("ddddddddddddddddddddddddddddddddddddddd");
 		}else if(selectList.equals("N_TITLE")) {	
 			int type = 1;
 			//제목 검색글 개수
@@ -149,7 +162,8 @@ public class BhController {
 	public String noticeModify(
 			@RequestParam("N_IDX") int N_IDX,
 			Model model) {
-		iNoticeDao.noticeModifyView(N_IDX);
+		noticeDto result = iNoticeDao.noticeModifyView(N_IDX);
+		model.addAttribute("dto", result);
 		model.addAttribute("mainPage" , "admin/view/noticeModify.jsp");
 		return "index"; 
 	}
@@ -260,24 +274,103 @@ public class BhController {
 		
 		return "index"; 
 	}
-	//상품등록
+	
+	//상품등록폼
 	@RequestMapping("admin/write/productWrite")
 	public String productWrite( Model model) {
-		model.addAttribute("mainPage" , "admin/write/productWrite.jsp");	
+		model.addAttribute("mainPage" , "admin/write/productWrite.jsp");
 		return "index"; 
 	}
+	
+	
+	
+	//이미지 개별삭제
+	@RequestMapping("imgDelNamePath")
+	public String imgDelNamePath(
+			@RequestParam("P_IDX") int P_IDX,
+			@RequestParam("P_FILENAME1") String P_FILENAME1,
+			Model model) {
+		iProductDao.imgDelNamePath(P_IDX);
+		
+		iFileDeleteService.fileDelete(P_FILENAME1);
+		
+		return "redirect:/productView?P_IDX="+P_IDX; 
+	}
+	
+	
+	
+	
+	
+	//상품등록
+	@RequestMapping("/admin/write/productWriteAction")
+	public String productWrite(
+			@RequestParam("P_NAME") String P_NAME,
+			@RequestParam("P_CODE") String P_CODE,
+			@RequestParam("P_PRICE") int P_PRICE ,
+			@RequestParam("P_STOCK") int P_STOCK ,
+			@RequestParam("P_CATEGORY") int P_CATEGORY ,
+			//여러 값은 배열형태로
+			@RequestParam("filename") MultipartFile[] filelist ,
+			Model model) throws IllegalStateException, IOException 
+	{
+		
+		List<String> files =iWriteService.productWriteAction(filelist);
+		
+		 int result =iProductDao.productWriteAction
+				 (P_NAME, P_CODE,files.get(0),files.get(1),P_CATEGORY, P_PRICE, P_STOCK);
+		 System.out.println(result);
+		 
+		
+		return "redirect:/admin_productManagement"; 
+	}
 	//상품조회
-	@RequestMapping("admin/view/productView")
-	public String productView( Model model) {
+	@RequestMapping("/productView")
+	public String productView(
+			@RequestParam("P_IDX") int P_IDX,
+			Model model) {
+		productDto result = iProductDao.productModifyView(P_IDX);
+		model.addAttribute("dto", result);
 		model.addAttribute("mainPage" , "admin/view/productView.jsp");	
 		return "index"; 
 	}
 	
 	
+	//수정하기 액션
+	@RequestMapping("modifyAction")
+	public String modifyAction(
+			@RequestParam("P_IDX") int P_IDX,
+			@RequestParam("P_NAME") String P_NAME,
+			@RequestParam("P_CODE") String P_CODE,
+			@RequestParam("P_FILENAME1") String P_FILENAME1,
+			@RequestParam("P_FILEPATH") String P_FILEPATH,
+			@RequestParam("P_CATEGORY") int P_CATEGORY,
+			@RequestParam("P_PRICE") int P_PRICE,
+			@RequestParam("P_STOCK") int P_STOCK,
+			@RequestParam("filename") MultipartFile[] filelist) throws IllegalStateException, IOException
+	{
+		
+		iModifyService.updateAction(P_IDX, P_NAME, P_CODE, P_PRICE, 
+				P_STOCK, P_CATEGORY, filelist, P_FILENAME1 );
+		return "";
+
+	}
 	
+	//게시글 삭제하기
+	@RequestMapping("productDeleteAction")
+	public String productDeleteAction(
+			@RequestParam("P_IDX") int P_IDX,
+			@RequestParam("P_FILENAME1") String P_FILENAME1)
+	{
+		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ아ㅏㅏ");
+		//업로드파일 삭제
+		iFileDeleteService.fileDelete(P_FILENAME1);
+		
+		//글 삭제
+		iProductDao.productDeleteAction(P_IDX);
+		System.out.println("ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
+		return "redirect:/admin_productManagement"; 
 	
-	
-	
+	}
 	
 	
 	//1:1문의

@@ -128,8 +128,7 @@ button {
 							<td>${ dto.n_WRITER }</td>
 							<td>>${ dto.n_TITLE }</td>
 							<td>${ dto.n_CONTENT }</td>
-							<td><c:set var="dateVar" value="${ dto.n_DATE }" /> <fmt:formatDate
-									value="${dateVar}" pattern="yyyy-MM-dd" /></td>
+							<td><fmt:formatDate value="${ dto.n_DATE }" pattern="yyyy-MM-dd" /></td>
 					</c:forEach>
 				</tbody>
 			</table>

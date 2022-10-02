@@ -19,18 +19,28 @@
 	
 	
 	<!-- 저장하기 -->
-	<insert id="noticeWriteAction">
+	<insert id="productWriteAction">
 	insert into PRODUCT 
-		values ( P_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate)
+		values ( P_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},
+		#{param4},#{param5},#{param6},#{param7},sysdate,0)
 	</insert>
 	
+	
+	<!-- 이미지 이름,경로 삭제 -->
+	<delete id="imgDelNamePath">
+	update product set P_FILENAME1 = null, P_FILEPATH = null
+	where P_IDX = #{param1}
+	</delete>
+	
+	
 	<!-- 행 수정 -->
-	<update id="noticeUpdateAction"  >
-	update notice set N_TITLE=#{param1} , N_CONTENT=#{param2} , N_WRITER=#{param3}
-	where N_IDX = #{param4}
+	<update id="productUpdateAction" >
+	update product set P_NAME=#{param2} , P_CODE=#{param3} , P_FILENAME1=#{param4} ,
+	P_FILEPATH=#{param5},P_CATEGORY=#{param6},P_PRICE=#{param7}, P_STOCK=#{param8}
+	where P_IDX = #{param1}
 	</update>	
 	
-	<!-- 행 삭제 -->
+	<!-- 상품행 삭제 -->
 	<delete id="productDeleteAction">
 		delete FROM product
 		WHERE P_IDX=#{param1}
@@ -43,6 +53,8 @@
 	<select id="productModifyView" resultType="com.study.springboot.dto.productDto">
 	select * from product where P_IDX = #{param1}
 	</select>
+	
+	
 	
 	
 	
