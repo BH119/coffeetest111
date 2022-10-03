@@ -9,9 +9,56 @@
 <!-- SQL문 끝에 세미콜론은 붙이지 않는다! 오류!! -->
 <mapper namespace="com.study.springboot.dao.productAskDao">
 	
-<select id="productAskList" resultType="com.study.springboot.dto.productAskDto">
-	select * from PRODUCT_ASK order by PA_IDX desc
-</select>
+	<select id="productAskList" resultType="com.study.springboot.dto.productAskDto">
+		select * from PRODUCT_ASK order by PA_IDX desc
+	</select>
+	
+	
+	 <!-- 게시글 갯수 조회 -->
+	<select id="productAskCount" resultType="int">
+	select count(*) from PRODUCT_ASK
+	</select>
+	
+	<!-- 게시물 1~5 , 6~10 조회하게하는 쿼리문 (페이징처리를 위한)-->
+	<select id="betweenList" resultType="com.study.springboot.dto.productAskDto">
+		select B.* from
+		(select rownum R , PRODUCT_ASK.* from PRODUCT_ASK order by PA_IDX desc) B
+		where R between #{param1} and #{param2}
+	</select>
+	
+	<!--제목검색-->
+	<select id="betweenListTitle" resultType="com.study.springboot.dto.productAskDto">
+		select B.* from
+			(select rownum R , PRODUCT_ASK.* from PRODUCT_ASK 
+			where PA_TITLE LIKE '%' ||  #{param3} || '%'
+	    	order by PA_IDX desc) B
+		where R between #{param1} and #{param2}
+	</select>
+	
+	<!-- 제목 게시물 총 개수 -->
+	<select id="titleCount" resultType="int">
+		select count(*) from PRODUCT_ASK where PA_TITLE LIKE '%' ||  #{param1} || '%'
+	</select>
+	
+	<!-- 글쓴이 검색 -->
+	<select id="betweenListWrite" resultType="com.study.springboot.dto.productAskDto">
+		select B.* from
+			(select rownum R , PRODUCT_ASK.* from PRODUCT_ASK 
+			where PA_M_NAME LIKE '%' ||  #{param3} || '%'
+	    	order by PA_IDX desc) B
+		where R between #{param1} and #{param2}
+	</select>
+	
+	<!-- 글쓴이 게시물 총 개수 -->
+	<select id="writeCount" resultType="int">
+		select count(*) from PRODUCT_ASK where PA_M_NAME LIKE '%' ||  #{param1} || '%'
+	</select>
+	
+	
+	
+	
+	
+	
 	
 </mapper>    
 

@@ -137,23 +137,16 @@ button {
 				<div class="pagination">
 					<c:choose>
 						<c:when test="${page > 1}">
-							<a
-								onclick='location.href="admin_notice?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
+							<a onclick='location.href="admin_notice?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
 						</c:when>
 						<c:otherwise>
-						<style>
-							#disableLink{
-								pointer-events: none; 
-								cursor: default;
-							}
-						</style>
+						<style>#disableLink{pointer-events: none; cursor: default;}</style>
 							<a id="disableLink" onclick='location.href="admin_notice?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"' >이전</a>
 						</c:otherwise>
 					</c:choose>
 
 					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
-						<a
-							href="admin_notice?page=${i}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
+						<a href="admin_notice?page=${i}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
 					</c:forEach>
 
 					<c:choose>
@@ -161,12 +154,7 @@ button {
 							<a onclick='location.href="admin_notice?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
 						</c:when>
 						<c:otherwise>
-						<style>
-							#disableLink{
-								pointer-events: none; 
-								cursor: default;
-							}
-						</style>
+						<style> #disableLink{pointer-events: none; cursor: default;}</style>
 							<a id="disableLink" onclick='location.href="admin_notice?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
 						</c:otherwise>
 					</c:choose>

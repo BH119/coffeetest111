@@ -78,7 +78,7 @@
 					<h3 style="display: flex; justify-content: center;">상품등록</h3>
 
 					<div class="" style="display: flex; justify-content: center;">
-						<form action="/admin/write/productWriteAction" enctype="multipart/form-data" method="post"  style="width: 600px;">
+						<form action="/productWriteAction" enctype="multipart/form-data" method="post"  style="width: 600px;">
 							카테고리</br> <select name="P_CATEGORY"
 								style="font-family: 'Courier New', Courier, monospace">
 								<option value="1">콜드브루</option>
@@ -92,7 +92,7 @@
 							<br> 상세설명사진:<input name="filename" type="file" multiple="multiple"><br>
 							<br>
 							<button style="background-color: #ffffff; border-color: #000000;"
-								type="submit" class="btn btn-warning">11등록하기</button>
+								type="submit" class="btn btn-warning">등록하기</button>
 						</form>
 					</div>
 				</div>

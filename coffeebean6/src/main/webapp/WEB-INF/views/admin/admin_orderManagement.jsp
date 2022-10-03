@@ -99,15 +99,10 @@ button {
 						<option>주문상품</option>
 						<option>주문자</option>
 						<option>주문번호</option>
-					</select> <input class="form-control"
-						style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
-						type="text"> <input id="searchIcon"
-						style="height: 22px; width: 22px; margin-left: 5px;" type="image"
-						src="/img/search.png">
-				</div>
-				<div class="adminDiv">
-					</select>
-
+					</select> 
+					<input class="form-control"
+						style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);" type="text"> 
+						<input id="searchIcon" style="height: 22px; width: 22px; margin-left: 5px;" type="image" src="/img/search.png">
 				</div>
 				<div class="adminDiv">
 					기간검색

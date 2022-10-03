@@ -77,12 +77,15 @@
             <h3 style="display: flex; justify-content: center;">상품보기</h3>
 
             <div class="" style="display: flex; justify-content: center;">
-              <form action="admin/view/productView"  enctype="multipart/form-data" method="post" style="width: 600px;">
+              <form action="modifyAction"  enctype="multipart/form-data" method="post" style="width: 600px;">
+              	<input type="hidden" name="P_IDX" value="${dto.p_IDX }">
+              	<input type="hidden" name="P_FILENAME1" value="${dto.p_FILENAME1 }">
+              	<input type="hidden" name="P_FILEPATH" value="${dto.p_FILEPATH }">
                 카테고리</br>
-                <select name="category" style="font-family: 'Courier New', Courier, monospace">
-                  <option value="1" <c:if test="${category=='1'}">selected="selected"</c:if>>콜드브루</option>
-                  <option value="2" <c:if test="${category=='2'}">selected="selected"</c:if>>원두</option>
-                  <option value="3" <c:if test="${category=='3'}">selected="selected"</c:if>>스틱</option>
+                <select name="P_CATEGORY" style="font-family: 'Courier New', Courier, monospace">
+                  <option value="1" <c:if test="${P_CATEGORY=='1'}">selected="selected"</c:if>>콜드브루</option>
+                  <option value="2" <c:if test="${P_CATEGORY=='2'}">selected="selected"</c:if>>원두</option>
+                  <option value="3" <c:if test="${P_CATEGORY=='3'}">selected="selected"</c:if>>스틱</option>
                 </select>
                 <br><br>상품이름<br>
                 <input name="P_NAME" value="${dto.p_NAME }" type="text" class="form-control">
@@ -96,7 +99,7 @@
                 <div class="imgbox">
 					<img style="height: 200px;" src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
 				</div>
-                <input type="file" multiple="multiple"><br><br>
+                <input name="filename" type="file" multiple="multiple"><br><br>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button" 
                   onclick='location.href="imgDelNamePath?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}"' class="btn btn-warning">이미지 삭제하기</button>
                 <br><br>등록일 <br>

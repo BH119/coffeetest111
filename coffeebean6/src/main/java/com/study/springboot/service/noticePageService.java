@@ -22,8 +22,6 @@ public class noticePageService {
 	
 		
 		model.addAttribute("page",page); 
-		System.out.println("ddddddddddddddddddddddddddddddddddddddd"+page);
-		System.out.println("ddddddddddddddddddddddddddddddddddddddd");
 		int curPage = Integer.parseInt(page); 
 		int listSize =10;
 		int startList = (curPage - 1) * listSize + 1;  

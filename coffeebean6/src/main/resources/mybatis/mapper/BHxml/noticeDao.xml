@@ -44,20 +44,20 @@
 	
 	 <!-- 게시글 갯수 조회 -->
 	<select id="noticeCount" resultType="int">
-	select count(*) from notice
+	select count(*) from NOTICE
 	</select>
 	
 	<!-- 게시물 1~5 , 6~10 조회하게하는 쿼리문 (페이징처리를 위한)-->
 	<select id="betweenList" resultType="com.study.springboot.dto.noticeDto">
 		select B.* from
-		(select rownum R , notice.* from notice order by N_IDX desc) B
+		(select rownum R , NOTICE.* from NOTICE order by N_IDX desc) B
 		where R between #{param1} and #{param2}
 	</select>
 	
 	<!--제목검색-->
 	<select id="betweenListTitle" resultType="com.study.springboot.dto.noticeDto">
 		select B.* from
-			(select rownum R , notice.* from notice 
+			(select rownum R , NOTICE.* from NOTICE 
 			where N_TITLE LIKE '%' ||  #{param3} || '%'
 	    	order by N_IDX desc) B
 		where R between #{param1} and #{param2}
@@ -65,7 +65,7 @@
 	
 	<!-- 제목 게시물 총 개수 -->
 	<select id="titleCount" resultType="int">
-		select count(*) from notice where N_TITLE LIKE '%' ||  #{param1} || '%'
+		select count(*) from NOTICE where N_TITLE LIKE '%' ||  #{param1} || '%'
 	</select>
 	
 	<!-- 글쓴이 검색 -->
@@ -79,7 +79,7 @@
 	
 	<!-- 글쓴이 게시물 총 개수 -->
 	<select id="writeCount" resultType="int">
-		select count(*) from notice where N_WRITER LIKE '%' ||  #{param1} || '%'
+		select count(*) from NOTICE where N_WRITER LIKE '%' ||  #{param1} || '%'
 	</select>
 	
 	

@@ -89,7 +89,7 @@
                 <br>
 
                 <button style="background-color: #ffffff; border-color: #000000;" type="submit"
-                  onclick='location.href="#"' class="btn btn-warning">수정하기</button>
+                  onclick='location.href="noticeModifyAction"' class="btn btn-warning">수정하기</button>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"
                   onclick='location.href="admin_notice"' class="btn btn-warning">목록가기</button>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"

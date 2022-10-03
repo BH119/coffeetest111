@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.study.springboot.dao.noticeDao;
+import com.study.springboot.dao.productAskDao;
 import com.study.springboot.dao.productDao;
 import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productDto;
@@ -18,6 +19,8 @@ import com.study.springboot.service.fileDeleteService;
 import com.study.springboot.service.modifyService;
 import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
+import com.study.springboot.service.productAskPageService;
+import com.study.springboot.service.productAskSearchService;
 import com.study.springboot.service.productPageService;
 import com.study.springboot.service.productSearchService;
 import com.study.springboot.service.writeService;
@@ -43,7 +46,12 @@ public class BhController {
 	modifyService iModifyService;
 	@Autowired
 	fileDeleteService iFileDeleteService;
-	
+	@Autowired
+	productAskDao iProductAskDao;
+	@Autowired
+	productAskPageService iProductAskPageService;
+	@Autowired
+	productAskSearchService iProductAskSearchService;
 	
 	//-------------네비바---------------
 	//공지사항 클릭
@@ -177,7 +185,7 @@ public class BhController {
 			@RequestParam("N_IDX") int N_IDX,
 			Model model) {
 		iNoticeDao.noticeUpdateAction(N_TITLE, N_CONTENT, N_WRITER, N_IDX);
-		return "redirect:noticeModify"; 
+		return "redirect:noticeModify?N_IDX="+N_IDX; 
 	}
 	
 	//공지사항 삭제
@@ -302,7 +310,7 @@ public class BhController {
 	
 	
 	//상품등록
-	@RequestMapping("/admin/write/productWriteAction")
+	@RequestMapping("/productWriteAction")
 	public String productWrite(
 			@RequestParam("P_NAME") String P_NAME,
 			@RequestParam("P_CODE") String P_CODE,
@@ -313,7 +321,7 @@ public class BhController {
 			@RequestParam("filename") MultipartFile[] filelist ,
 			Model model) throws IllegalStateException, IOException 
 	{
-		
+		System.out.println("나ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		List<String> files =iWriteService.productWriteAction(filelist);
 		
 		 int result =iProductDao.productWriteAction
@@ -348,20 +356,18 @@ public class BhController {
 			@RequestParam("P_STOCK") int P_STOCK,
 			@RequestParam("filename") MultipartFile[] filelist) throws IllegalStateException, IOException
 	{
-		
 		iModifyService.updateAction(P_IDX, P_NAME, P_CODE, P_PRICE, 
 				P_STOCK, P_CATEGORY, filelist, P_FILENAME1 );
-		return "";
+		return "redirect:/productView?P_IDX="+P_IDX;
 
 	}
 	
-	//게시글 삭제하기
+	//상품 삭제하기
 	@RequestMapping("productDeleteAction")
 	public String productDeleteAction(
 			@RequestParam("P_IDX") int P_IDX,
 			@RequestParam("P_FILENAME1") String P_FILENAME1)
 	{
-		System.out.println("ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ아ㅏㅏ");
 		//업로드파일 삭제
 		iFileDeleteService.fileDelete(P_FILENAME1);
 		
@@ -408,10 +414,45 @@ public class BhController {
 	}
 	//상품문의
 	@RequestMapping("admin_productAsk")
-	public String productAsk( Model model) {
+	public String productAsk(
+			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
+			@RequestParam(value="selectList",required=false) String selectList,
+			@RequestParam(value="keyword",required=false) String keyword,
+			Model model) {
+		
+		if(selectList == null) {
+			//글 개수
+			int listCount = iProductAskDao.productAskCount();
+			model.addAttribute("listCount" , listCount);
+			//페이징
+			iProductAskPageService.PagingList
+			(page ,model);
+		}
+		else if(selectList.equals("PA_TITLE")) {	
+			int type = 1;
+			//상품제목 검색글 개수
+			int listCount = iProductAskDao.titleCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			//상품제목 검색
+			iProductAskSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		else if(selectList.equals("PA_M_NAME")) {	
+			int type = 2;
+			//상품문의 작성자 게시물 개수
+			int listCount = iProductAskDao.writeCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			//상품문의 작성자 검색
+			iProductAskSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		
 		model.addAttribute("mainPage" , "admin/admin_productAsk.jsp");
 		return "index"; 
 	}
+	
+	
+	
 	//상품문의조회
 	@RequestMapping("admin/view/productAskView")
 	public String productAskView( Model model) {

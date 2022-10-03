@@ -92,24 +92,23 @@ button {
 		<div id="adminMain">
 			<div id="adminSection">
 				<h3>상품 문의</h3>
-				<div class="adminDiv" style="display: flex;">
-					<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
-					<select class="form-control form-control-sm"
-						style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 100px; margin-right: 5px;">
-						<option>아이디</option>
-						<option>상품이름</option>
-						<option>제목</option>
-						<option>내용</option>
-					</select> <input class="form-control"
-						style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
-						type="text"> <input id="searchIcon"
-						style="height: 22px; width: 22px; margin-left: 5px;" type="image"
-						src="/img/search.png">
-				</div>
-
+				<form action="admin_productAsk" method="get">
+					<div class="adminDiv" style="display: flex;">
+						<p style="font-size: 20px; margin-right: 10px;">검색 옵션</p>
+						<select name="selectList" class="form-control form-control-sm"
+							style="font-family: 'Courier New', Courier, monospace; height: 30px; width: 100px; margin-right: 5px;">
+							<option value="PA_M_NAME">아이디</option>
+							<option value="PA_TITLE">제목</option>
+						</select> <input name="keyword" class="form-control"
+							style="width: 200px; height: 30px; border: 1px solid rgba(0, 0, 0, 0.356);"
+							type="text"> <input id="searchIcon"
+							style="height: 22px; width: 22px; margin-left: 5px;" type="image"
+							src="/img/search.png">
+					</div>
+				</form>
 			</div>
 			<div class="adminDiv2" id="tableTitle">
-				<div style="margin: 0;">상품문의 ${ count }개</div>
+				<div style="margin: 0;">상품문의 ${ listCount }개</div>
 
 			</div>
 
@@ -147,8 +146,29 @@ button {
 			<br>
 			<div style="display: flex; justify-content: center;">
 				<div class="pagination">
-					<a href="#">이전</a> <a class="active" href="#">1</a> <a href="#">2</a>
-					<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">다음</a>
+					<c:choose>
+						<c:when test="${page > 1}">
+							<a onclick='location.href="admin_productAsk?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"'>이전</a>
+						</c:when>
+						<c:otherwise>
+						<style>#disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="admin_productAsk?page=${page-1}&selectList=${ selectList}&keyword=${keyword}"' >이전</a>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
+						<a href="admin_productAsk?page=${i}&selectList=${ selectList}&keyword=${keyword}">${i}</a>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${page < totalPage}">
+							<a onclick='location.href="admin_productAsk?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+						</c:when>
+						<c:otherwise>
+						<style> #disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="admin_notice?page=${page+1}&selectList=${selectList}&keyword=${keyword}"'>다음</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
