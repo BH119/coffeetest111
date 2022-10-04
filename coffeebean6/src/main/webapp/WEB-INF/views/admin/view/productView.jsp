@@ -59,13 +59,13 @@
 		<div class="adminTitle">
 			<div class="adminTitleS">
 				<ul>
-					<li><a href="/adminadmin_notice">공지사항</a></li>
-					<li><a href="/adminadmin_member">회원관리</a></li>
-					<li><a href="/adminadmin_productManagement">상품관리</a></li>
-					<li><a href="/adminadmin_one2one">1:1문의</a></li>
-					<li><a href="/adminadmin_review">리뷰관리</a></li>
-					<li><a href="/adminadmin_orderManagement">주문관리</a></li>
-					<li><a href="/adminadmin_productAsk">상품문의</a></li>
+					<li><a href="/admin/admin_notice">공지사항</a></li>
+					<li><a href="/admin/admin_member">회원관리</a></li>
+					<li><a href="/admin/admin_productManagement">상품관리</a></li>
+					<li><a href="/admin/admin_one2one">1:1문의</a></li>
+					<li><a href="/admin/admin_review">리뷰관리</a></li>
+					<li><a href="/admin/admin_orderManagement">주문관리</a></li>
+					<li><a href="/admin/admin_productAsk">상품문의</a></li>
 				</ul>
 			</div>
 			<br>
@@ -83,9 +83,9 @@
               	<input type="hidden" name="P_FILEPATH" value="${dto.p_FILEPATH }">
                 카테고리</br>
                 <select name="P_CATEGORY" style="font-family: 'Courier New', Courier, monospace">
-                  <option value="1" <c:if test="${P_CATEGORY=='1'}">selected="selected"</c:if>>콜드브루</option>
-                  <option value="2" <c:if test="${P_CATEGORY=='2'}">selected="selected"</c:if>>원두</option>
-                  <option value="3" <c:if test="${P_CATEGORY=='3'}">selected="selected"</c:if>>스틱</option>
+                  <option value="1" <c:if test="${dto.p_CATEGORY=='1'}">selected="selected"</c:if>>콜드브루</option>
+                  <option value="2" <c:if test="${dto.p_CATEGORY=='2'}">selected="selected"</c:if>>원두</option>
+                  <option value="3" <c:if test="${dto.p_CATEGORY=='3'}">selected="selected"</c:if>>스틱</option>
                 </select>
                 <br><br>상품이름<br>
                 <input name="P_NAME" value="${dto.p_NAME }" type="text" class="form-control">

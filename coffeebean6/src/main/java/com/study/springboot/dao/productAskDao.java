@@ -4,14 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 
 @Mapper
 public interface productAskDao {
 	
 	//공지사항 단건조회
-	public productAskDto productModifyView(int N_IDX);
+	public productAskDto productAskModifyView(int PA_IDX);
 	
 	//공지사항 삭제
 	public int productDeleteAction (int N_IDX);

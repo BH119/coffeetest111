@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<%@ page trimDirectiveWhitespaces="true" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,13 +55,13 @@
 		<div class="adminTitle">
 			<div class="adminTitleS">
 				<ul>
-					<li><a href="/adminadmin_notice">공지사항</a></li>
-					<li><a href="/adminadmin_member">회원관리</a></li>
-					<li><a href="/adminadmin_productManagement">상품관리</a></li>
-					<li><a href="/adminadmin_one2one">1:1문의</a></li>
-					<li><a href="/adminadmin_review">리뷰관리</a></li>
-					<li><a href="/adminadmin_orderManagement">주문관리</a></li>
-					<li><a href="/adminadmin_productAsk">상품문의</a></li>
+					<li><a href="/admin/admin_notice">공지사항</a></li>
+					<li><a href="/admin/admin_member">회원관리</a></li>
+					<li><a href="/admin/admin_productManagement">상품관리</a></li>
+					<li><a href="/admin/admin_one2one">1:1문의</a></li>
+					<li><a href="/admin/admin_review">리뷰관리</a></li>
+					<li><a href="/admin/admin_orderManagement">주문관리</a></li>
+					<li><a href="/admin/admin_productAsk">상품문의</a></li>
 				</ul>
 			</div>
 			<br>
@@ -78,15 +77,16 @@
               	상품사진<br>
                 <input type="image" src="${ dto.PA_P_FILEPATH }${ dto.PA_P_FILENAME1 }" class="form-control" disabled>
                 상품이름<br>
-                <input type="text" class="form-control" disabled>
+                <input type="text" value="${dto.PA_P_NAME }" class="form-control" disabled>
                 <br> 제목<br>
-                <input type="text" class="form-control" disabled>
+                <input type="text" value="${dto.PA_TITLE }" class="form-control" disabled>
                 <br> 내용<br>
-                <textarea style="height: 200px;" class="form-control" disabled></textarea>
+                <textarea  style="height: 200px;" class="form-control" disabled> ${dto.PA_CONTENT }</textarea>
                 <br> 작성자<br>
-                <input type="text" class="form-control" disabled>
+                <input value="${dto.PA_M_NAME }" type="text" class="form-control" disabled>
                 <br> 작성일<br>
-                <input type="text" class="form-control" disabled>
+                
+                <input value='<fmt:formatDate value="${dto.PA_REGDATE }" pattern="yyyy-MM-dd" />' type="text" class="form-control" disabled>
                 <br>
 
 
@@ -99,6 +99,42 @@
           </div>
         </div>
       </div>
+      
+      
+    <form action="/admin/view/answerWriteAction" method="get">
+		<table  width="600" cellpadding="0" cellspacing="0" border="1">
+			<tr>
+				<td style="display: flex; flex-direction: column;"  colspan=""2>
+					<input type="hidden" name="AS_PA_IDX" value="${ dto.PA_IDX }">
+					<label>글쓴이</label><input type="text" name="AS_NAME" value="admin"><br>
+					<label>답변내용</label><textarea  name="AS_CONTENT" style="height: 120px; width: 100%;" rows="2" cols="50" name="reply_content"></textarea><br>
+					<button type="submit" >답변달기</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<br>
+	
+	<table width="500" cellpadding="0" cellspacing="0" border="1">
+		<tr>
+			<th>별명</th>
+			<th>내용</th>
+			<th>날짜</th>
+			<th>삭제</th>
+		</tr>
+		<c:forEach var="reply_dto" items="${ reply_list }">
+			<tr>
+				<td>${ reply_dto.reply_name }</td>
+				<td>${ reply_dto.reply_content }</td>
+				<td>
+					<c:set var="dateVar" value="${ reply_dto.reply_date }" />
+					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd" />
+				</td>
+				<td><a href="deleteReplyAction?reply_idx=${ reply_dto.reply_idx }&board_idx=${ dto.board_idx }"><button>삭제</button></a></td>
+			</tr>
+		</c:forEach>
+	</table>
     </div>
 </body>
 

@@ -6,7 +6,6 @@ import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.study.springboot.dao.productDao;
@@ -51,16 +50,4 @@ public class fileUploadService {
 			return fileName;
 	}
 }	
-	
-// ---------  그냥 알아만 두자.. -------------
-//	String extName //이건 파일이름에서 .png만 출력하는 코드
-//		= fileName.substring(fileName.lastIndexOf("."), fileName.length());
-//	System.out.println(extName);
-
-
-//이건 문자열 치환하는 코드
-//ProjectPath = ProjectPath.replace // 패스경로를 resources\img\로 치환 (resources로 시작안하면 파일을 못 찾음..)
-//("C:\\Users\\EZEN\\Downloads\\ex20_MyBoard9999 (5)\\src\\main\\webapp\\webapp\\", "");
-//ProjectPath = ProjectPath.replace
-//("resources\\img", "resources\\img\\");
 	

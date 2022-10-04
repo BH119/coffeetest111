@@ -8,12 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.study.springboot.dao.answerDao;
 import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dao.productAskDao;
 import com.study.springboot.dao.productDao;
 import com.study.springboot.dto.noticeDto;
+import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
 import com.study.springboot.service.fileDeleteService;
 import com.study.springboot.service.modifyService;
@@ -52,42 +55,53 @@ public class BhController {
 	productAskPageService iProductAskPageService;
 	@Autowired
 	productAskSearchService iProductAskSearchService;
+	@Autowired
+	answerDao iAnswerDao;
+	
 	
 	//-------------네비바---------------
 	//공지사항 클릭
-		@RequestMapping("/adminadmin_notice")
+		@RequestMapping("/admin/admin_notice")
+		@ResponseBody
 		public String NAV_admin_notice( Model model) {
-			return "redirect:admin_notice"; 
+			return "<script>location.href='/admin_notice';</script>"; 
 		}
 		//회원관리 클릭
-		@RequestMapping("/adminadmin_member")
+		@RequestMapping("/admin/admin_member")
+		@ResponseBody
 		public String NAV_admin_member( Model model) {
-			return "redirect:admin_member"; 
+			return "<script>location.href='/admin_member';</script>"; 
 		}
 		//상품관리 클릭
-		@RequestMapping("/adminadmin_productManagement")
+		@RequestMapping("/admin/admin_productManagement")
+		@ResponseBody
 		public String NAV_admin_puroductManagement( Model model) {
-			return "redirect:admin_productManagement"; 
+			return "<script>location.href='/admin_productManagement';</script>"; 
 		}
 		//1:1문의 클릭
-		@RequestMapping("/adminadmin_one2one")
+		@RequestMapping("/admin/admin_one2one")
+		@ResponseBody
 		public String NAV_admin_one2one( Model model) {
-			return "redirect:admin_one2one"; 
+			return "<script>location.href='/admin_one2one';</script>"; 
+			
 		}
 		//리뷰관리 클릭
-		@RequestMapping("/adminadmin_review")
+		@RequestMapping("/admin/admin_review")
+		@ResponseBody
 		public String NAV_admin_review( Model model) {
-			return "redirect:admin_review"; 
+			return "<script>location.href='/admin_review';</script>"; 
 		}
 		//주문관리 클릭
-		@RequestMapping("/adminadmin_orderManagement")
+		@RequestMapping("/admin/admin_orderManagement")
+		@ResponseBody
 		public String NAV_admin_orderManagement( Model model) {
-			return "redirect:admin_orderManagement"; 
+			return "<script>location.href='/admin_orderManagement';</script>";
 		}
 		//상품문의 클릭
-		@RequestMapping("/adminadmin_productAsk")
+		@RequestMapping("/admin/admin_productAsk")
+		@ResponseBody
 		public String NAV_admin_productAsk( Model model) {
-			return "redirect:admin_productAsk"; 
+			return "<script>location.href='/admin_productAsk';</script>";
 		}
 	
 	
@@ -455,8 +469,33 @@ public class BhController {
 	
 	//상품문의조회
 	@RequestMapping("admin/view/productAskView")
-	public String productAskView( Model model) {
+	public String productAskView(
+			@RequestParam("PA_IDX") int PA_IDX,
+			Model model) {
+		
+		productAskDto result = iProductAskDao.productAskModifyView(PA_IDX);
+		model.addAttribute("dto" , result);
 		model.addAttribute("mainPage" , "admin/view/productAskView.jsp");
+		
+		
 		return "index"; 
 	}
+	
+	//상품문의 답글달기 액션
+	
+	@RequestMapping("/admin/view/answerWriteAction")
+	public String answerWriteAction(
+			@RequestParam("AS_PA_IDX") int AS_PA_IDX,
+			@RequestParam("AS_NAME") String AS_NAME,
+			@RequestParam("AS_CONTENT") String AS_CONTENT,
+			Model model) {
+		System.out.println("dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+		System.out.println(AS_PA_IDX + AS_NAME + AS_CONTENT);
+		iAnswerDao.answerWriteAction(AS_NAME, AS_CONTENT, AS_PA_IDX); 
+		
+		return "redirect:/"; 
+	}
+	
+	
+	
 }

@@ -49,8 +49,9 @@
 	
 	<!-- 게시물 1~5 , 6~10 조회하게하는 쿼리문 (페이징처리를 위한)-->
 	<select id="betweenList" resultType="com.study.springboot.dto.noticeDto">
-		select B.* from
-		(select rownum R , NOTICE.* from NOTICE order by N_IDX desc) B
+		select C.* from
+			(select rownum R, B.* from
+				(select NOTICE.* from NOTICE order by N_IDX desc) B) C
 		where R between #{param1} and #{param2}
 	</select>
 	

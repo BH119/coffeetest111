@@ -62,8 +62,9 @@
 	
 	<!-- 게시물 1~5 , 6~10 조회하게하는 쿼리문 (페이징처리를 위한)-->
 	<select id="betweenList" resultType="com.study.springboot.dto.productDto">
-		select B.* from
-		(select rownum R , PRODUCT.* from PRODUCT order by P_IDX desc) B
+		select C.* from
+			(select rownum R, B.* from
+				(select PRODUCT.* from PRODUCT order by P_IDX desc) B) C
 		where R between #{param1} and #{param2}
 	</select>
 	

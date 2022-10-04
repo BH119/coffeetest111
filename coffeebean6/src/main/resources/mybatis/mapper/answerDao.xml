@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 파일 : XML태그 및 속성을 정의하는 파일 -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- SQL문 끝에 세미콜론은 붙이지 않는다! 오류!! -->
+<mapper namespace="com.study.springboot.dao.answerDao">
+
+<!-- 저장하기 -->
+	<insert id="answerWriteAction">
+	insert into ANSWER (AS_IDX, AS_NAME, AS_CONTENT, AS_PA_IDX ,AS_DATE) 
+		values ( AS_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3}, sysdate)
+	</insert>
+	
+	
+	<select id="reply_list" resultType="com.study.springboot.dto.answerDto">
+		select * from reply where reply_board_idx=#{param1} order by reply_date desc
+	</select>
+    
+    <insert id="reply_write">
+    	insert into reply (reply_idx, reply_name, reply_content, reply_date, reply_board_idx) 
+			values (reply_board_seq.nextval, #{ param1 }, #{ param2 }, sysdate, #{ param3 } )
+    </insert>
+    
+    <delete id="reply_deleteDto">
+    	delete from reply where reply_idx=#{param1}
+    </delete>
+    
+    <delete id="reply_deleteDto_by_boardIdx">
+    	delete from reply where reply_board_idx=#{param1}
+    </delete>
+	
+	
+	
+</mapper>    
+

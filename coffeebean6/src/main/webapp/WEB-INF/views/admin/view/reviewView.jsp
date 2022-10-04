@@ -57,13 +57,13 @@
 		<div class="adminTitle">
 			<div class="adminTitleS">
 				<ul>
-					<li><a href="/adminadmin_notice">공지사항</a></li>
-					<li><a href="/adminadmin_member">회원관리</a></li>
-					<li><a href="/adminadmin_productManagement">상품관리</a></li>
-					<li><a href="/adminadmin_one2one">1:1문의</a></li>
-					<li><a href="/adminadmin_review">리뷰관리</a></li>
-					<li><a href="/adminadmin_orderManagement">주문관리</a></li>
-					<li><a href="/adminadmin_productAsk">상품문의</a></li>
+					<li><a href="/admin/admin_notice">공지사항</a></li>
+					<li><a href="/admin/admin_member">회원관리</a></li>
+					<li><a href="/admin/admin_productManagement">상품관리</a></li>
+					<li><a href="/admin/admin_one2one">1:1문의</a></li>
+					<li><a href="/admin/admin_review">리뷰관리</a></li>
+					<li><a href="/admin/admin_orderManagement">주문관리</a></li>
+					<li><a href="/admin/admin_productAsk">상품문의</a></li>
 				</ul>
 			</div>
 			<br>
