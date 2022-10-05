@@ -15,9 +15,9 @@
 		values ( AS_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3}, sysdate)
 	</insert>
 	
-	
-	<select id="reply_list" resultType="com.study.springboot.dto.answerDto">
-		select * from reply where reply_board_idx=#{param1} order by reply_date desc
+	<!-- 출력하기 -->
+	<select id="answerList" resultType="com.study.springboot.dto.answerDto">
+		select * from ANSWER where AS_PA_IDX=#{param1} order by AS_DATE desc
 	</select>
     
     <insert id="reply_write">
@@ -25,12 +25,14 @@
 			values (reply_board_seq.nextval, #{ param1 }, #{ param2 }, sysdate, #{ param3 } )
     </insert>
     
-    <delete id="reply_deleteDto">
-    	delete from reply where reply_idx=#{param1}
-    </delete>
     
-    <delete id="reply_deleteDto_by_boardIdx">
-    	delete from reply where reply_board_idx=#{param1}
+    <!-- 삭제하기 -->
+    <delete id="answerDeleteAction">
+    	delete from ANSWER where AS_IDX=#{param1}
+    </delete>
+    <!-- 게시글과 함께 삭제 -->
+    <delete id="answerDeleteByProductAsk">
+    	delete from ANSWER where AS_PA_IDX=#{param1}
     </delete>
 	
 	

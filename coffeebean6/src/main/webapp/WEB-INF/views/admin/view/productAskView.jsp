@@ -91,9 +91,7 @@
 
 
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"
-                  onclick='location.href="/admin/admin_productAsk"' class="btn btn-warning">답변하기</button>
-                <button style="background-color: #ffffff; border-color: #000000;" type="button"
-                  onclick='location.href="/admin/admin_productAsk"' class="btn btn-warning">삭제하기</button>
+                  onclick='location.href="/admin/view/productAskDeleteAction?PA_IDX=${dto.PA_IDX}"' class="btn btn-warning">삭제하기</button>
               </form>
             </div>
           </div>
@@ -116,22 +114,21 @@
 
 	<br>
 	
-	<table width="500" cellpadding="0" cellspacing="0" border="1">
+	<table width="600" cellpadding="0" cellspacing="0" border="1">
 		<tr>
 			<th>별명</th>
 			<th>내용</th>
 			<th>날짜</th>
 			<th>삭제</th>
 		</tr>
-		<c:forEach var="reply_dto" items="${ reply_list }">
+		<c:forEach var="answerDto" items="${ list }">
 			<tr>
-				<td>${ reply_dto.reply_name }</td>
-				<td>${ reply_dto.reply_content }</td>
+				<td>${ answerDto.AS_NAME }</td>
+				<td>${ answerDto.AS_CONTENT }</td>
 				<td>
-					<c:set var="dateVar" value="${ reply_dto.reply_date }" />
-					<fmt:formatDate value="${dateVar}" pattern="yyyy-MM-dd" />
+					<fmt:formatDate value="${ answerDto.AS_DATE }" pattern="yyyy-MM-dd" />
 				</td>
-				<td><a href="deleteReplyAction?reply_idx=${ reply_dto.reply_idx }&board_idx=${ dto.board_idx }"><button>삭제</button></a></td>
+				<td><a href="/admin/view/answerDeleteAction?AS_IDX=${ answerDto.AS_IDX }&AS_PA_IDX=${ answerDto.AS_PA_IDX }"><button>삭제</button></a></td>
 			</tr>
 		</c:forEach>
 	</table>

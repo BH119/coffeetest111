@@ -26,7 +26,7 @@ public class noticeSearchService {
 		
 		model.addAttribute("page",page); //현재페이지 반환 (초기값은 1페이지로 설정했음)
 		int curPage = Integer.parseInt(page); //현재페이지
-		int listSize =10; //한페이지당 게시글 개수
+		int listSize =3; //한페이지당 게시글 개수
 		int startList = (curPage - 1) * listSize + 1;  //쿼리문 시작 게시물번호
 		int endList =  (curPage * listSize); // 쿼리문 끝 게시물번호
 		

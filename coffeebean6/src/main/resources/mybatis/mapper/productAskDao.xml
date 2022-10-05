@@ -59,7 +59,11 @@
 		select count(*) from PRODUCT_ASK where PA_M_NAME LIKE '%' ||  #{param1} || '%'
 	</select>
 	
-	
+	<!-- 상품행 삭제 -->
+	<delete id="productDeleteAction">
+		delete from PRODUCT_ASK
+		where PA_IDX = #{param1}
+	</delete>
 	
 	
 	

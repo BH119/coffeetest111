@@ -12,8 +12,8 @@ public interface productAskDao {
 	//공지사항 단건조회
 	public productAskDto productAskModifyView(int PA_IDX);
 	
-	//공지사항 삭제
-	public int productDeleteAction (int N_IDX);
+	//상품문의게시글 삭제 
+	public int productDeleteAction (int PA_IDX);
 	
 	//글 갯수 출력
 	public int productAskCount();

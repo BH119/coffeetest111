@@ -15,6 +15,7 @@ import com.study.springboot.dao.answerDao;
 import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dao.productAskDao;
 import com.study.springboot.dao.productDao;
+import com.study.springboot.dto.answerDto;
 import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
@@ -475,9 +476,13 @@ public class BhController {
 		
 		productAskDto result = iProductAskDao.productAskModifyView(PA_IDX);
 		model.addAttribute("dto" , result);
+		
+		List<answerDto> list = iAnswerDao.answerList(PA_IDX);
+		model.addAttribute("list" , list);
+		
+		
+		
 		model.addAttribute("mainPage" , "admin/view/productAskView.jsp");
-		
-		
 		return "index"; 
 	}
 	
@@ -493,8 +498,40 @@ public class BhController {
 		System.out.println(AS_PA_IDX + AS_NAME + AS_CONTENT);
 		iAnswerDao.answerWriteAction(AS_NAME, AS_CONTENT, AS_PA_IDX); 
 		
-		return "redirect:/"; 
+		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
+	
+	//상품문의 글 삭제하기 액션
+		@RequestMapping("/admin/view/productAskDeleteAction")
+		public String productAskDelete(
+				@RequestParam("PA_IDX") int PA_IDX,
+				Model model) {
+			
+			
+			iProductAskDao.productDeleteAction(PA_IDX);
+			iAnswerDao.answerDeleteByProductAsk(PA_IDX); 
+			
+			return "redirect:/admin_productAsk"; 
+		}
+	
+	
+	
+	
+	
+	
+	
+	//상품문의 답글 삭제하기 액션
+	@RequestMapping("/admin/view/answerDeleteAction")
+	public String answerDeleteAction(
+			@RequestParam("AS_IDX") int AS_IDX,
+			@RequestParam("AS_PA_IDX") int AS_PA_IDX,
+			Model model) {
+		iAnswerDao.answerDeleteAction(AS_IDX); 
+		
+		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
+	}
+	
+	
 	
 	
 	
