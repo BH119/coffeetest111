@@ -2,8 +2,6 @@ package com.study.springboot.dto;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +21,8 @@ public class productDto {
 //   @DateTimeFormat(pattern = "yyyy-MM-dd")
    private Date P_DATE; //상품등록일
    private int  P_HIT; //조회수
+   private String P_FILENAME2; // 상품 사진 파일이름2
+   private String P_FILENAME3; // 상품 사진 파일이름3
+   private String P_CONTENT; //내용
 }
 	

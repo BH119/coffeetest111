@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import com.study.springboot.dao.noticeDao;
 import com.study.springboot.dao.productDao;
-import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productDto;
 
 
@@ -26,7 +24,7 @@ public class productPageService {
 		
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =10;
+		int listSize =15;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		

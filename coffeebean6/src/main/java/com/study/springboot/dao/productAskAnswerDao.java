@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.study.springboot.dto.answerDto;
 
 @Mapper
-public interface answerDao {
+public interface productAskAnswerDao {
 
 	//답변 저장
 	public int answerWriteAction(String AS_NAME , String AS_CONTENT , int AS_PA_IDX);

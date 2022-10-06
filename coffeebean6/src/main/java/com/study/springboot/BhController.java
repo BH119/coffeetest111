@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.study.springboot.dao.answerDao;
 import com.study.springboot.dao.noticeDao;
+import com.study.springboot.dao.productAskAnswerDao;
 import com.study.springboot.dao.productAskDao;
 import com.study.springboot.dao.productDao;
 import com.study.springboot.dto.answerDto;
@@ -20,6 +20,7 @@ import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
 import com.study.springboot.service.fileDeleteService;
+import com.study.springboot.service.mainPageService;
 import com.study.springboot.service.modifyService;
 import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
@@ -57,8 +58,9 @@ public class BhController {
 	@Autowired
 	productAskSearchService iProductAskSearchService;
 	@Autowired
-	answerDao iAnswerDao;
-	
+	productAskAnswerDao iAnswerDao;
+	@Autowired
+	mainPageService iMainPageService;
 	
 	//-------------네비바---------------
 	//공지사항 클릭
@@ -113,8 +115,17 @@ public class BhController {
 	//공지사항 루트 초기값 나중에 없애야함.
 	@RequestMapping("/")
 	public String root( Model model) {
-		return "redirect:admin_notice"; 
+		
+		iMainPageService.PagingList(null, null, model);
+		
+		
+		model.addAttribute("mainPage" , "main.jsp");
+		return "index";
 	}
+	
+	
+	
+	
 	
 	//공지사항 (첫페이지)
 	@RequestMapping("admin_notice")
@@ -312,10 +323,12 @@ public class BhController {
 	public String imgDelNamePath(
 			@RequestParam("P_IDX") int P_IDX,
 			@RequestParam("P_FILENAME1") String P_FILENAME1,
+			@RequestParam("P_FILENAME2") String P_FILENAME2,
+			@RequestParam("P_FILENAME3") String P_FILENAME3,
 			Model model) {
 		iProductDao.imgDelNamePath(P_IDX);
 		
-		iFileDeleteService.fileDelete(P_FILENAME1);
+		iFileDeleteService.fileDelete(P_FILENAME1,P_FILENAME2,P_FILENAME3);
 		
 		return "redirect:/productView?P_IDX="+P_IDX; 
 	}
@@ -332,15 +345,21 @@ public class BhController {
 			@RequestParam("P_PRICE") int P_PRICE ,
 			@RequestParam("P_STOCK") int P_STOCK ,
 			@RequestParam("P_CATEGORY") int P_CATEGORY ,
+			@RequestParam("P_CONTENT") String P_CONTENT ,
 			//여러 값은 배열형태로
 			@RequestParam("filename") MultipartFile[] filelist ,
 			Model model) throws IllegalStateException, IOException 
 	{
-		System.out.println("나ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		List<String> files =iWriteService.productWriteAction(filelist);
 		
+//		System.out.println("0번째:"+files.get(0));
+//		System.out.println("1번째:"+files.get(1));
+//		System.out.println("2번째:"+files.get(2));
+//		System.out.println("3번째:"+files.get(0));
+		
 		 int result =iProductDao.productWriteAction
-				 (P_NAME, P_CODE,files.get(0),files.get(1),P_CATEGORY, P_PRICE, P_STOCK);
+				 (P_NAME, P_CODE,files.get(0),files.get(1),P_CATEGORY, P_PRICE, P_STOCK,
+						 files.get(2),files.get(3),P_CONTENT);
 		 System.out.println(result);
 		 
 		
@@ -351,6 +370,7 @@ public class BhController {
 	public String productView(
 			@RequestParam("P_IDX") int P_IDX,
 			Model model) {
+		iProductDao.updateHit(P_IDX);
 		productDto result = iProductDao.productModifyView(P_IDX);
 		model.addAttribute("dto", result);
 		model.addAttribute("mainPage" , "admin/view/productView.jsp");	
@@ -369,10 +389,12 @@ public class BhController {
 			@RequestParam("P_CATEGORY") int P_CATEGORY,
 			@RequestParam("P_PRICE") int P_PRICE,
 			@RequestParam("P_STOCK") int P_STOCK,
+			@RequestParam("P_FILENAME2") String P_FILENAME2,
+			@RequestParam("P_FILENAME3") String P_FILENAME3,
 			@RequestParam("filename") MultipartFile[] filelist) throws IllegalStateException, IOException
 	{
 		iModifyService.updateAction(P_IDX, P_NAME, P_CODE, P_PRICE, 
-				P_STOCK, P_CATEGORY, filelist, P_FILENAME1 );
+				P_STOCK, P_CATEGORY, filelist, P_FILENAME1,P_FILENAME2,P_FILENAME3 );
 		return "redirect:/productView?P_IDX="+P_IDX;
 
 	}
@@ -381,14 +403,16 @@ public class BhController {
 	@RequestMapping("productDeleteAction")
 	public String productDeleteAction(
 			@RequestParam("P_IDX") int P_IDX,
-			@RequestParam("P_FILENAME1") String P_FILENAME1)
+			@RequestParam("P_FILENAME1") String P_FILENAME1,
+			@RequestParam("P_FILENAME2") String P_FILENAME2,
+			@RequestParam("P_FILENAME3") String P_FILENAME3
+			)
 	{
 		//업로드파일 삭제
-		iFileDeleteService.fileDelete(P_FILENAME1);
+		iFileDeleteService.fileDelete(P_FILENAME1,P_FILENAME2,P_FILENAME3);
 		
 		//글 삭제
 		iProductDao.productDeleteAction(P_IDX);
-		System.out.println("ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴ");
 		return "redirect:/admin_productManagement"; 
 	
 	}
@@ -514,12 +538,6 @@ public class BhController {
 			return "redirect:/admin_productAsk"; 
 		}
 	
-	
-	
-	
-	
-	
-	
 	//상품문의 답글 삭제하기 액션
 	@RequestMapping("/admin/view/answerDeleteAction")
 	public String answerDeleteAction(
@@ -530,9 +548,6 @@ public class BhController {
 		
 		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
-	
-	
-	
 	
 	
 }

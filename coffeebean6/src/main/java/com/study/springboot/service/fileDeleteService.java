@@ -13,11 +13,13 @@ public class fileDeleteService {
 
 	
 	public void fileDelete(
-			@RequestParam("P_FILENAME1") String P_FILENAME1) 
+			@RequestParam("P_FILENAME1") String P_FILENAME1,
+			@RequestParam("P_FILENAME2") String P_FILENAME2,
+			@RequestParam("P_FILENAME3") String P_FILENAME3) 
 	{
 		//업로드파일 삭제
 		String ProjectPath = System.getProperty("user.dir") + "\\src\\main\\webapp\\uploadIMG\\uploadProduct_IMG\\";
-		List<String> files = new ArrayList<String>(Arrays.asList(P_FILENAME1));
+		List<String> files = new ArrayList<String>(Arrays.asList(P_FILENAME1,P_FILENAME2,P_FILENAME3));
 		
 		File file;
 		for (int i = 0; i < files.size(); i++) {

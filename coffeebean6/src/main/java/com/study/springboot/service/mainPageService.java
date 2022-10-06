@@ -6,30 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import com.study.springboot.dao.productAskDao;
-import com.study.springboot.dto.productAskDto;
+import com.study.springboot.dao.productDao;
+import com.study.springboot.dto.productDto;
 
 
 
 @Component
-public class productAskPageService {
+public class mainPageService {
 	@Autowired
-	productAskDao iProductAskDao;
+	productDao iProductDao;
 	
-	public List<productAskDto> PagingList(
+	public List<productDto> PagingList(
+			String selectList,
 			String page,Model model) {
 		
 	
-		
+		if(page == null) {
+			page = "1";
+		}
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =15;
+		int listSize =8;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		
 		int endPage = (int)(Math.ceil((double)curPage / 5)) * 5; 
 		int startPage = endPage - 4; 
-		int totalList = iProductAskDao.productAskCount();
+		int totalList = iProductDao.productCount();
 		int totalPage = (int)Math.ceil((double)totalList/listSize); 
 		 if(endPage > totalPage){ 
 	            endPage = totalPage; 
@@ -38,10 +41,11 @@ public class productAskPageService {
 		model.addAttribute("endPage", endPage); 
 		model.addAttribute("startPage", startPage); 
 		
-		List<productAskDto> list = iProductAskDao.betweenList(startList,endList);
-		model.addAttribute("list", list);
-		model.addAttribute("selectList", "PA_TITLE"); 
-		return list;
+		List<productDto> orderHitList = iProductDao.orderHit(startList,endList);
+		List<productDto> newList = iProductDao.betweenList(startList,endList);
+		model.addAttribute("orderHitList", orderHitList);
+		model.addAttribute("newList", newList);
+		return orderHitList;
 		
 	
 	

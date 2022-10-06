@@ -80,6 +80,8 @@
               <form action="modifyAction"  enctype="multipart/form-data" method="post" style="width: 600px;">
               	<input type="hidden" name="P_IDX" value="${dto.p_IDX }">
               	<input type="hidden" name="P_FILENAME1" value="${dto.p_FILENAME1 }">
+              	<input type="hidden" name="P_FILENAME2" value="${dto.p_FILENAME2 }">
+              	<input type="hidden" name="P_FILENAME3" value="${dto.p_FILENAME3 }">
               	<input type="hidden" name="P_FILEPATH" value="${dto.p_FILEPATH }">
                 카테고리</br>
                 <select name="P_CATEGORY" style="font-family: 'Courier New', Courier, monospace">
@@ -97,11 +99,13 @@
                 <input name="P_STOCK" value="${dto.p_STOCK }" type="text" class="form-control">
                 <br>상품사진<br>
                 <div class="imgbox">
-					<img style="height: 200px;" src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+					<img style="height: 150px;" src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+					<img style="height: 150px;" src="${dto.p_FILEPATH }${dto.p_FILENAME2 }" alt="">
+					<img style="height: 150px;" src="${dto.p_FILEPATH }${dto.p_FILENAME3 }" alt="">
 				</div>
                 <input name="filename" type="file" multiple="multiple"><br><br>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button" 
-                  onclick='location.href="imgDelNamePath?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}"' class="btn btn-warning">이미지 삭제하기</button>
+                  onclick='location.href="imgDelNamePath?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}&P_FILENAME2=${dto.p_FILENAME2}&P_FILENAME3=${dto.p_FILENAME3}"' class="btn btn-warning">이미지 삭제하기</button>
                 <br><br>등록일 <br>
                 <fmt:formatDate value="${ dto.p_DATE }"
 							pattern="yyyy-MM-dd" /> 
@@ -110,12 +114,23 @@
                 <button style="background-color: #ffffff; border-color: #000000;" type="submit"
                   class="btn btn-warning">수정하기</button>
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"
-                  onclick='location.href="productDeleteAction?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}"' class="btn btn-warning">삭제하기</button>
+                  onclick='location.href="productDeleteAction?P_IDX=${dto.p_IDX}&P_FILENAME1=${dto.p_FILENAME1}&P_FILENAME2=${dto.p_FILENAME2}&P_FILENAME3=${dto.p_FILENAME3}"' class="btn btn-warning">삭제하기</button>
               </form>
             </div>
           </div>
         </div>
       </div>
+      
+      <script>
+		/* 웹브라우저 back키 누를때, 페이지 재로딩  */
+		window.onpageshow = function(event) {
+		    if (event.persisted) {
+		        document.location.reload();
+		    }
+		};
+	</script>
+      
+      
 </body>
 
 </html>

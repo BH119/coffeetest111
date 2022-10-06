@@ -22,7 +22,7 @@
 	<insert id="productWriteAction">
 	insert into PRODUCT 
 		values ( P_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},
-		#{param4},#{param5},#{param6},#{param7},sysdate,0)
+		#{param4},#{param5},#{param6},#{param7},sysdate,0,#{param8},#{param9},#{param10})
 	</insert>
 	
 	
@@ -36,7 +36,8 @@
 	<!-- 행 수정 -->
 	<update id="productUpdateAction" >
 	update PRODUCT set P_NAME=#{param2} , P_CODE=#{param3} , P_FILENAME1=#{param4} ,
-	P_FILEPATH=#{param5},P_CATEGORY=#{param6},P_PRICE=#{param7}, P_STOCK=#{param8}
+	P_FILEPATH=#{param5},P_CATEGORY=#{param6},P_PRICE=#{param7}, 
+	P_STOCK=#{param8},P_FILENAME2=#{param9},P_FILENAME3=#{param10}
 	where P_IDX = #{param1}
 	</update>	
 	
@@ -103,9 +104,18 @@
 	</select>
 
 	
+	<!-- 조회수  -->
+	<update id="updateHit" >
+	update PRODUCT set P_HIT = P_HIT+1 where P_IDX = #{param1}
+	</update>
 	
-	
-	
+	<!-- 조회수 정렬 -->
+	<select id="orderHit" resultType="com.study.springboot.dto.productDto">	
+		select B.* from
+		    (select rownum R , A.* from
+		        (select product.* from product order by P_HIT desc , P_IDX desc) A) B
+			where R between #{param1} and #{param2} 
+	</select>
 	
 	
 	

@@ -88,6 +88,7 @@
 							<br>상품이름<br> <input name="P_NAME" type="text" class="form-control">
 							<br>상품코드<br> <input name="P_CODE" type="text" class="form-control">
 							<br>가격<br> <input name="P_PRICE" type="text" class="form-control">
+							<br>상품설명<br> <textarea name="P_CONTENT" rows="" cols=""></textarea>
 							<br>재고수량<br> <input name="P_STOCK" type="text" class="form-control">
 							<br> 상세설명사진:<input name="filename" type="file" multiple="multiple"><br>
 							<br>

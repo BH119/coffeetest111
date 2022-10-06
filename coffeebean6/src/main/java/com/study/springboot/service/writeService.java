@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.study.springboot.dao.productDao;
@@ -27,7 +25,7 @@ public class writeService {
 	{
 		
 		//파일개수 제한 3개이하면서 0번째 인덱스의 값이 실질적으로 있을 때.
-		if (filelist.length <2 && !filelist[0].isEmpty()) {
+		if (filelist.length <4 && !filelist[0].isEmpty()) {
 			
 			//List는 이름 값들을 저장  ,  3개의 값에 미리 null 을 넣어 놈
 			List<String> fileNameList = new ArrayList<String>(Arrays.asList(null,null,null));
@@ -52,18 +50,18 @@ public class writeService {
 			
 			//값들을 꺼내와서 할당
 			String filename1 = fileNameList.get(0);
-
+			String filename2 = fileNameList.get(1);
+			String filename3 = fileNameList.get(2);
 				
-			System.out.println(filename1);
 
 			
-			List<String> files = new ArrayList<String>(Arrays.asList(filename1,filepath));
+			List<String> files = new ArrayList<String>(Arrays.asList(filename1,filepath,filename2,filename3));
 			return files;
 		}
 		else{
 			String filepath="";  //경로는 그냥 정해져있으므로 문자열로 할당.
 			filepath = "uploadIMG\\uploadProduct_IMG\\";
-			List<String> files = new ArrayList<String>(Arrays.asList(null,filepath));
+			List<String> files = new ArrayList<String>(Arrays.asList(null,filepath,null,null));
 			return files;
 		}	
 	}

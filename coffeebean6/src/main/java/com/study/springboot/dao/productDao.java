@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productDto;
 
 @Mapper
@@ -16,11 +15,12 @@ public interface productDao {
 
 		//상품관리 저장
 		public int productWriteAction(String P_NAME , String P_CODE , String P_FILENAME1,
-				String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK );
+				String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK 
+				, String P_FILENAME2, String P_FILENAME3 , String P_CONTENT);
 		
-		//공지사항 수정
+		//상품관리 수정
 		public int productUpdateAction(int P_IDX , String P_NAME , String P_CODE,
-				String P_FILENAME1,String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK );
+				String P_FILENAME1,String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK,String P_FILENAME2,String P_FILENAME3 );
 		//상품 단건조회
 		public productDto productModifyView(int P_IDX);
 		
@@ -47,7 +47,9 @@ public interface productDao {
 		//카테고리별 정렬(스틱)
 		public List<productDto> categoryType3Count(int startList, int endList, String category);
 		public int categoryType3Count(String category);
-	
-	
+		//조회수 올리기
+		public int updateHit(int P_IDX);
+		//조회수순
+		public List<productDto> orderHit(int startList,int endList);
 	
 }

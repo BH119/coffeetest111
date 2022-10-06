@@ -23,7 +23,7 @@ public class noticePageService {
 		
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =3;
+		int listSize =15;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		
