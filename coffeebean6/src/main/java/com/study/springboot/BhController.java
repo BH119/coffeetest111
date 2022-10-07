@@ -19,9 +19,12 @@ import com.study.springboot.dto.answerDto;
 import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
+import com.study.springboot.service.bestPageService;
 import com.study.springboot.service.fileDeleteService;
 import com.study.springboot.service.mainPageService;
 import com.study.springboot.service.modifyService;
+import com.study.springboot.service.newPageService;
+import com.study.springboot.service.noticeMianService;
 import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
 import com.study.springboot.service.productAskPageService;
@@ -61,6 +64,12 @@ public class BhController {
 	productAskAnswerDao iAnswerDao;
 	@Autowired
 	mainPageService iMainPageService;
+	@Autowired
+	bestPageService iBestPageService;
+	@Autowired
+	newPageService iNewPageService;
+	@Autowired
+	noticeMianService iNoticeMianService;
 	
 	//-------------네비바---------------
 	//공지사항 클릭
@@ -111,13 +120,14 @@ public class BhController {
 	
 		
 		
-	
-	//공지사항 루트 초기값 나중에 없애야함.
+	//메인페이지
 	@RequestMapping("/")
-	public String root( Model model) {
+	public String root(
+			@RequestParam(defaultValue = "1") String page,
+			Model model) {
 		
 		iMainPageService.PagingList(null, null, model);
-		
+		iNoticeMianService.PagingList(page, model);
 		
 		model.addAttribute("mainPage" , "main.jsp");
 		return "index";
@@ -548,6 +558,43 @@ public class BhController {
 		
 		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
+	//-----------------------------관리자페이지 END -----------------------------
+	
+	
+	
+	// 베스트 목록으로
+	@RequestMapping("/item/best")
+	public String bestList(
+			@RequestParam(defaultValue = "1") String page,
+			Model model) {
+		
+		iBestPageService.PagingList(page, model);
+		model.addAttribute("mainPage" , "item/best.jsp");
+		return "index"; 
+	}
+	
+	//NEW(최신순)목록으로
+	@RequestMapping("/item/new")
+	public String newList(
+			@RequestParam(defaultValue = "1") String page,
+			Model model) {
+		
+		iNewPageService.PagingList(page, model);
+		model.addAttribute("mainPage" , "item/new.jsp");
+		return "index"; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -12,7 +12,7 @@ import com.study.springboot.dto.noticeDto;
 
 
 @Component
-public class noticePageService {
+public class noticeMianService {
 	@Autowired
 	noticeDao iNoticeDao;
 	
@@ -23,7 +23,7 @@ public class noticePageService {
 		
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =15;
+		int listSize =3;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		
@@ -39,7 +39,7 @@ public class noticePageService {
 		model.addAttribute("startPage", startPage); 
 		
 		List<noticeDto> list = iNoticeDao.betweenList(startList,endList);
-		model.addAttribute("list", list);
+		model.addAttribute("noticeList", list);
 		return list;
 		
 	

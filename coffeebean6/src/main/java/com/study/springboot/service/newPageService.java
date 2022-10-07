@@ -6,30 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 
-import com.study.springboot.dao.noticeDao;
-import com.study.springboot.dto.noticeDto;
+import com.study.springboot.dao.productDao;
+import com.study.springboot.dto.productDto;
 
 
 
 @Component
-public class noticePageService {
+public class newPageService {
 	@Autowired
-	noticeDao iNoticeDao;
+	productDao iProductDao;
 	
-	public List<noticeDto> PagingList(
+	public List<productDto> PagingList(
 			String page,Model model) {
 		
 	
 		
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =15;
+		int listSize =16;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		
 		int endPage = (int)(Math.ceil((double)curPage / 5)) * 5; 
 		int startPage = endPage - 4; 
-		int totalList = iNoticeDao.noticeCount();
+		int totalList = iProductDao.productCount();
 		int totalPage = (int)Math.ceil((double)totalList/listSize); 
 		 if(endPage > totalPage){ 
 	            endPage = totalPage; 
@@ -38,8 +38,8 @@ public class noticePageService {
 		model.addAttribute("endPage", endPage); 
 		model.addAttribute("startPage", startPage); 
 		
-		List<noticeDto> list = iNoticeDao.betweenList(startList,endList);
-		model.addAttribute("list", list);
+		List<productDto> list = iProductDao.betweenList(startList,endList);
+		model.addAttribute("newList", list);
 		return list;
 		
 	

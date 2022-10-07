@@ -61,7 +61,7 @@
             </c:forEach>
         </div>
             <div class="BestPlus" >
-                <a href="./item/best.html" class="plustap"><div class="blank">더보기</div></a>
+                <a href="/item/best" class="plustap"><div class="blank">더보기</div></a>
             </div>
         </div>
         <div class="container mainNew">
@@ -84,7 +84,7 @@
         </div>
         </div>
             <div class="NewPlus">
-                <a href="/item/new.html"><div class="blank">더보기</div></a>
+                <a href="/item/new"><div class="blank">더보기</div></a>
             </div>
         </div>
         <div class="container mainAd" style="padding: 0;">
@@ -117,9 +117,9 @@
                 <div class="mainInfo2 col">
                     <ul>
                         <li>공지사항</li>
-                        <li style="margin-top:10px ;"><a href="">· 배송 관련 공지</a></li>
-                        <li><a href="">· 원두 가격 인상 관련 안내</a></li>
-                        <li><a href="">· 택배사 변경 안내</a></li>
+                        <c:forEach var="dto" items="${noticeList}">
+                        <li style="margin-top:10px ;"><a href="">·${dto.n_TITLE }</a></li>
+                        </c:forEach>
                         <li><a href="/notice.html">공지사항 더보기 >></a></li>
                     </ul>
                 </div>
