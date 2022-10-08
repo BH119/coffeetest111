@@ -81,8 +81,8 @@
 						<form action="/productWriteAction" enctype="multipart/form-data" method="post"  style="width: 600px;">
 							카테고리</br> <select name="P_CATEGORY"
 								style="font-family: 'Courier New', Courier, monospace">
-								<option value="1">콜드브루</option>
-								<option value="2">원두</option>
+								<option value="1">원두</option>
+								<option value="2">콜드브루</option>
 								<option value="3">스틱</option>
 							</select> <br>
 							<br>상품이름<br> <input name="P_NAME" type="text" class="form-control">

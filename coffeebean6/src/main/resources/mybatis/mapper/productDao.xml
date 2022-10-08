@@ -119,12 +119,114 @@
 	
 	
 	
+	<!-- 카테고리 리스트출력(타입1)  -->
+	<select id="productType1List" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '1' order by P_IDX desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 카테고리 타입1(총개수)  -->
+	<select id="categoryType1BindCount" resultType="int">
+		select count(*) from PRODUCT where P_CATEGORY = '1'
+	</select>
+	
+	<!--높은가격순(타입1) -->
+	<select id="productType1_P_HighList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '1' order by P_PRICE desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!--낮은가격순(타입1) -->
+	<select id="productType1_P_LowList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '1' order by P_PRICE) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 조회수(인기순)(타입1) -->
+	<select id="productType1_P_HitList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '1' order by P_HIT desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
 	
 	
 	
 	
 	
+	<!-- 카테고리 리스트출력(타입2)  -->
+	<select id="productType2List" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '2' order by P_IDX desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 카테고리 타입2(총개수)  -->
+	<select id="categoryType2BindCount" resultType="int">
+		select count(*) from PRODUCT where P_CATEGORY = '2'
+	</select>
 	
+	<!--높은가격순(타입2) -->
+	<select id="productType2_P_HighList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '2' order by P_PRICE desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!--낮은가격순(타입2) -->
+	<select id="productType2_P_LowList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '2' order by P_PRICE) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 조회수(인기순)(타입2) -->
+	<select id="productType2_P_HitList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '2' order by P_HIT desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	
+	
+	
+	
+	<!-- 카테고리 리스트출력(타입3)  -->
+	<select id="productType3List" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '3' order by P_IDX desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 카테고리 타입3(총개수)  -->
+	<select id="categoryType3BindCount" resultType="int">
+		select count(*) from PRODUCT where P_CATEGORY = '3'
+	</select>
+	
+	<!--높은가격순(타입3) -->
+	<select id="productType3_P_HighList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '3' order by P_PRICE desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!--낮은가격순(타입3) -->
+	<select id="productType3_P_LowList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '3' order by P_PRICE) A) B
+			where R between #{param1} and #{param2}
+	</select>
+	<!-- 조회수(인기순)(타입3) -->
+	<select id="productType3_P_HitList" resultType="com.study.springboot.dto.productDto">
+		select B.* from
+		    (select rownum R , A.* from
+		        (select PRODUCT.* from PRODUCT where P_CATEGORY = '3' order by P_HIT desc) A) B
+			where R between #{param1} and #{param2}
+	</select>
 	
 	
 </mapper>    

@@ -52,9 +52,9 @@
             <div class="row mainNewItem">
                 <div class="col-3">
                     <ul>
-                        <li class="newbestimg"><a href="/productView?P_IDX=${dto.p_IDX }"><img src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt=""></a></li>
-                        <li class="bestnew1"><a href="/productView?P_IDX=${dto.p_IDX }">${dto.p_NAME}</a></li>
-                        <li class="bestnew2"><a href="/productView?P_IDX=${dto.p_IDX }">${dto.p_PRICE}</a></li>
+                        <li class="newbestimg"><a href="/view/item_view?P_IDX=${dto.p_IDX }"><img src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt=""></a></li>
+                        <li class="bestnew1"><a href="/view/item_view?P_IDX=${dto.p_IDX }">${dto.p_NAME}</a></li>
+                        <li class="bestnew2"><a href="/view/item_view?P_IDX=${dto.p_IDX }">${dto.p_PRICE}</a></li>
                     </ul>
                 </div>
             </div><br>
@@ -74,9 +74,9 @@
             <div class="row mainNewItem">
                 <div class="col-3">
                     <ul>
-   						<li class="newbestimg"><a href="/productView?P_IDX=${dto.p_IDX }"><img src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt=""></a></li>
-                        <li class="bestnew1"><a href="/productView?P_IDX=${dto.p_IDX }">${dto.p_NAME}</a></li>
-                        <li class="bestnew2"><a href="/productView?P_IDX=${dto.p_IDX }">${dto.p_PRICE}</a></li>
+   						<li class="newbestimg"><a href="/view/item_view?P_IDX=${dto.p_IDX }"><img src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt=""></a></li>
+                        <li class="bestnew1"><a href="/view/item_view?P_IDX=${dto.p_IDX }">${dto.p_NAME}</a></li>
+                        <li class="bestnew2"><a href="/view/item_view?P_IDX=${dto.p_IDX }">${dto.p_PRICE}</a></li>
                     </ul>
                 </div>
             </div><br>

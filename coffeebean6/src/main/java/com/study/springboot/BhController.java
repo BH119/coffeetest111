@@ -20,11 +20,14 @@ import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
 import com.study.springboot.service.bestPageService;
+import com.study.springboot.service.categoryType1PageService;
+import com.study.springboot.service.categoryType2PageService;
+import com.study.springboot.service.categoryType3PageService;
 import com.study.springboot.service.fileDeleteService;
 import com.study.springboot.service.mainPageService;
 import com.study.springboot.service.modifyService;
 import com.study.springboot.service.newPageService;
-import com.study.springboot.service.noticeMianService;
+import com.study.springboot.service.noticeMainService;
 import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
 import com.study.springboot.service.productAskPageService;
@@ -61,7 +64,7 @@ public class BhController {
 	@Autowired
 	productAskSearchService iProductAskSearchService;
 	@Autowired
-	productAskAnswerDao iAnswerDao;
+	productAskAnswerDao iProductAskAnswerDao;
 	@Autowired
 	mainPageService iMainPageService;
 	@Autowired
@@ -69,7 +72,13 @@ public class BhController {
 	@Autowired
 	newPageService iNewPageService;
 	@Autowired
-	noticeMianService iNoticeMianService;
+	noticeMainService iNoticeMainService;
+	@Autowired
+	categoryType1PageService iCategoryType1PageService;
+	@Autowired
+	categoryType2PageService iCategoryType2PageService;
+	@Autowired
+	categoryType3PageService iCategoryType3PageService;
 	
 	//-------------네비바---------------
 	//공지사항 클릭
@@ -127,7 +136,7 @@ public class BhController {
 			Model model) {
 		
 		iMainPageService.PagingList(null, null, model);
-		iNoticeMianService.PagingList(page, model);
+		iNoticeMainService.PagingList(page, model);
 		
 		model.addAttribute("mainPage" , "main.jsp");
 		return "index";
@@ -261,34 +270,38 @@ public class BhController {
 	@RequestMapping("admin_productManagement")
 	public String admin_puroductManagement(
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
-			@RequestParam(value="selectList",required=false) String selectList,
+			@RequestParam(defaultValue = "0") String selectList,
 			@RequestParam(value="keyword",required=false) String keyword,
-			@RequestParam(value="category",required=false) String category,
+			@RequestParam(defaultValue = "0") String category,
 			Model model) {
-		if(category == null) {
-			category = "0";
-		}
+		
+		System.out.println(selectList);
+	
+		
+		
 		model.addAttribute("category", category);
 		
 		
 		System.out.println("category:"+category);
-		if(selectList == null || category.equals("0")) {
+		if (selectList.equals("P_NAME")) {	
+			int type = 1;
+			//상품이름 검색글 개수
+			System.out.println("selectList:"+selectList);
+			int listCount = iProductDao.nameCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			//상품이름 검색
+			System.out.println();
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,category,model);
+		}
+		else if(selectList.equals("0") || category.equals("0")) {
 			//글 개수
 			int listCount = iProductDao.productCount();
 			model.addAttribute("listCount" , listCount);
 			//페이징
 			iProductPageService.PagingList
 			(selectList,page ,model);
-		}else if(selectList.equals("P_NAME")) {	
-			int type = 1;
-			//상품이름 검색글 개수
-			int listCount = iProductDao.nameCount(keyword);
-			model.addAttribute("listCount" , listCount);
-			//상품이름 검색
-			iProductSearchService.betweenList
-			(type,keyword,selectList,page,category,model);
 		}
-		
 		if(category.equals("1")) {	
 			int type = 2;
 			int listCount = iProductDao.categoryType1Count(category);
@@ -510,8 +523,8 @@ public class BhController {
 		
 		productAskDto result = iProductAskDao.productAskModifyView(PA_IDX);
 		model.addAttribute("dto" , result);
-		
-		List<answerDto> list = iAnswerDao.answerList(PA_IDX);
+		List<answerDto> list = iProductAskAnswerDao.answerList(PA_IDX);
+		System.out.println("ddddddddddddddddsssssss");
 		model.addAttribute("list" , list);
 		
 		
@@ -530,7 +543,7 @@ public class BhController {
 			Model model) {
 		System.out.println("dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
 		System.out.println(AS_PA_IDX + AS_NAME + AS_CONTENT);
-		iAnswerDao.answerWriteAction(AS_NAME, AS_CONTENT, AS_PA_IDX); 
+		iProductAskAnswerDao.answerWriteAction(AS_NAME, AS_CONTENT, AS_PA_IDX); 
 		
 		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
@@ -543,7 +556,7 @@ public class BhController {
 			
 			
 			iProductAskDao.productDeleteAction(PA_IDX);
-			iAnswerDao.answerDeleteByProductAsk(PA_IDX); 
+			iProductAskAnswerDao.answerDeleteByProductAsk(PA_IDX); 
 			
 			return "redirect:/admin_productAsk"; 
 		}
@@ -554,7 +567,7 @@ public class BhController {
 			@RequestParam("AS_IDX") int AS_IDX,
 			@RequestParam("AS_PA_IDX") int AS_PA_IDX,
 			Model model) {
-		iAnswerDao.answerDeleteAction(AS_IDX); 
+		iProductAskAnswerDao.answerDeleteAction(AS_IDX); 
 		
 		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
@@ -585,9 +598,67 @@ public class BhController {
 	}
 	
 	
+	//-----------------메인페이지 END---------------------------------
 	
+	//카테고리아이탬 타입1(원두)
+	@RequestMapping("/item/coffee_bean")
+	public String coffee_bean(
+			@RequestParam(defaultValue = "1") String page,
+			@RequestParam(defaultValue = "0") String orderHigh,
+			@RequestParam(defaultValue = "0") String orderLow,
+			@RequestParam(defaultValue = "0") String orderNew,
+			@RequestParam(defaultValue = "0") String orderHit,
+			Model model) {
+		iCategoryType1PageService.PagingList
+		(page,orderHigh,orderLow,orderNew,orderHit, model);
+		
+		model.addAttribute("mainPage" , "item/coffee_bean.jsp");
+		return "index"; 
+	}
 	
+	//카테고리아이탬 타입2(콜드브루)
+	@RequestMapping("/item/coffee_coldbrew")
+	public String coffee_coldbrew(
+			@RequestParam(defaultValue = "1") String page,
+			@RequestParam(defaultValue = "0") String orderHigh,
+			@RequestParam(defaultValue = "0") String orderLow,
+			@RequestParam(defaultValue = "0") String orderNew,
+			@RequestParam(defaultValue = "0") String orderHit,
+			Model model) {
+		iCategoryType2PageService.PagingList
+		(page,orderHigh,orderLow,orderNew,orderHit, model);
+		model.addAttribute("mainPage" , "item/coffee_coldbrew.jsp");
+		return "index"; 
+	}
 	
+	//카테고리아이탬 타입3(스틱)
+	@RequestMapping("/item/coffee_stick")
+	public String coffee_stick(
+			@RequestParam(defaultValue = "1") String page,
+			@RequestParam(defaultValue = "0") String orderHigh,
+			@RequestParam(defaultValue = "0") String orderLow,
+			@RequestParam(defaultValue = "0") String orderNew,
+			@RequestParam(defaultValue = "0") String orderHit,
+			Model model) {
+		
+		iCategoryType3PageService.PagingList
+		(page,orderHigh,orderLow,orderNew,orderHit, model);
+		
+		model.addAttribute("mainPage" , "item/coffee_stick.jsp");
+		return "index"; 
+	}
+	
+	@RequestMapping("/view/item_view")
+	public String item_view(
+			@RequestParam("P_IDX") int P_IDX,
+			Model model) {
+		
+		productDto result = iProductDao.productModifyView(P_IDX);
+		model.addAttribute("dto", result);
+		
+		model.addAttribute("mainPage" , "view/item_view.jsp");
+		return "index"; 
+	}
 	
 	
 	

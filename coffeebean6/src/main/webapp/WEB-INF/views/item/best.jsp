@@ -26,7 +26,7 @@
         		<c:forEach var="dto" items="${bestList}">
 			            <ul class="itemListUl">
 					        <div class="itemImg">
-					            <a href="/item/item_Detail" class="itemImgBox">
+					            <a href="/view/item_view?P_IDX=${dto.p_IDX }" class="itemImgBox">
 					                <div class="overlay">
 					                    <p>${dto.p_NAME }</p>
 					                </div>

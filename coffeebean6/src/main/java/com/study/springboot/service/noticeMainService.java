@@ -12,7 +12,7 @@ import com.study.springboot.dto.noticeDto;
 
 
 @Component
-public class noticeMianService {
+public class noticeMainService {
 	@Autowired
 	noticeDao iNoticeDao;
 	

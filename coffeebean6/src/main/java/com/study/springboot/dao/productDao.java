@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
 
 @Mapper
@@ -52,4 +53,41 @@ public interface productDao {
 		//조회수순
 		public List<productDto> orderHit(int startList,int endList);
 	
+		
+		//카테고리페이지 출력 (타입1)
+		public List<productDto> productType1List(int startList, int endList);
+		//카테고리 타입1(총개수)
+		public int categoryType1BindCount();
+		//높은가격순(타입1)
+		public List<productDto> productType1_P_HighList(int startList, int endList);
+		//낮은가격순(타입1)
+		public List<productDto> productType1_P_LowList(int startList, int endList);
+		//조회수순(인기순)(타입1)
+		public List<productDto> productType1_P_HitList(int startList, int endList);
+				
+		
+		//카테고리페이지 출력 (타입2)
+		public List<productDto> productType2List(int startList, int endList);
+		//카테고리 타입2(총개수)
+		public int categoryType2BindCount();
+		//높은가격순(타입2)
+		public List<productDto> productType2_P_HighList(int startList, int endList);
+		//낮은가격순(타입2)
+		public List<productDto> productType2_P_LowList(int startList, int endList);
+		//조회수순(인기순)(타입2)
+		public List<productDto> productType2_P_HitList(int startList, int endList);
+						
+			
+		//카테고리페이지 출력 (타입3)
+		public List<productDto> productType3List(int startList, int endList);
+		//카테고리 타입3(총개수)
+		public int categoryType3BindCount();
+		//높은가격순(타입3)
+		public List<productDto> productType3_P_HighList(int startList, int endList);
+		//낮은가격순(타입3)
+		public List<productDto> productType3_P_LowList(int startList, int endList);
+		//조회수순(인기순)(타입3)
+		public List<productDto> productType3_P_HitList(int startList, int endList);
+				
+		
 }

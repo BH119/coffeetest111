@@ -70,10 +70,9 @@
                             COFFEE
                         </a>
                         <div class="dropdown-menu" style="margin: -3px; opacity: 0.8;">
-                            <a class="dropdown-item" href="/item/item.html">원두커피</a>
-                            <a class="dropdown-item" href="/item/item2.html">드립커피</a>
-                            <a class="dropdown-item" href="/item/item3.html">콜드브루</a>
-                            <a class="dropdown-item" href="/item/item4.html">스틱커피</a>
+                            <a class="dropdown-item" href="/item/coffee_bean">원두커피</a>
+                            <a class="dropdown-item" href="/item/coffee_coldbrew">콜드브루</a>
+                            <a class="dropdown-item" href="/item/coffee_stick">스틱커피</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">

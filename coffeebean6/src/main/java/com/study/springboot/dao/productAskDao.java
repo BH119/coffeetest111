@@ -29,4 +29,8 @@ public interface productAskDao {
 	public List<productAskDto> betweenListWrite(int startList, int endList, String keyword);
 	public int writeCount(String keyword);
 	
+
+	
+	
+	
 }

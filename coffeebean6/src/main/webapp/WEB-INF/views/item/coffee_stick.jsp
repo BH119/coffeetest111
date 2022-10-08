@@ -30,280 +30,61 @@
             <br>
             <div>
                 <ul class="itemMenuUl">
-                    <li><a href="">인기순</a></li>
-                    <li><a href="">최근등록순</a></li>
-                    <li><a href="">낮은가격순</a></li>
-                    <li><a href="">높은가격순</a></li>
+                    <li><a href="/item/coffee_stick?orderHit=1">인기순</a></li>
+                    <li><a href="/item/coffee_stick?orderNew=1">최근등록순</a></li>
+                    <li><a href="/item/coffee_stick?orderLow=1">낮은가격순</a></li>
+                    <li><a href="/item/coffee_stick?orderHigh=1">높은가격순</a></li>
                 </ul>
             </div>
-            <ul class="itemListUl">
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="/item/item_Detail" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>스틱커피 111</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>20,000</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-                <li style="width: 25%;">
-                    <div class="itemImg">
-                        <a href="" class="itemImgBox">
-                            <div class="overlay">
-                                <p>이름이름</p>
-                            </div>
-                            <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
-                        </a>
-                    </div>
-                    <div class="itemName">
-                        <span>상품이름</span>
-                    </div>
-                    <div class="itemPrice">
-                        <span>상품가격</span>
-                    </div>
-                </li>
-            </ul><br><br><br>
+        </div>
+           <div class="itemList">
+        	<div class="row row-cols-1 row-cols-md-4">
+        		<c:forEach var="dto" items="${Type3List}">
+			            <ul class="itemListUl">
+					        <div class="itemImg">
+					            <a href="/view/item_view?P_IDX=${dto.p_IDX }" class="itemImgBox">
+					                <div class="overlay">
+					                    <p>${dto.p_NAME }</p>
+					                </div>
+					                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+					            </a>
+					        </div>
+					        <div class="itemName">
+					            <span>${dto.p_NAME }</span>
+					        </div>
+					        <div class="itemPrice">
+					            <span>${dto.p_PRICE } </span>
+					        </div>
+			            </ul>
+        		</c:forEach> 
+       		</div>
+			            <br><br><br>
         </div><br>
         <div class="itemPage">
             <ul class="pagination my">
-                <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item"><a class="page-link" href="#">다음</a></li>
+               <c:choose>
+						<c:when test="${page > 1}">
+							<a onclick='location.href="/item/coffee_stick?page=${page-1}&orderHigh=${orderHigh}&orderLow=${orderLow}&orderNew=${orderNew}&orderHit=${orderHit}"'>이전</a>
+						</c:when>
+						<c:otherwise>
+						<style>#disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="/item/coffee_stick?page=${page-1}&orderHigh=${orderHigh}&orderLow=${orderLow}&orderNew=${orderNew}&orderHit=${orderHit}"' >이전</a>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
+						<a href="/item/coffee_stick?page=${i}&orderHigh=${orderHigh}&orderLow=${orderLow}&orderNew=${orderNew}&orderHit=${orderHit}">${i}</a>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${page < totalPage}">
+							<a onclick='location.href="/item/coffee_stick?page=${page+1}&orderHigh=${orderHigh}&orderLow=${orderLow}&orderNew=${orderNew}&orderHit=${orderHit}"'>다음</a>
+						</c:when>
+						<c:otherwise>
+						<style> #disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="/item/coffee_stick?page=${page+1}&orderHigh=${orderHigh}&orderLow=${orderLow}&orderNew=${orderNew}&orderHit=${orderHit}"'>다음</a>
+						</c:otherwise>
+					</c:choose>
               </ul>
         </div>
     </div><br>

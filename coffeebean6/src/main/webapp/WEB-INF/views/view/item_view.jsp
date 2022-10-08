@@ -3,8 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page trimDirectiveWhitespaces="true" %>    
     
-    <link rel="stylesheet" href="/css/item/itemDetail.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+	crossorigin="anonymous">
+<!-- Bootstarp JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+	crossorigin="anonymous"></script>
 
+    
+    <link rel="stylesheet" href="/css/item/itemDetail.css">
+<body>
     <div class="itemDetail">
         <div class="container item">
             <div class="itemRoad">
@@ -24,13 +38,13 @@
                         </ol>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="/img/원두.jpg" class="d-block w-100" alt="...">
+                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="/img/원두2.jpg" class="d-block w-100" alt="...">
+                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="/img/원두.jpg" class="d-block w-100" alt="...">
+                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
@@ -44,44 +58,76 @@
                     </div>                    
                 </div>
                 <div class="col itemTable"> 
-                    <table>
-                        <tr>
-                            <th colspan="2">
-                                상품이름
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>상품가격</td>
-                            <td>0000</td>
-                        </tr>
-                        <tr>
-                            <td>제조사</td>
-                            <td>제조회사</td>
-                        </tr>
-                        <tr>
-                            <td>배송비</td>
-                            <td>무료</td>
-                        </tr>
-                        <tr>
-                            <td>배송기간</td>
-                            <td>
-                                <span>오후 2:00 이전 주문 시 당일출고</span><br>
-                                <span>오후 2:00 이후 주문 시 익일출고</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>주문수량</td>
-                            <td>
-                                <input type="button" value="-" onclick="count('minus')" class="countBtn">
-                                <span id="itemCount">1</span>
-                                <input type="button" value="+" onclick="count('plus')" class="countBtn">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>총 상품금액</td>
-                            <td id="totalPrice">12345원</td>
-                        </tr>
-                    </table><br>
+	                    <table>
+	                        <tr>
+	                            <th>상품이름</th>
+	                            <td>${dto.p_NAME }</td>
+	                        </tr>
+	                        <tr>
+	                            <td>상품가격</td>
+	                            <td>${dto.p_PRICE }</td>
+	                        </tr>
+	                        <tr>
+	                            <td>제조사</td>
+	                            <td>제조회사</td>
+	                        </tr>
+	                        <tr>
+	                            <td>배송비</td>
+	                            <td>무료</td>
+	                        </tr>
+	                        <tr>
+	                            <td>배송기간</td>
+	                            <td>
+	                                <span>오후 2:00 이전 주문 시 당일출고</span><br>
+	                                <span>오후 2:00 이후 주문 시 익일출고</span>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>주문수량</td>
+	                            <td>
+	                                <button id="del" >-</button>
+	                                <span id="amount">1</span>
+	                                <button id="add" >+</button>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                            <td>총 상품금액</td>
+	                            <td> <span id="price1">${dto.p_PRICE }</span>원 </td>
+	                        </tr>
+	                    </table><br>
+                    
+                    <script type="text/javascript">
+                    var amount = document.getElementById("amount");
+                    var add = document.getElementById("add");
+                    var del = document.getElementById("del");
+                    var price1 = document.getElementById("price1");
+                    add.onclick = () => {
+                    	var current = parseInt(amount.innerText, 10);
+                    	var price2 = parseInt(price1.innerText, 10);
+                    	amount.innerText = current + 1;
+                    	
+                    	price2 = price2/current;
+                    	price1.innerText = (current+1) * price2
+                    };
+                   	del.onclick = () => {
+                   		var current = parseInt(amount.innerText, 10);
+                    	var price2 = parseInt(price1.innerText, 10);
+                    	amount.innerText = current - 1;
+                    	
+                    	price2 = price2/current;
+                    	price1.innerText = (current-1) * price2
+                    	if(current < 2){
+                    	   amount.innerText=1;
+                    	   
+                    	   price2 = price2/current;
+                       	price1.innerText = (current) * price2
+                    	   
+                    	}
+                  	};
+                    </script>
+                    
+                    
+                    
                     <div class="itemTableBtn">
                         <a href="/cart"><input type="button" value="장바구니" id="cartBtn"></a>
                         <a href="/buy"><input type="button" value="구매하기" id="buyBtn"></a>
@@ -106,7 +152,11 @@
         </div><br>
         <div class="container detailTap">
             <div class="detailImg">
-                <img src="/img/item임시.PNG" alt="">
+                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" alt="">
+                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" alt=""> <br>
+                <textarea readonly="readonly" >${dto.p_CONTENT }</textarea>
+                
             </div>
         </div><br><br><br>
         <div id="goReview">
@@ -290,23 +340,4 @@
         </div>
     </div><br>
     
-    <script>
-        function count(type)  {
-        // 결과를 표시할 element
-        const resultElement = document.getElementById('itemCount');
-
-        // 현재 화면에 표시된 값
-        let number = resultElement.innerText;
-
-        if(type == 'plus') {
-          number = parseInt(number) + 1;
-        }else if(type == 'minus')  {
-            if( number <= 1 ){
-                return 1;
-            }
-          number = parseInt(number) - 1;
-        }
-
-        resultElement.innerText = number;
-        }
-    </script>
+    </body>
