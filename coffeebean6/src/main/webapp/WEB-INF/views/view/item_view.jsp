@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
  
-    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />    
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
 	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
@@ -16,8 +17,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
 	crossorigin="anonymous"></script>
-
-    
     <link rel="stylesheet" href="/css/item/itemDetail.css">
 <body>
     <div class="itemDetail">
@@ -275,10 +274,10 @@
             		<th>등록일</th>
             		<th>${ dto2.PA_TITLE }</th>
             	</tr>	
-                <c:forEach var="dto1" items="${ list }">
-                
-                			<tr onclick="window.open('/view/product_qna_pw?PA_IDX=${dto1.PA_IDX}', '팝업창 이름', 'width=500px, height=300px , left=700px,top=200px')">
-<%-- 						<tr onclick="location.href='/view/product_qna_view?PA_IDX=${dto1.PA_IDX}'"> --%>
+               <c:forEach var="dto1" items="${ list }">
+                									
+                			<tr  onclick="window.open('/view/product_qna_pw?PA_IDX=${dto1.PA_IDX}', '팝업창 이름', 'width=500px, height=300px , left=700px,top=200px')">
+<%-- 							<tr onclick="parent.location.href='/view/product_qna_pw?PA_IDX=${dto1.PA_IDX}'"> --%>
 							<td>${ dto1.PA_IDX }</td>
 							<td>${ dto1.PA_TITLE }</td>
 							<td>${ dto1.PA_M_NAME }</td>
@@ -321,9 +320,13 @@
 		</div>
 	</div>
     <br>
+
 </body>
 
+<script type="text/javascript">
 
+
+</script>
 
 
 

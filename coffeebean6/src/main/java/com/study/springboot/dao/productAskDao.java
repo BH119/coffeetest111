@@ -36,6 +36,6 @@ public interface productAskDao {
 			,String PA_P_NAME,String PA_P_FILEPATH,String PA_P_FILENAME1, String PA_P_PRICE
 			,int PA_P_IDX);
 	//상품문의 조회시 비밀번호 체크
-	public int AjaxQnaPWcheek(String qna_PW);
+	public int AjaxQnaPWcheek(String qna_PW, String PA_IDX);
 	
 }

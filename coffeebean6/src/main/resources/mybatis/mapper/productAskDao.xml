@@ -88,7 +88,7 @@
 	
 	<!-- 문의글확인 비밀번호조회 -->
 	<select id="AjaxQnaPWcheek" resultType="int" >
-		select count(*) from PRODUCT_ASK where PA_LOCK = #{param1}
+		select count(*) from PRODUCT_ASK where PA_LOCK = #{param1} and PA_IDX = #{param2}
 	</select>
 	
 	

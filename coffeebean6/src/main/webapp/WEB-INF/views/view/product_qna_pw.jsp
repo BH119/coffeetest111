@@ -24,15 +24,26 @@
 
 $(function(){
 	$("#ChkBtn").click(function(){
+		var PA_IDX = "<c:out value='${PA_IDX}'/>";
 		var qna_PW = $('#qna_PW').val();
-		console.log(qna_PW);
 		$.ajax({
 	            url : "/view/product_qna_pw_Action",
 	            type : 'post',
-	            data : { qna_PW:qna_PW },
+	            data : { 
+	            		qna_PW:qna_PW,
+	            		PA_IDX:PA_IDX
+	            		},
 	            success : function(date) {
 	            	if(date == '1'){
-	            		window.location.href = "/view/product_qna_view?PA_IDX=";
+	            		opener.document.location.href="/view/product_qna_view?PA_IDX="+PA_IDX;
+	            		window.close();  
+	            	}
+	            	else{
+	            		alert('비밀번호가 일치하지 않습니다.');
+	            		history.back();
+	            		console.log(date);
+	            		window.close();  
+	            		
 	            	}
 				} //통신성공
 		}); // ajax

@@ -741,13 +741,23 @@ public class BhController {
 		return "index";
 	}
 	
+	// 상품문의글 비밀번호 확인폼
+	@RequestMapping("/view/product_qna_pw")
+	public String product_qna_pw(
+			@RequestParam("PA_IDX") String PA_IDX,
+			Model model) {
+		model.addAttribute("PA_IDX",PA_IDX );
+		return "/view/product_qna_pw";
+	}
 	
+	//비밀번호 확인액션
 	@RequestMapping("/view/product_qna_pw_Action")
 	@ResponseBody
 	public String product_qna_pw(
+			@RequestParam("PA_IDX") String PA_IDX,
 			@RequestParam("qna_PW") String qna_PW) {
 		System.out.println(qna_PW);	
-		int result = iProductAskDao.AjaxQnaPWcheek(qna_PW);
+		int result = iProductAskDao.AjaxQnaPWcheek(qna_PW , PA_IDX);
 		System.out.println("리절트값:" +result);
 		if( result == 1) {
 			System.out.println("나는 성공");	
@@ -759,25 +769,6 @@ public class BhController {
 		}
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		@RequestMapping("/view/product_qna_pw")
-		public String product_qna_pw(
-				@RequestParam("PA_IDX") String PA_IDX,
-				Model model) {
-			model.addAttribute("PA_IDX",PA_IDX );
-			return "/view/product_qna_pw";
-		}
 	
 	
 	
