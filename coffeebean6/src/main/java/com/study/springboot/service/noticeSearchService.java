@@ -42,6 +42,9 @@ public class noticeSearchService {
 		else if( type == 2 ) {
 			totalList = iNoticeDao.writeCount(keyword); //글쓴이 게시글 개수
 		}
+		else{
+			totalList = iNoticeDao.noticeCount(); // 게시글 개수
+		}
 		
 		int totalPage = (int)Math.ceil((double)totalList/listSize); //전체페이지수
 		 if(endPage > totalPage){
@@ -66,6 +69,10 @@ public class noticeSearchService {
 			model.addAttribute("list", list);
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("keyword", keyword);
+		}
+		else {
+			list = iNoticeDao.betweenList(startList,endList);
+			model.addAttribute("list", list);
 		}
 		return list;
 	}

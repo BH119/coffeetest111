@@ -42,6 +42,9 @@ public class productAskSearchService {
 		else if( type == 2 ) {
 			totalList = iProductAskDao.writeCount(keyword); //글쓴이 게시글 개수
 		}
+		else if( type == 3 ) {
+			totalList = iProductAskDao.productAskCount(); //전체 게시글 개수
+		}
 		
 		int totalPage = (int)Math.ceil((double)totalList/listSize); //전체페이지수
 		 if(endPage > totalPage){
@@ -66,6 +69,10 @@ public class productAskSearchService {
 			model.addAttribute("list", list);
 			model.addAttribute("selectList", selectList);
 			model.addAttribute("keyword", keyword);
+		}
+		else {
+			list = iProductAskDao.betweenList(startList,endList);
+			model.addAttribute("list", list);
 		}
 		return list;
 	}

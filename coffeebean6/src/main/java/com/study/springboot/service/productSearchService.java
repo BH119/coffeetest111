@@ -49,6 +49,9 @@ public class productSearchService {
 		else if( type == 4 ) {
 			totalList = iProductDao.categoryType3Count(category); //스틱 게시글 개수
 		}
+		else {
+			totalList = iProductDao.productCount();
+		}
 		
 		
 		int totalPage = (int)Math.ceil((double)totalList/listSize); //전체페이지수
@@ -86,6 +89,10 @@ public class productSearchService {
 
 			model.addAttribute("list", list);
 			model.addAttribute("category", category);
+		}
+		else{
+			list = iProductDao.betweenList(startList,endList);
+			model.addAttribute("list", list);
 		}
 		return list;
 	}

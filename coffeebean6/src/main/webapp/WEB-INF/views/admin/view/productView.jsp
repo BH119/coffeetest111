@@ -121,15 +121,6 @@
         </div>
       </div>
       
-      <script>
-		/* 웹브라우저 back키 누를때, 페이지 재로딩  */
-		window.onpageshow = function(event) {
-		    if (event.persisted) {
-		        document.location.reload();
-		    }
-		};
-	</script>
-      
       
 </body>
 

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page trimDirectiveWhitespaces="true" %>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+ 
     
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
@@ -267,77 +268,49 @@
         </div><br>
         <div class="container itemQnA">
             <table class="QnATable">
-                <tr>
-                    <th colspan="4"><h5>상품문의</h5></th>
-                    <th>
-                        <a href="./writeQnA" class="writeQnAA">
-                            <div class="writeQnA">
-                                글쓰기
-                            </div>
-                        </a>
-                    </th>
-                </tr>
-                <tr>
-                    <td>#</td>
-                    <td>
-                        <div class="accordionBoard" id="accordion1" role="tablist" aria-multiselectable="true">      
-                            <div class="accordionBoard accordionBoardDefault">        
-                                <div class="accordionBoardHeading" role="tab">          
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse3" aria-expanded="false">           
-                                        상품문의1111
-                                    </a>        
-                                </div>        
-                                <div id="collapse3" class="accordionBoardCollapse collapse" role="tabpanel">          
-                                    <div class="accordionBoardBody">            
-                                        <span>상품문의111122223333</span>
-                                    </div>        
-                                </div>      
-                            </div>
-                        </div>
-                    </td>
-                    <td>이름1111</td>
-                    <td>####.##.##</td>
-                    <td>답변대기</td>
-                </tr>
-                <tr>
-                    <td>#</td>
-                    <td>
-                        <div class="accordionBoard" id="accordion" role="tablist" aria-multiselectable="true">      
-                            <div class="accordionBoard accordionBoardDefault">        
-                                <div class="accordionBoardHeading" role="tab">          
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false">           
-                                        상품문의2222        
-                                    </a>        
-                                </div>        
-                                <div id="collapse4" class="accordionBoardCollapse collapse" role="tabpanel">          
-                                    <div class="accordionBoardBody">            
-                                        <p>문의2</p>          
-                                        <p>상품문의</p>
-                                        <p>1111</p>
-                                        <p>2222</p>
-                                        <span>1111</span>
-                                    </div>        
-                                </div>      
-                            </div>
-                        </div>
-                    </td>
-                    <td>이름2222</td>
-                    <td>####.##.##</td>
-                    <td>답변완료</td>
-                </tr>
+                <c:forEach var="dto1" items="${ list }">
+						<tr onclick="location.href='/product_qna_view?PA_IDX=${dto1.PA_IDX}'">
+							<td>${ dto1.PA_IDX }</td>
+							<td><input type="image"
+								src="${ dto1.PA_P_FILEPATH }${ dto1.PA_P_FILENAME1 }"></td>
+							<td>${ dto1.PA_M_NAME }</td>
+							<td>${ dto1.PA_TITLE }</td>
+							<td>${ dto1.PA_CONTENT }</td>
+							<td><fmt:formatDate value="${ dto1.PA_REGDATE }"
+									pattern="yyyy-MM-dd" /></td>
+							<td>${ dto1.PA_M_NAME }</td>
+						</tr>
+					</c:forEach>
             </table>
-            <nav aria-label="Page navigation itemQnANav">
-                <ul class="pagination my">
-                  <li class="page-item"><a class="page-link" href="#">이전</a></li>
-                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">다음</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div><br>
+            <div style="display: flex; justify-content: center;">
+				<div style="width: 200px;" class="pagination">
+					<c:choose>
+						<c:when test="${page > 1}">
+							<a onclick='location.href="/view/item_view?page=${page-1}&P_IDX=${dto.p_IDX } }"'>이전</a>
+						</c:when>
+						<c:otherwise>
+						<style>#disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="/view/item_view?page=${page-1}&P_IDX=${dto.p_IDX }"' >이전</a>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach var="i" begin="${ startPage}" end="${ endPage}">
+						<a href="/view/item_view?page=${i}&P_IDX=${dto.p_IDX }">${i}</a>
+					</c:forEach>
+
+					<c:choose>
+						<c:when test="${page < totalPage}">
+							<a onclick='location.href="/view/item_view?page=${page+1}&P_IDX=${dto.p_IDX }"'>다음</a>
+						</c:when>
+						<c:otherwise>
+						<style> #disableLink{pointer-events: none; cursor: default;}</style>
+							<a id="disableLink" onclick='location.href="/view/item_view?page=${page+1}&P_IDX=${dto.p_IDX }"'>다음</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			</div>
+			</div>
+    <br>
     
     </body>

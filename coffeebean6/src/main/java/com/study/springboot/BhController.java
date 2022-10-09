@@ -28,11 +28,8 @@ import com.study.springboot.service.mainPageService;
 import com.study.springboot.service.modifyService;
 import com.study.springboot.service.newPageService;
 import com.study.springboot.service.noticeMainService;
-import com.study.springboot.service.noticePageService;
 import com.study.springboot.service.noticeSearchService;
-import com.study.springboot.service.productAskPageService;
 import com.study.springboot.service.productAskSearchService;
-import com.study.springboot.service.productPageService;
 import com.study.springboot.service.productSearchService;
 import com.study.springboot.service.writeService;
 
@@ -42,11 +39,7 @@ public class BhController {
 	@Autowired
 	noticeDao iNoticeDao;
 	@Autowired
-	noticePageService iNoticePageService;
-	@Autowired
 	noticeSearchService iNoticeSearchService;
-	@Autowired
-	productPageService iProductPageService;
 	@Autowired
 	productSearchService iProductSearchService;
 	@Autowired
@@ -59,8 +52,6 @@ public class BhController {
 	fileDeleteService iFileDeleteService;
 	@Autowired
 	productAskDao iProductAskDao;
-	@Autowired
-	productAskPageService iProductAskPageService;
 	@Autowired
 	productAskSearchService iProductAskSearchService;
 	@Autowired
@@ -150,18 +141,20 @@ public class BhController {
 	@RequestMapping("admin_notice")
 	public String admin_notice(
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
-			@RequestParam(value="selectList",required=false) String selectList,
+			@RequestParam(defaultValue = "0") String selectList,
 			@RequestParam(value="keyword",required=false) String keyword,
 			Model model) {
 		
-		if(selectList == null) {
+		if(selectList.equals("0")) {
 			//글 개수
+			int type = 3;
 			int listCount = iNoticeDao.noticeCount();
 			model.addAttribute("listCount" , listCount);
 			//페이징
-			iNoticePageService.PagingList
-			(page ,model);
-		}else if(selectList.equals("N_TITLE")) {	
+			iNoticeSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		else if(selectList.equals("N_TITLE")) {	
 			int type = 1;
 			//제목 검색글 개수
 			int listCount = iNoticeDao.titleCount(keyword);
@@ -170,7 +163,8 @@ public class BhController {
 			iNoticeSearchService.betweenList
 			(type,keyword,selectList,page,model);
 			
-		}else if(selectList.equals("N_WRITER")) {
+		}
+		else if(selectList.equals("N_WRITER")) {
 			int type = 2;
 			//글쓴이 게시물 및 개수
 			int listCount = iNoticeDao.writeCount(keyword);
@@ -295,12 +289,13 @@ public class BhController {
 			(type,keyword,selectList,page,category,model);
 		}
 		else if(selectList.equals("0") || category.equals("0")) {
+			int type = 5;
 			//글 개수
 			int listCount = iProductDao.productCount();
 			model.addAttribute("listCount" , listCount);
 			//페이징
-			iProductPageService.PagingList
-			(selectList,page ,model);
+			iProductSearchService.betweenList
+			(type,keyword,selectList,page,category,model);
 		}
 		if(category.equals("1")) {	
 			int type = 2;
@@ -478,19 +473,20 @@ public class BhController {
 	@RequestMapping("admin_productAsk")
 	public String productAsk(
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
-			@RequestParam(value="selectList",required=false) String selectList,
+			@RequestParam(defaultValue="0") String selectList,
 			@RequestParam(value="keyword",required=false) String keyword,
 			Model model) {
 		
-		if(selectList == null) {
+		if(selectList.equals("0")) {
 			//글 개수
+			int type = 3;
 			int listCount = iProductAskDao.productAskCount();
 			model.addAttribute("listCount" , listCount);
 			//페이징
-			iProductAskPageService.PagingList
-			(page ,model);
+			iProductAskSearchService.betweenList
+			(type,keyword,selectList,page,model);
 		}
-		else if(selectList.equals("PA_TITLE")) {	
+		if(selectList.equals("PA_TITLE")) {	
 			int type = 1;
 			//상품제목 검색글 개수
 			int listCount = iProductAskDao.titleCount(keyword);
@@ -512,7 +508,33 @@ public class BhController {
 		model.addAttribute("mainPage" , "admin/admin_productAsk.jsp");
 		return "index"; 
 	}
-	
+	//상품문의 글쓰기
+//	@RequestMapping("/productAskWriteAction")
+//	public String productAskWriteAction(
+//			@RequestParam("P_NAME") String P_NAME,
+//			@RequestParam("P_CODE") String P_CODE,
+//			@RequestParam("P_PRICE") int P_PRICE ,
+//			@RequestParam("P_STOCK") int P_STOCK ,
+//			@RequestParam("P_CATEGORY") int P_CATEGORY ,
+//			@RequestParam("P_CONTENT") String P_CONTENT ,
+//			//여러 값은 배열형태로
+//			@RequestParam("filename") MultipartFile[] filelist ,
+//			Model model) throws IllegalStateException, IOException 
+//	{
+//		List<String> files =iWriteService.productWriteAction(filelist);
+//		
+////		System.out.println("0번째:"+files.get(0));
+////		System.out.println("1번째:"+files.get(1));
+////		System.out.println("2번째:"+files.get(2));
+////		System.out.println("3번째:"+files.get(0));
+//		
+//		 int result =iProductDao.productWriteAction
+//				 (P_NAME, P_CODE,files.get(0),files.get(1),P_CATEGORY, P_PRICE, P_STOCK,
+//						 files.get(2),files.get(3),P_CONTENT);
+//		 System.out.println(result);
+//		 
+//		
+//		return "redirect:/admin_productManagement"; 
 	
 	
 	//상품문의조회
@@ -524,7 +546,6 @@ public class BhController {
 		productAskDto result = iProductAskDao.productAskModifyView(PA_IDX);
 		model.addAttribute("dto" , result);
 		List<answerDto> list = iProductAskAnswerDao.answerList(PA_IDX);
-		System.out.println("ddddddddddddddddsssssss");
 		model.addAttribute("list" , list);
 		
 		
@@ -651,16 +672,48 @@ public class BhController {
 	@RequestMapping("/view/item_view")
 	public String item_view(
 			@RequestParam("P_IDX") int P_IDX,
+//			@RequestParam("PA_IDX") int PA_IDX,
+			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
+			@RequestParam(defaultValue="0") String selectList,
+			@RequestParam(value="keyword",required=false) String keyword,
 			Model model) {
 		
 		productDto result = iProductDao.productModifyView(P_IDX);
 		model.addAttribute("dto", result);
 		
+		
+		if(selectList.equals("0")) {
+			int type = 3;
+			//페이징
+			iProductAskSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		
 		model.addAttribute("mainPage" , "view/item_view.jsp");
 		return "index"; 
 	}
 	
-	
+	@RequestMapping("item_productAsk")
+	public String item_productAsk(
+			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
+			@RequestParam(defaultValue="0") String selectList,
+			@RequestParam(value="keyword",required=false) String keyword,
+			Model model) {
+		
+		if(selectList.equals("0")) {
+			//글 개수
+			int type = 3;
+			int listCount = iProductAskDao.productAskCount();
+			model.addAttribute("listCount" , listCount);
+			//페이징
+			iProductAskSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		
+		
+		model.addAttribute("mainPage" , "admin/admin_productAsk.jsp");
+		return "index"; 
+	}
 	
 	
 	
