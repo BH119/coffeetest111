@@ -22,8 +22,9 @@ public class productAskDto {
    private int PA_P_PRICE; // 상품 가격
    private String PA_CONTENT; // 내용
    private String PA_M_NAME; // 작성자
-   private int PA_LOCK; // 상품문의글 비밀번호
+   private String PA_LOCK; // 상품문의글 비밀번호
    @DateTimeFormat(pattern = "yyyy-MM-dd")
    private Date PA_REGDATE; // 작성일
+   private int PA_ANSWER; //답변상태
 }
 	

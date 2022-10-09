@@ -119,26 +119,23 @@ button {
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>상품사진</th>
 						<th>문의상품</th>
 						<th>제목</th>
-						<th>내용</th>
 						<th>등록일</th>
 						<th>작성자</th>
+						<th>답변상태</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="dto" items="${ list }">
 						<tr onclick="location.href='/admin/view/productAskView?PA_IDX=${dto.PA_IDX}'">
 							<td>${ dto.PA_IDX }</td>
-							<td><input type="image"
-								src="${ dto.PA_P_FILEPATH }${ dto.PA_P_FILENAME1 }"></td>
-							<td>${ dto.PA_M_NAME }</td>
+							<td>${ dto.PA_P_NAME }</td>
 							<td>${ dto.PA_TITLE }</td>
-							<td>${ dto.PA_CONTENT }</td>
 							<td><fmt:formatDate value="${ dto.PA_REGDATE }"
 									pattern="yyyy-MM-dd" /></td>
-							<td>${ dto.PA_M_NAME }</td>
+							<td>ㅇㅇㅇ</td>
+							<td>ㅇㅇㅇ</td>
 						</tr>
 					</c:forEach>
 				</tbody>

@@ -30,6 +30,7 @@ import com.study.springboot.service.newPageService;
 import com.study.springboot.service.noticeMainService;
 import com.study.springboot.service.noticeSearchService;
 import com.study.springboot.service.productAskSearchService;
+import com.study.springboot.service.productAskSearchService2;
 import com.study.springboot.service.productSearchService;
 import com.study.springboot.service.writeService;
 
@@ -55,6 +56,8 @@ public class BhController {
 	@Autowired
 	productAskSearchService iProductAskSearchService;
 	@Autowired
+	productAskSearchService2 iProductAskSearchService2;
+	@Autowired
 	productAskAnswerDao iProductAskAnswerDao;
 	@Autowired
 	mainPageService iMainPageService;
@@ -70,6 +73,8 @@ public class BhController {
 	categoryType2PageService iCategoryType2PageService;
 	@Autowired
 	categoryType3PageService iCategoryType3PageService;
+
+	
 	
 	//-------------네비바---------------
 	//공지사항 클릭
@@ -505,6 +510,8 @@ public class BhController {
 			(type,keyword,selectList,page,model);
 		}
 		
+		
+		
 		model.addAttribute("mainPage" , "admin/admin_productAsk.jsp");
 		return "index"; 
 	}
@@ -669,54 +676,108 @@ public class BhController {
 		return "index"; 
 	}
 	
+	//상세조회페이지
 	@RequestMapping("/view/item_view")
 	public String item_view(
-			@RequestParam("P_IDX") int P_IDX,
-//			@RequestParam("PA_IDX") int PA_IDX,
+			@RequestParam("P_IDX") int PA_P_IDX,
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
-			@RequestParam(defaultValue="0") String selectList,
-			@RequestParam(value="keyword",required=false) String keyword,
 			Model model) {
 		
-		productDto result = iProductDao.productModifyView(P_IDX);
+		productDto result = iProductDao.productModifyView(PA_P_IDX);
 		model.addAttribute("dto", result);
 		
-		
-		if(selectList.equals("0")) {
-			int type = 3;
-			//페이징
-			iProductAskSearchService.betweenList
-			(type,keyword,selectList,page,model);
-		}
+		//상품문의
+			iProductAskSearchService2.betweenList2(PA_P_IDX, page, model);
+			
 		
 		model.addAttribute("mainPage" , "view/item_view.jsp");
 		return "index"; 
 	}
-	
-	@RequestMapping("item_productAsk")
-	public String item_productAsk(
-			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
-			@RequestParam(defaultValue="0") String selectList,
-			@RequestParam(value="keyword",required=false) String keyword,
+	//상품문의 글쓰기 폼
+	@RequestMapping("/write/product_qna_write")
+	public String product_qna_write(
+			@RequestParam("P_IDX") int PA_P_IDX,
 			Model model) {
 		
-		if(selectList.equals("0")) {
-			//글 개수
-			int type = 3;
-			int listCount = iProductAskDao.productAskCount();
-			model.addAttribute("listCount" , listCount);
-			//페이징
-			iProductAskSearchService.betweenList
-			(type,keyword,selectList,page,model);
+		productDto result = iProductDao.productModifyView(PA_P_IDX);
+		model.addAttribute("dto", result);
+		
+		model.addAttribute("mainPage" , "write/product_qna_write.jsp");
+		return "index"; 
+	}
+	
+	//상품문의 글쓰기 액션
+	@RequestMapping("/write/product_qna_writeAction")
+	public String product_qna_writeAction(
+			@RequestParam("P_IDX") int PA_P_IDX,
+			@RequestParam("PA_P_FILEPATH") String PA_P_FILEPATH,
+			@RequestParam("PA_P_FILENAME1") String PA_P_FILENAME1,
+			@RequestParam("PA_TITLE") String PA_TITLE,
+			@RequestParam("PA_LOCK") String PA_LOCK,
+			@RequestParam("PA_CONTENT") String PA_CONTENT,
+			@RequestParam("PA_P_NAME") String PA_P_NAME,
+			@RequestParam("PA_P_PRICE") String PA_P_PRICE,
+			Model model) {
+		
+		iProductAskDao.productAskWriteAction
+		(PA_TITLE, PA_LOCK, PA_CONTENT,PA_P_NAME,PA_P_FILEPATH,PA_P_FILENAME1,PA_P_PRICE,PA_P_IDX);
+		
+		
+		return "redirect:/view/item_view?P_IDX="+PA_P_IDX; 
+	}
+	
+	//상품 문의 단건조회
+	@RequestMapping("/view/product_qna_view")
+	public String product_qna_view(
+			@RequestParam("PA_IDX") int PA_IDX,
+			Model model) {
+		
+		productAskDto result = iProductAskDao.productAskModifyView(PA_IDX);
+		model.addAttribute("dto", result);
+		List<answerDto> list = iProductAskAnswerDao.answerList(PA_IDX);
+		model.addAttribute("list" , list);
+		
+		model.addAttribute("mainPage" , "view/product_qna_view.jsp");
+		return "index";
+	}
+	
+	
+	@RequestMapping("/view/product_qna_pw_Action")
+	@ResponseBody
+	public String product_qna_pw(
+			@RequestParam("qna_PW") String qna_PW) {
+		System.out.println(qna_PW);	
+		int result = iProductAskDao.AjaxQnaPWcheek(qna_PW);
+		System.out.println("리절트값:" +result);
+		if( result == 1) {
+			System.out.println("나는 성공");	
+			return "1";
+		}
+		else {
+			System.out.println("나는 실패");	
+			return "0";
 		}
 		
-		
-		model.addAttribute("mainPage" , "admin/admin_productAsk.jsp");
-		return "index"; 
 	}
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		@RequestMapping("/view/product_qna_pw")
+		public String product_qna_pw(
+				@RequestParam("PA_IDX") String PA_IDX,
+				Model model) {
+			model.addAttribute("PA_IDX",PA_IDX );
+			return "/view/product_qna_pw";
+		}
 	
 	
 	

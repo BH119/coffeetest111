@@ -23,7 +23,7 @@ public interface productDao {
 		public int productUpdateAction(int P_IDX , String P_NAME , String P_CODE,
 				String P_FILENAME1,String P_FILEPATH, int P_CATEGORY, int P_PRICE, int P_STOCK,String P_FILENAME2,String P_FILENAME3 );
 		//상품 단건조회
-		public productDto productModifyView(int P_IDX);
+		public productDto productModifyView(int PA_P_IDX);
 		
 		//상품게시물 삭제
 		public int productDeleteAction (int P_IDX);

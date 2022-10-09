@@ -268,17 +268,23 @@
         </div><br>
         <div class="container itemQnA">
             <table class="QnATable">
+            	<tr>
+            		<th>번호</th>
+            		<th>제목</th>
+            		<th>작성자</th>
+            		<th>등록일</th>
+            		<th>${ dto2.PA_TITLE }</th>
+            	</tr>	
                 <c:forEach var="dto1" items="${ list }">
-						<tr onclick="location.href='/product_qna_view?PA_IDX=${dto1.PA_IDX}'">
+                
+                			<tr onclick="window.open('/view/product_qna_pw?PA_IDX=${dto1.PA_IDX}', '팝업창 이름', 'width=500px, height=300px , left=700px,top=200px')">
+<%-- 						<tr onclick="location.href='/view/product_qna_view?PA_IDX=${dto1.PA_IDX}'"> --%>
 							<td>${ dto1.PA_IDX }</td>
-							<td><input type="image"
-								src="${ dto1.PA_P_FILEPATH }${ dto1.PA_P_FILENAME1 }"></td>
-							<td>${ dto1.PA_M_NAME }</td>
 							<td>${ dto1.PA_TITLE }</td>
-							<td>${ dto1.PA_CONTENT }</td>
+							<td>${ dto1.PA_M_NAME }</td>
 							<td><fmt:formatDate value="${ dto1.PA_REGDATE }"
 									pattern="yyyy-MM-dd" /></td>
-							<td>${ dto1.PA_M_NAME }</td>
+							<td></td>
 						</tr>
 					</c:forEach>
             </table>
@@ -309,8 +315,18 @@
 					</c:choose>
 				</div>
 			</div>
-			</div>
-			</div>
+					<button style="background-color: #ffffff; border-color: #000000;"
+					type="button" onclick='location.href="/write/product_qna_write?P_IDX=${dto.p_IDX}"'
+					class="btn btn-warning">글쓰기</button>
+		</div>
+	</div>
     <br>
-    
-    </body>
+</body>
+
+
+
+
+
+
+
+

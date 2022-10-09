@@ -13,6 +13,12 @@
 		select * from PRODUCT_ASK order by PA_IDX desc
 	</select>
 	
+	<!-- 저장하기 -->
+	<insert id="productAskWriteAction">
+	insert into PRODUCT_ASK (PA_IDX ,PA_TITLE, PA_LOCK, PA_CONTENT, PA_REGDATE, PA_P_NAME, PA_P_FILEPATH , PA_P_FILENAME1, PA_P_PRICE ,PA_P_IDX)
+		values ( PA_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate, #{param4} ,#{param5} ,#{param6} ,#{param7},#{param8})
+	</insert>
+	
 	
 	 <!-- 게시글 갯수 조회 -->
 	<select id="productAskCount" resultType="int">
@@ -30,6 +36,19 @@
 		(select rownum R , PRODUCT_ASK.* from PRODUCT_ASK order by PA_IDX desc) B
 		where R between #{param1} and #{param2}
 	</select>
+	
+	<!-- 개별상품 상품문의리스트 -->
+	<select id="betweenList2" resultType="com.study.springboot.dto.productAskDto">
+		select B.* from
+		(select rownum R , PRODUCT_ASK.* from PRODUCT_ASK order by PA_IDX desc) B
+		where PA_P_IDX = #{param3} AND R between #{param1} and #{param2}
+	</select>
+	
+	
+	
+	
+	
+	
 	
 	<!--제목검색-->
 	<select id="betweenListTitle" resultType="com.study.springboot.dto.productAskDto">
@@ -66,6 +85,11 @@
 	</delete>
 	
 	
+	
+	<!-- 문의글확인 비밀번호조회 -->
+	<select id="AjaxQnaPWcheek" resultType="int" >
+		select count(*) from PRODUCT_ASK where PA_LOCK = #{param1}
+	</select>
 	
 	
 	

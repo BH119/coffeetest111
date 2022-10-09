@@ -12,53 +12,50 @@
         <div class="writeQnAItem">
             <div class="writeQnAItemImg">
                 <a href="/item/itemDetail">
-                    <img src="/img/free-icon-coffee-cup-3361135.png" alt="">
+                    <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1}" alt="">
                 </a>
             </div>
             <div class="writeQnAItemInfo">
                 <ul>
-                    <li><strong>원두커피111</strong></li>
-                    <li><span>12345원</span></li><br>
+                    <li><strong>${dto.p_NAME }</strong></li>
+                    <li><span>${dto.p_PRICE}</span></li><br>
                     <li><a href="/item/item_Detail">상품상세</a></li>
                 </ul>
             </div>
         </div><br>
-        <div class="writeQnATable">
-            <table>
-                <tr>
-                    <td>분류</td>
-                    <td>
-                        <select name="QnAType" id="QnAType">
-                            <option value="">상품문의</option>
-                            <option value="">배송문의</option>
-                            <option value="">기타문의</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>제목</td>
-                    <td>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td>비밀번호</td>
-                    <td>
-                        <input type="password">
-                    </td>
-                </tr>
-                <tr>
-                    <td>내용</td>
-                    <td>
-                        <textarea name="QnA" id="" cols="63" rows="10"></textarea>
-                    </td>
-                </tr>
-            </table>
-        </div><br>
-        <div class="writeQnABtn">
-            <input type="button" value="문의하기">
-            <input type="button" value="돌아가기" onClick="historyBack()">
-        </div>
+        <form action="/write/product_qna_writeAction">
+        <input type="hidden" name="P_IDX" value="${dto.p_IDX }">
+        <input type="hidden" name="PA_P_NAME" value="${dto.p_NAME }">
+        <input type="hidden" name="PA_P_FILEPATH" value="${dto.p_FILEPATH }">
+        <input type="hidden" name="PA_P_FILENAME1" value="${dto.p_FILENAME1}">
+        <input type="hidden" name="PA_P_PRICE" value="${dto.p_PRICE}">
+	        <div class="writeQnATable">
+	            <table>
+	                <tr>
+	                    <td>제목</td>
+	                    <td>
+	                        <input name="PA_TITLE" type="text">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>비밀번호</td>
+	                    <td>
+	                        <input name="PA_LOCK" style="font-family: 'Courier New', Courier, monospace" type="password">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>내용</td>
+	                    <td>
+	                        <textarea name="PA_CONTENT" id="" cols="63" rows="10"></textarea>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div><br>
+	        <div class="writeQnABtn">
+	            <input type="submit" value="문의하기">
+	            <input type="button" value="돌아가기" onClick="historyBack()">
+	        </div>
+        </form>
     </div><br><br>
     
     <script>
