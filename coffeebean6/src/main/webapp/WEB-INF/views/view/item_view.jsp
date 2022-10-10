@@ -58,6 +58,7 @@
                     </div>                    
                 </div>
                 <div class="col itemTable"> 
+                	<form action="/totalprice" method="get">
 	                    <table>
 	                        <tr>
 	                            <th>상품이름</th>
@@ -85,16 +86,22 @@
 	                        <tr>
 	                            <td>주문수량</td>
 	                            <td>
-	                                <button id="del" >-</button>
+	                                <button type="button" id="del" >-</button>
 	                                <span id="amount">1</span>
-	                                <button id="add" >+</button>
+	                                <button type="button" id="add" >+</button>
 	                            </td>
 	                        </tr>
 	                        <tr>
 	                            <td>총 상품금액</td>
-	                            <td> <span id="price1">${dto.p_PRICE }</span>원 </td>
+	                            <td> <span  class="price1" id="price1">${dto.p_PRICE }</span>원 </td>
 	                        </tr>
-	                    </table><br>
+	                    </table>
+	                    <br>
+		                <div class="itemTableBtn">
+	                        <input type="submit" value="장바구니" id="cartBtn">
+	                        <input type="submit" value="구매하기" id="buyBtn">
+	                    </div>
+	                </form>
                     
                     <script type="text/javascript">
                     var amount = document.getElementById("amount");
@@ -106,8 +113,9 @@
                     	var price2 = parseInt(price1.innerText, 10);
                     	amount.innerText = current + 1;
                     	
-                    	price2 = price2/current;
+                    	price2 = price2/current;//기본값유지시키기
                     	price1.innerText = (current+1) * price2
+                    	
                     };
                    	del.onclick = () => {
                    		var current = parseInt(amount.innerText, 10);
@@ -116,11 +124,13 @@
                     	
                     	price2 = price2/current;
                     	price1.innerText = (current-1) * price2
+                    	
                     	if(current < 2){
                     	   amount.innerText=1;
                     	   
                     	   price2 = price2/current;
                        	price1.innerText = (current) * price2
+                       	
                     	   
                     	}
                   	};
@@ -128,10 +138,7 @@
                     
                     
                     
-                    <div class="itemTableBtn">
-                        <a href="/cart"><input type="button" value="장바구니" id="cartBtn"></a>
-                        <a href="/buy"><input type="button" value="구매하기" id="buyBtn"></a>
-                    </div>
+                    
                 </div>
             </div>
         </div><br><br>

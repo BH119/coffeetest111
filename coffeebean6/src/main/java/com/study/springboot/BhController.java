@@ -760,17 +760,12 @@ public class BhController {
 		int result = iProductAskDao.AjaxQnaPWcheek(qna_PW , PA_IDX);
 		System.out.println("리절트값:" +result);
 		if( result == 1) {
-			System.out.println("나는 성공");	
 			return "1";
 		}
 		else {
-			System.out.println("나는 실패");	
 			return "0";
 		}
 		
 	}
-	
-	
-	
 	
 }
