@@ -42,7 +42,7 @@
 
 </head>
 <link rel="stylesheet" href="/css/adminCss/admin.css">
-  
+<link rel="stylesheet" href="/css/item/writeQnA.css">
 <body>
   <div class="container" style="width: 100%;">
     <div id="header"></div>
@@ -67,36 +67,48 @@
 			<br>
 		</div>
 		<!-- 메인 -->
-      <div id="adminMain">
-        <div id="adminSection">
-          <div class="adminDiv">
-            <h3 style="display: flex; justify-content: center;">상품문의 관리</h3>
+    
 
-            <div class="" style="display: flex; justify-content: center;">
-              <form style="width: 600px;">
-              	상품사진<br>
-                <input type="image" src="${ dto.PA_P_FILEPATH }${ dto.PA_P_FILENAME1 }" class="form-control" disabled>
-                상품이름<br>
-                <input type="text" value="${dto.PA_P_NAME }" class="form-control" disabled>
-                <br> 제목<br>
-                <input type="text" value="${dto.PA_TITLE }" class="form-control" disabled>
-                <br> 내용<br>
-                <textarea  style="height: 200px;" class="form-control" disabled> ${dto.PA_CONTENT }</textarea>
-                <br> 작성자<br>
-                <input value="${dto.PA_M_NAME }" type="text" class="form-control" disabled>
-                <br> 작성일<br>
-                
-                <input value='<fmt:formatDate value="${dto.PA_REGDATE }" pattern="yyyy-MM-dd" />' type="text" class="form-control" disabled>
-                <br>
-
-
+	<div style="min-width: 599px;" class="writeQnA">
+        <div class="writeQnATitle">
+            <h3>상품문의</h3>
+        </div><br>
+        <div class="writeQnAItem">
+            <div class="writeQnAItemImg">
+                <a href="/item/itemDetail">
+                    <img src="/${dto.PA_P_FILEPATH }${dto.PA_P_FILENAME1}" alt="">
+                </a>
+            </div>
+            <div class="writeQnAItemInfo">
+                <ul>
+                    <li><strong>${dto.PA_P_NAME }</strong></li>
+                    <li><span>${dto.PA_P_PRICE}</span></li><br>
+                    <li><a href="/item/item_Detail">상품상세</a></li>
+                </ul>
+            </div>
+        </div><br>
+	        <div class="writeQnATable">
+	            <table>
+	                <tr>
+	                    <td>제목</td>
+	                    <td>
+	                        <input name="PA_TITLE" type="text" readonly="readonly" value="${dto.PA_TITLE }">
+	                    </td>
+	                </tr>
+	                <tr>
+	                    <td>내용</td>
+	                    <td>
+	                        <textarea name="PA_CONTENT" id="" cols="63" rows="10" readonly="readonly">${dto.PA_CONTENT }</textarea>
+	                    </td>
+	                </tr>
+	            </table>
+	        </div><br>
+	        <div  class="writeQnABtn">
                 <button style="background-color: #ffffff; border-color: #000000;" type="button"
                   onclick='location.href="/admin/view/productAskDeleteAction?PA_IDX=${dto.PA_IDX}"' class="btn btn-warning">삭제하기</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+	            <button style="background-color: #ffffff; border-color: #000000;" class="btn btn-warning" onClick='location.href="/admin_productAsk"'>돌아가기</button>
+	        </div>
+    </div><br><br>
       
       
     <form action="/admin/view/answerWriteAction" method="get">
@@ -116,8 +128,8 @@
 	
 	<table width="600" cellpadding="0" cellspacing="0" border="1">
 		<tr>
-			<th>별명</th>
-			<th>내용</th>
+			<th>글쓴이</th>
+			<th width="60%">내용</th>
 			<th>날짜</th>
 			<th>삭제</th>
 		</tr>

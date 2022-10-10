@@ -155,7 +155,7 @@
                 <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
                 <img src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" alt="">
                 <img src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" alt=""> <br>
-                <textarea readonly="readonly" >${dto.p_CONTENT }</textarea>
+                ${dto.p_CONTENT }
                 
             </div>
         </div><br><br><br>

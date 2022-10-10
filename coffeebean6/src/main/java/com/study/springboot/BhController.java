@@ -475,7 +475,7 @@ public class BhController {
 		return "index"; 
 	}
 	//상품문의
-	@RequestMapping("admin_productAsk")
+	@RequestMapping("/admin_productAsk")
 	public String productAsk(
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
 			@RequestParam(defaultValue="0") String selectList,

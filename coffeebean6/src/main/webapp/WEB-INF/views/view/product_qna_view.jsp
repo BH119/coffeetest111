@@ -21,7 +21,6 @@
                 <ul>
                     <li><strong>${dto.PA_P_NAME }</strong></li>
                     <li><span>${dto.PA_P_PRICE}</span></li><br>
-                    <li><a href="/item/item_Detail">상품상세</a></li>
                 </ul>
             </div>
         </div><br>
@@ -31,30 +30,28 @@
 	                <tr>
 	                    <td>제목</td>
 	                    <td>
-	                        <input name="PA_TITLE" type="text">
+	                        ${dto.PA_TITLE }
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td>내용</td>
 	                    <td>
-	                        <textarea name="PA_CONTENT" id="" cols="63" rows="10"></textarea>
+	                        ${dto.PA_CONTENT }
 	                    </td>
 	                </tr>
 	            </table>
 	        </div><br>
 	        <div class="writeQnABtn">
-	            <input type="submit" value="문의하기">
 	            <input type="button" value="돌아가기" onClick="historyBack()">
 	        </div>
         </form>
     </div><br><br>
     
-    <table width="600" cellpadding="0" cellspacing="0" border="1">
+    <table width="1000" cellpadding="0" cellspacing="0" border="1">
 		<tr>
-			<th>별명</th>
-			<th>내용</th>
+			<th>작성자</th>
+			<th width="70%">내용</th>
 			<th>날짜</th>
-			<th>삭제</th>
 		</tr>
 		<c:forEach var="answerDto" items="${ list }">
 			<tr>
@@ -63,7 +60,6 @@
 				<td>
 					<fmt:formatDate value="${ answerDto.AS_DATE }" pattern="yyyy-MM-dd" />
 				</td>
-				<td><a href="/admin/view/answerDeleteAction?AS_IDX=${ answerDto.AS_IDX }&AS_PA_IDX=${ answerDto.AS_PA_IDX }"><button>삭제</button></a></td>
 			</tr>
 		</c:forEach>
 	</table>
