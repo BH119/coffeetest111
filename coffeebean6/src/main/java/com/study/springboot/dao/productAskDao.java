@@ -33,9 +33,12 @@ public interface productAskDao {
 	
 	//상품문의 저장
 	public int productAskWriteAction(String PA_TITLE , String PA_LOCK , String PA_CONTENT 
-			,String PA_P_NAME,String PA_P_FILEPATH,String PA_P_FILENAME1, String PA_P_PRICE
-			,int PA_P_IDX);
+			,String PA_P_NAME,String PA_P_FILEPATH,String PA_P_FILENAME1, String PA_P_PRICE 
+			,int PA_P_IDX ,String PA_STATE);
 	//상품문의 조회시 비밀번호 체크
 	public int AjaxQnaPWcheek(String qna_PW, String PA_IDX);
+	
+	//답변상태
+	public int answerState(String PA_STATE, int PA_IDX);
 	
 }

@@ -115,6 +115,7 @@
 		<table  width="600" cellpadding="0" cellspacing="0" border="1">
 			<tr>
 				<td style="display: flex; flex-direction: column;"  colspan=""2>
+					<input type="hidden" name="PA_STATE" value="답변완료">
 					<input type="hidden" name="AS_PA_IDX" value="${ dto.PA_IDX }">
 					<label>글쓴이</label><input type="text" name="AS_NAME" value="admin"><br>
 					<label>답변내용</label><textarea  name="AS_CONTENT" style="height: 120px; width: 100%;" rows="2" cols="50" name="reply_content"></textarea><br>

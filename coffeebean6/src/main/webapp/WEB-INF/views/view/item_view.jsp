@@ -279,7 +279,7 @@
             		<th>제목</th>
             		<th>작성자</th>
             		<th>등록일</th>
-            		<th>${ dto2.PA_TITLE }</th>
+            		<th>답변상태</th>
             	</tr>	
                <c:forEach var="dto1" items="${ list }">
                 									
@@ -290,7 +290,7 @@
 							<td>${ dto1.PA_M_NAME }</td>
 							<td><fmt:formatDate value="${ dto1.PA_REGDATE }"
 									pattern="yyyy-MM-dd" /></td>
-							<td></td>
+							<td>${ dto1.PA_STATE}</td>
 						</tr>
 					</c:forEach>
             </table>

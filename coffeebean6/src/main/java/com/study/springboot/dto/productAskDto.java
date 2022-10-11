@@ -25,6 +25,6 @@ public class productAskDto {
    private String PA_LOCK; // 상품문의글 비밀번호
    @DateTimeFormat(pattern = "yyyy-MM-dd")
    private Date PA_REGDATE; // 작성일
-   private int PA_ANSWER; //답변상태
+   private String PA_STATE; //답변상태
 }
 	

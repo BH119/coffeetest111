@@ -15,8 +15,8 @@
 	
 	<!-- 저장하기 -->
 	<insert id="productAskWriteAction">
-	insert into PRODUCT_ASK (PA_IDX ,PA_TITLE, PA_LOCK, PA_CONTENT, PA_REGDATE, PA_P_NAME, PA_P_FILEPATH , PA_P_FILENAME1, PA_P_PRICE ,PA_P_IDX)
-		values ( PA_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate, #{param4} ,#{param5} ,#{param6} ,#{param7},#{param8})
+	insert into PRODUCT_ASK (PA_IDX ,PA_TITLE, PA_LOCK, PA_CONTENT, PA_REGDATE, PA_P_NAME, PA_P_FILEPATH , PA_P_FILENAME1, PA_P_PRICE ,PA_P_IDX, PA_STATE)
+		values ( PA_IDX_SEQ.NEXTVAL , #{param1},#{param2},#{param3},sysdate, #{param4} ,#{param5} ,#{param6} ,#{param7},#{param8},#{param9})
 	</insert>
 	
 	
@@ -91,6 +91,11 @@
 		select count(*) from PRODUCT_ASK where PA_LOCK = #{param1} and PA_IDX = #{param2}
 	</select>
 	
+	<!-- 답변상태창 업데이트 -->
+	<update id="answerState"  >
+	update PRODUCT_ASK set PA_STATE = #{param1}
+	where PA_IDX = #{param2}
+	</update>
 	
 	
 </mapper>    

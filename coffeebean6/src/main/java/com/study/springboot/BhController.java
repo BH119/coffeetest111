@@ -565,14 +565,15 @@ public class BhController {
 	
 	@RequestMapping("/admin/view/answerWriteAction")
 	public String answerWriteAction(
+			@RequestParam("PA_STATE") String PA_STATE,
 			@RequestParam("AS_PA_IDX") int AS_PA_IDX,
 			@RequestParam("AS_NAME") String AS_NAME,
 			@RequestParam("AS_CONTENT") String AS_CONTENT,
 			Model model) {
-		System.out.println("dkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+		System.out.println(PA_STATE + AS_PA_IDX);
 		System.out.println(AS_PA_IDX + AS_NAME + AS_CONTENT);
 		iProductAskAnswerDao.answerWriteAction(AS_NAME, AS_CONTENT, AS_PA_IDX); 
-		
+		iProductAskDao.answerState(PA_STATE, AS_PA_IDX);
 		return "redirect:/admin/view/productAskView?PA_IDX="+AS_PA_IDX; 
 	}
 	
@@ -682,7 +683,7 @@ public class BhController {
 			@RequestParam("P_IDX") int PA_P_IDX,
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
 			Model model) {
-		
+		iProductDao.updateHit(PA_P_IDX);
 		productDto result = iProductDao.productModifyView(PA_P_IDX);
 		model.addAttribute("dto", result);
 		
@@ -717,10 +718,11 @@ public class BhController {
 			@RequestParam("PA_CONTENT") String PA_CONTENT,
 			@RequestParam("PA_P_NAME") String PA_P_NAME,
 			@RequestParam("PA_P_PRICE") String PA_P_PRICE,
+			@RequestParam("PA_STATE") String PA_STATE,
 			Model model) {
-		
+		System.out.println(PA_STATE);
 		iProductAskDao.productAskWriteAction
-		(PA_TITLE, PA_LOCK, PA_CONTENT,PA_P_NAME,PA_P_FILEPATH,PA_P_FILENAME1,PA_P_PRICE,PA_P_IDX);
+		(PA_TITLE, PA_LOCK, PA_CONTENT,PA_P_NAME,PA_P_FILEPATH,PA_P_FILENAME1,PA_P_PRICE,PA_P_IDX, PA_STATE);
 		
 		
 		return "redirect:/view/item_view?P_IDX="+PA_P_IDX; 

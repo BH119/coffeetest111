@@ -29,6 +29,7 @@
         <input type="hidden" name="PA_P_FILEPATH" value="${dto.p_FILEPATH }">
         <input type="hidden" name="PA_P_FILENAME1" value="${dto.p_FILENAME1}">
         <input type="hidden" name="PA_P_PRICE" value="${dto.p_PRICE}">
+        <input type="hidden" name="PA_STATE" value="답변대기">
 	        <div class="writeQnATable">
 	            <table>
 	                <tr>

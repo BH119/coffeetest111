@@ -134,8 +134,8 @@ button {
 							<td>${ dto.PA_TITLE }</td>
 							<td><fmt:formatDate value="${ dto.PA_REGDATE }"
 									pattern="yyyy-MM-dd" /></td>
-							<td>ㅇㅇㅇ</td>
-							<td>ㅇㅇㅇ</td>
+							<td>dddd</td>
+							<td>${ dto.PA_STATE }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
