@@ -118,9 +118,9 @@
                     <ul>
                         <li>공지사항</li>
                         <c:forEach var="dto" items="${noticeList}">
-                        <li style="margin-top:10px ;"><a href="">·${dto.n_TITLE }</a></li>
+                        <li style="margin-top:10px ;"><a href='/view/notice_view?N_IDX=${dto.n_IDX}'>·${dto.n_TITLE }</a></li>
                         </c:forEach>
-                        <li><a href="/notice.html">공지사항 더보기 >></a></li>
+                        <li><a href="/community/notice_list">공지사항 더보기 >></a></li>
                     </ul>
                 </div>
             </div>

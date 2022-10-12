@@ -125,7 +125,7 @@ public class BhController {
 	
 		
 		
-	//메인페이지
+	//메인페이지(첫화면출력)
 	@RequestMapping("/")
 	public String root(
 			@RequestParam(defaultValue = "1") String page,
@@ -142,7 +142,7 @@ public class BhController {
 	
 	
 	
-	//공지사항 (첫페이지)
+	//관리자 공지사항 
 	@RequestMapping("admin_notice")
 	public String admin_notice(
 			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
@@ -412,12 +412,13 @@ public class BhController {
 			@RequestParam("P_CATEGORY") int P_CATEGORY,
 			@RequestParam("P_PRICE") int P_PRICE,
 			@RequestParam("P_STOCK") int P_STOCK,
+			@RequestParam("P_CONTETN") String P_CONTETN,
 			@RequestParam("P_FILENAME2") String P_FILENAME2,
 			@RequestParam("P_FILENAME3") String P_FILENAME3,
 			@RequestParam("filename") MultipartFile[] filelist) throws IllegalStateException, IOException
 	{
 		iModifyService.updateAction(P_IDX, P_NAME, P_CODE, P_PRICE, 
-				P_STOCK, P_CATEGORY, filelist, P_FILENAME1,P_FILENAME2,P_FILENAME3 );
+				P_STOCK,P_CONTETN, P_CATEGORY, filelist, P_FILENAME1,P_FILENAME2,P_FILENAME3 );
 		return "redirect:/productView?P_IDX="+P_IDX;
 
 	}
@@ -677,6 +678,8 @@ public class BhController {
 		return "index"; 
 	}
 	
+	//---------------------아이탬페이지 END -------------------------------
+	
 	//상세조회페이지
 	@RequestMapping("/view/item_view")
 	public String item_view(
@@ -769,5 +772,66 @@ public class BhController {
 		}
 		
 	}
+	
+	//----------------상품상세 페이지 END------------------------
+	
+	
+	//공지사항 게시판으로
+	
+	@RequestMapping("/community/notice_list")
+	public String notice_list(
+			@RequestParam(defaultValue = "1") String page, // null값이면 page 디폴트 값이 "1"이다 페이지초기값 설정
+			@RequestParam(defaultValue = "0") String selectList,
+			@RequestParam(value="keyword",required=false) String keyword,
+			Model model) {
+		
+		if(selectList.equals("0")) {
+			//글 개수
+			int type = 3;
+			int listCount = iNoticeDao.noticeCount();
+			model.addAttribute("listCount" , listCount);
+			//페이징
+			iNoticeSearchService.betweenList
+			(type,keyword,selectList,page,model);
+		}
+		else if(selectList.equals("N_TITLE")) {	
+			int type = 1;
+			//제목 검색글 개수
+			int listCount = iNoticeDao.titleCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			//제목 검색
+			iNoticeSearchService.betweenList
+			(type,keyword,selectList,page,model);
+			
+		}
+		else if(selectList.equals("N_WRITER")) {
+			int type = 2;
+			//글쓴이 게시물 및 개수
+			int listCount = iNoticeDao.writeCount(keyword);
+			model.addAttribute("listCount" , listCount);
+			iNoticeSearchService.betweenList
+			(type,keyword,selectList,page,model);
+			
+		}
+		
+		model.addAttribute("mainPage" , "community/notice_list.jsp");
+		return "index";
+	}
+	
+	//공지사항 상세보기
+	@RequestMapping("/view/notice_view")
+	public String notice_view(
+			@RequestParam("N_IDX") int N_IDX,
+			Model model) {
+		noticeDto result = iNoticeDao.noticeModifyView(N_IDX);
+		model.addAttribute("dto", result);
+		model.addAttribute("mainPage" , "view/notice_view.jsp");
+		return "index"; 
+	}
+	
+	
+	
+	
+	
 	
 }

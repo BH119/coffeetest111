@@ -97,6 +97,8 @@
                 <input name="P_PRICE" value="${dto.p_PRICE }" type="text" class="form-control">
                 <br>재고수량<br>
                 <input name="P_STOCK" value="${dto.p_STOCK }" type="text" class="form-control">
+                <br>상품설명<br>
+                <textarea name="P_CONTETN" class="form-control">${dto.p_CONTENT }</textarea>
                 <br>상품사진<br>
                 <div class="imgbox">
 					<img style="height: 150px;" src="${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">

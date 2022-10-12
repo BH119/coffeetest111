@@ -80,7 +80,7 @@
                             COMMUNITY
                         </a>
                         <div class="dropdown-menu" style="margin: -3px; opacity: 0.8;">
-                            <a class="dropdown-item" href="notice.html">공지사항</a>
+                            <a class="dropdown-item" href="/community/notice_list">공지사항</a>
                             <a class="dropdown-item" href="one2oneList.html">1:1문의</a>
                             <a class="dropdown-item" href="faq.html">자주 묻는 질문</a>
                         </div>

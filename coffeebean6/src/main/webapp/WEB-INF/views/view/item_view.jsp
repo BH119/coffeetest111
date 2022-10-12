@@ -29,22 +29,22 @@
                 <a href="#"><span>원두커피</span></a>
             </div>
             <div class="row">
-                <div class="col imgbox">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div style="padding-top: 60px;"  class="col imgbox">
+                    <div  id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
                           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         </ol>
-                        <div class="carousel-inner">
+                        <div  class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" class="d-block w-100" alt="...">
+                            <img style="background-size: cover;"  src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" class="d-block w-100" alt="...">
+                            <img style="background-size: cover;" src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" class="d-block w-100" alt="...">
                           </div>
                           <div class="carousel-item">
-                            <img src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" class="d-block w-100" alt="...">
+                            <img style="background-size: cover;" src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" class="d-block w-100" alt="...">
                           </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
@@ -159,9 +159,9 @@
         </div><br>
         <div class="container detailTap">
             <div class="detailImg">
-                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
-                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" alt="">
-                <img src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" alt=""> <br>
+                <img style="height: 300px;" src="/${dto.p_FILEPATH }${dto.p_FILENAME1 }" alt="">
+                <img style="height: 300px;" src="/${dto.p_FILEPATH }${dto.p_FILENAME2 }" alt="">
+                <img style="height: 300px;" src="/${dto.p_FILEPATH }${dto.p_FILENAME3 }" alt=""> <br>
                 ${dto.p_CONTENT }
                 
             </div>

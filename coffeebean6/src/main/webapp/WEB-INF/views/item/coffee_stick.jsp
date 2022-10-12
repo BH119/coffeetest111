@@ -20,12 +20,6 @@
                 <h2>스틱커피</h2><br>
             </div>
         </div><br>
-        <div class="itemSearch">
-            <input type="text">
-            <a href="#">
-                <img src="/img/search.png" alt="">
-            </a>
-        </div><br><br>
         <div class="itemList">
             <br>
             <div>

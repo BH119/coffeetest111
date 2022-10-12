@@ -24,6 +24,7 @@ public class modifyService {
 			String P_CODE,
 			int P_PRICE,
 			int P_STOCK,
+			String P_CONTETN,
 			int P_CATEGORY,
 			MultipartFile[] filelist, // 수정할 파일들 호출
 			String P_FILENAME1, //수정하기 전 파일들 호출
@@ -42,7 +43,7 @@ public class modifyService {
 			// 수정하기 = 기존에 파일 삭제 후 -> 새로운 파일 업데이트 (저장할때 로직과 똑같기 때문에 코드 중복을 피한다.)
 			List<String> files = iWriteService.productWriteAction(filelist);
 			int result = iProductDao.productUpdateAction(P_IDX, P_NAME , P_CODE, files.get(0), 
-						files.get(1), P_CATEGORY , P_PRICE, P_STOCK,files.get(2),files.get(3));
+						files.get(1), P_CATEGORY , P_PRICE, P_STOCK, P_CONTETN ,files.get(2),files.get(3));
 			
 			System.out.println("0번째:"+files.get(0));
 			System.out.println("1번째:"+files.get(1));
@@ -55,8 +56,8 @@ public class modifyService {
 			String filepath="";  //경로는 그냥 정해져있으므로 문자열로 할당.
 			filepath = "uploadIMG\\uploadProduct_IMG\\";
 			
-			int result = iProductDao.productUpdateAction(P_IDX, P_NAME , P_CODE, P_FILENAME1, 
-					filepath, P_CATEGORY , P_PRICE, P_STOCK,P_FILENAME2,P_FILENAME3);
+			iProductDao.productUpdateAction(P_IDX, P_NAME , P_CODE, P_FILENAME1, 
+					filepath, P_CATEGORY , P_PRICE, P_STOCK, P_CONTETN,P_FILENAME2,P_FILENAME3);
 			
 			return 0;
 		}

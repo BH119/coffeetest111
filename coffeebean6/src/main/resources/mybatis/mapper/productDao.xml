@@ -37,7 +37,7 @@
 	<update id="productUpdateAction" >
 	update PRODUCT set P_NAME=#{param2} , P_CODE=#{param3} , P_FILENAME1=#{param4} ,
 	P_FILEPATH=#{param5},P_CATEGORY=#{param6},P_PRICE=#{param7}, 
-	P_STOCK=#{param8},P_FILENAME2=#{param9},P_FILENAME3=#{param10}
+	P_STOCK=#{param8}, P_CONTENT = #{param9}, P_FILENAME2=#{param10},P_FILENAME3=#{param11}
 	where P_IDX = #{param1}
 	</update>	
 	
