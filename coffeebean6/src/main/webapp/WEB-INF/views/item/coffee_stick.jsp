@@ -24,7 +24,7 @@
             <br>
             <div>
                 <ul class="itemMenuUl">
-                    <li><a href="/item/coffee_stick?orderHit=1">인기순1</a></li>
+                    <li><a href="/item/coffee_stick?orderHit=1">인기순</a></li>
                     <li><a href="/item/coffee_stick?orderNew=1">최근등록순</a></li>
                     <li><a href="/item/coffee_stick?orderLow=1">낮은가격순</a></li>
                     <li><a href="/item/coffee_stick?orderHigh=1">높은가격순</a></li>
