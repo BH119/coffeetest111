@@ -20,9 +20,7 @@ import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
 import com.study.springboot.service.bestPageService;
-import com.study.springboot.service.categoryType1PageService;
-import com.study.springboot.service.categoryType2PageService;
-import com.study.springboot.service.categoryType3PageService;
+import com.study.springboot.service.categoryTypePageService;
 import com.study.springboot.service.fileDeleteService;
 import com.study.springboot.service.mainPageService;
 import com.study.springboot.service.modifyService;
@@ -68,11 +66,7 @@ public class BhController {
 	@Autowired
 	noticeMainService iNoticeMainService;
 	@Autowired
-	categoryType1PageService iCategoryType1PageService;
-	@Autowired
-	categoryType2PageService iCategoryType2PageService;
-	@Autowired
-	categoryType3PageService iCategoryType3PageService;
+	categoryTypePageService iCategoryTypePageService;
 
 	
 	
@@ -639,7 +633,7 @@ public class BhController {
 			@RequestParam(defaultValue = "0") String orderNew,
 			@RequestParam(defaultValue = "0") String orderHit,
 			Model model) {
-		iCategoryType1PageService.PagingList
+		iCategoryTypePageService.categoryType1Page
 		(page,orderHigh,orderLow,orderNew,orderHit, model);
 		
 		model.addAttribute("mainPage" , "item/coffee_bean.jsp");
@@ -655,7 +649,7 @@ public class BhController {
 			@RequestParam(defaultValue = "0") String orderNew,
 			@RequestParam(defaultValue = "0") String orderHit,
 			Model model) {
-		iCategoryType2PageService.PagingList
+		iCategoryTypePageService.categoryType2Page
 		(page,orderHigh,orderLow,orderNew,orderHit, model);
 		model.addAttribute("mainPage" , "item/coffee_coldbrew.jsp");
 		return "index"; 
@@ -671,7 +665,7 @@ public class BhController {
 			@RequestParam(defaultValue = "0") String orderHit,
 			Model model) {
 		
-		iCategoryType3PageService.PagingList
+		iCategoryTypePageService.categoryType3Page
 		(page,orderHigh,orderLow,orderNew,orderHit, model);
 		
 		model.addAttribute("mainPage" , "item/coffee_stick.jsp");
