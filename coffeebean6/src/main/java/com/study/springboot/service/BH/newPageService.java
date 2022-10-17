@@ -1,4 +1,4 @@
-package com.study.springboot.service;
+package com.study.springboot.service.BH;
 
 import java.util.List;
 
@@ -12,21 +12,18 @@ import com.study.springboot.dto.productDto;
 
 
 @Component
-public class mainPageService {
+public class newPageService {
 	@Autowired
 	productDao iProductDao;
 	
 	public List<productDto> PagingList(
-			String selectList,
 			String page,Model model) {
 		
 	
-		if(page == null) {
-			page = "1";
-		}
+		
 		model.addAttribute("page",page); 
 		int curPage = Integer.parseInt(page); 
-		int listSize =8;
+		int listSize =16;
 		int startList = (curPage - 1) * listSize + 1;  
 		int endList =  (curPage * listSize);
 		
@@ -41,11 +38,9 @@ public class mainPageService {
 		model.addAttribute("endPage", endPage); 
 		model.addAttribute("startPage", startPage); 
 		
-		List<productDto> orderHitList = iProductDao.orderHit(startList,endList);
-		List<productDto> newList = iProductDao.betweenList(startList,endList);
-		model.addAttribute("orderHitList", orderHitList);
-		model.addAttribute("newList", newList);
-		return orderHitList;
+		List<productDto> list = iProductDao.betweenList(startList,endList);
+		model.addAttribute("newList", list);
+		return list;
 		
 	
 	

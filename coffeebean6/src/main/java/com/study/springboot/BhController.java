@@ -19,18 +19,18 @@ import com.study.springboot.dto.answerDto;
 import com.study.springboot.dto.noticeDto;
 import com.study.springboot.dto.productAskDto;
 import com.study.springboot.dto.productDto;
-import com.study.springboot.service.bestPageService;
-import com.study.springboot.service.categoryTypePageService;
-import com.study.springboot.service.fileDeleteService;
-import com.study.springboot.service.mainPageService;
-import com.study.springboot.service.modifyService;
-import com.study.springboot.service.newPageService;
-import com.study.springboot.service.noticeMainService;
-import com.study.springboot.service.noticeSearchService;
-import com.study.springboot.service.productAskSearchService;
-import com.study.springboot.service.productAskSearchService2;
-import com.study.springboot.service.productSearchService;
-import com.study.springboot.service.writeService;
+import com.study.springboot.service.BH.bestPageService;
+import com.study.springboot.service.BH.categoryTypePageService;
+import com.study.springboot.service.BH.fileDeleteService;
+import com.study.springboot.service.BH.mainPageService;
+import com.study.springboot.service.BH.modifyService;
+import com.study.springboot.service.BH.newPageService;
+import com.study.springboot.service.BH.noticeMainService;
+import com.study.springboot.service.BH.noticeSearchService;
+import com.study.springboot.service.BH.productAskSearchService;
+import com.study.springboot.service.BH.productAskSearchService2;
+import com.study.springboot.service.BH.productSearchService;
+import com.study.springboot.service.BH.writeService;
 
 @Controller
 public class BhController {
